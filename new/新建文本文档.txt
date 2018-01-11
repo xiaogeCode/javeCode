@@ -1,1 +1,13 @@
-aaaa
+
+ java jdbc连接mysql数据库增删改查
+http://www.jb51.net/article/88300.htm
+
+Java对MySQL数据库进行连接、查询和修改
+https://www.cnblogs.com/aniuer/archive/2012/09/10/2679241.html
+
+Autodesk Maya 2017中文破解图文安装教程(附序列号密钥+注册机)
+http://www.jb51.net/softjc/523346.html
+
+
+三维动画制作软件Autodesk Maya 2017 英/中文破解版(注册机序列号+密钥) 64位 
+http://www.jb51.net/softs/523303.html
