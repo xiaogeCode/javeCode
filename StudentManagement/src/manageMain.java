@@ -28,7 +28,24 @@ public class manageMain {
 		Goddess gd = new Goddess();
 		GoddessAction ac = new GoddessAction();
 		try{
-			ac.add(gd);
+			//ac.addTable();
+			//ac.add(gd);
+			List<Goddess> godList = null;
+			godList = ac.query();
+			System.out.println("count :"+godList.size());
+			//Goddess god = null;
+			for(int i=0;i<godList.size();i++){
+				gd = godList.get(i);
+				System.out.println("name"+gd.getName());
+			}
+			ac.edit(gd);
+			gd = ac.get(1);
+			if(gd!=null){
+				System.out.println("name"+gd.getName());
+			}
+			
+			
+			//ac.del(1);
 		}catch (Exception e) {
 			   e.printStackTrace();
 		  }

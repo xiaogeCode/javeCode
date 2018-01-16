@@ -14,6 +14,15 @@ import xiaoge.model.Goddess;
  */
 public class GoddessAction
 {
+	public void addTable() throws Exception
+	  {
+	    GoddessDao dao = new GoddessDao();
+	    //if(!dao.TableIsExist("Godness")){
+	    	System.out.print("create table");
+	    	dao.createGoddessTable();
+	   // }
+	    
+	  }
   /**
    * 新增女神
    * 
@@ -23,10 +32,10 @@ public class GoddessAction
   public void add(Goddess goddess) throws Exception
   {
     GoddessDao dao = new GoddessDao();
-    goddess.setName("苍井空");
+    goddess.setName("高圆圆");
     goddess.setMobie("52220000");
     goddess.setEmail("52220000@qq.com");
-    goddess.setAddress("北京红灯区");
+    goddess.setAddress("北京天安门");
     dao.addGoddess(goddess);
   }
  

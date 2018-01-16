@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
  
@@ -13,11 +14,35 @@ import xiaoge.model.Goddess;
 /**
  * 数据层处理类
  * 
- * @author AlanLee
+ * @author XIAOGE
  * 
- */
+ */ 
+
 public class GoddessDao
 {
+	/**
+	 * 添加女神数据库表格
+	 * 
+	 * @throws SQLException
+	 */
+	public void createGoddessTable() throws SQLException
+	{
+	  // 获得数据库连接
+	  Connection conn = DBUtil.getConnection();
+	  Statement statement = conn.createStatement();
+	  
+	  //不存在表就创建表
+	  String sql = "CREATE TABLE IF NOT EXISTS Godness" + 
+ 			 "(ID INTEGER PRIMARY KEY  AUTOINCREMENT,"+ 
+ 			 "NAME   TEXT  NOT NULL,"+
+ 			 "MOBIE TEXT  NOT NULL,"+
+ 			 "EMAIL   TEXT  NOT NULL,"+
+ 			 "ADDRESS   TEXT  NOT NULL,"+
+ 			 "AGE 	 INT   NOT NULL)";
+	  statement.executeUpdate(sql);
+	  statement.close();
+	  conn.close();
+	}
   /**
    * 查询全部女神
    * 
@@ -28,17 +53,13 @@ public class GoddessDao
   {
     List<Goddess> goddessList = new ArrayList<Goddess>();
  
-    // 获得数据库连接
+ // 获得数据库连接
     Connection conn = DBUtil.getConnection();
+    Statement statement=conn.createStatement(); 
  
-    StringBuilder sb = new StringBuilder();
-    sb.append("select id,name,mobie,email,address from goddess");
- 
-    // 通过数据库的连接操作数据库，实现增删改查
-    PreparedStatement ptmt = conn.prepareStatement(sb.toString());
- 
-    ResultSet rs = ptmt.executeQuery();
- 
+    String sql = "SELECT * FROM Godness;";
+    ResultSet rs = statement.executeQuery(sql);
+    
     Goddess goddess = null;
  
     while (rs.next())
@@ -52,6 +73,10 @@ public class GoddessDao
  
       goddessList.add(goddess);
     }
+    rs.close();
+    statement.close();
+    conn.close();
+    System.out.println("find all done successfully");
     return goddessList;
   }
  
@@ -65,16 +90,13 @@ public class GoddessDao
   {
     Goddess g = null;
  
+    // 获得数据库连接
     Connection conn = DBUtil.getConnection();
- 
-    String sql = "" + " select * from imooc_goddess " + " where id=? ";
- 
-    PreparedStatement ptmt = conn.prepareStatement(sql);
- 
-    ptmt.setInt(1, id);
- 
-    ResultSet rs = ptmt.executeQuery();
- 
+    Statement statement=conn.createStatement(); 
+    String sql = "SELECT * FROM Godness where ID="+id+";";
+    ResultSet rs = statement.executeQuery(sql);
+    
+
     while (rs.next())
     {
       g = new Goddess();
@@ -85,6 +107,10 @@ public class GoddessDao
       g.setAddress(rs.getString("address"));
     }
  
+    rs.close();
+    statement.close();
+    conn.close();
+    System.out.println("find done successfully");
     return g;
   }
  
@@ -97,17 +123,14 @@ public class GoddessDao
   {
     // 获得数据库连接
     Connection conn = DBUtil.getConnection();
+    Statement statement=conn.createStatement(); 
  
-    String sql = "insert into goddess(name,mobie,email,address) values(?,?,?,?)";
- 
-    PreparedStatement ptmt = conn.prepareStatement(sql);
- 
-    ptmt.setString(1, goddess.getName());
-    ptmt.setString(2, goddess.getMobie());
-    ptmt.setString(3, goddess.getEmail());
-    ptmt.setString(4, goddess.getAddress());
- 
-    ptmt.execute();
+    String sql = "insert into Godness(id,name,mobie,email,address,age) values(null,'"+goddess.getName()+"','"+goddess.getMobie()+"','"+goddess.getEmail()+"','"+goddess.getAddress()+"',18)";
+    statement.executeUpdate(sql);
+    statement.close();
+    conn.commit();
+    conn.close();
+    
   }
  
   /**
@@ -117,18 +140,16 @@ public class GoddessDao
    */
   public void updateGoddess(Goddess goddess) throws SQLException
   {
+	// 获得数据库连接
     Connection conn = DBUtil.getConnection();
+	Statement statement=conn.createStatement(); 
+	int id = goddess.getId();
+	String sql = "UPDATE Godness set name = '麻生希' where ID="+id+";";
+    statement.executeUpdate(sql);
+    conn.commit();
+    statement.close();
+    conn.close();
  
-    String sql = "update goddess set name=?,mobie=?,email=?,address=? where id=?";
- 
-    PreparedStatement ptmt = conn.prepareStatement(sql);
- 
-    ptmt.setString(1, goddess.getName());
-    ptmt.setString(2, goddess.getMobie());
-    ptmt.setString(3, goddess.getEmail());
-    ptmt.setString(4, goddess.getAddress());
- 
-    ptmt.execute();
   }
  
   /**
@@ -138,14 +159,16 @@ public class GoddessDao
    */
   public void deleteGoddess(Integer id) throws SQLException
   {
+    // 获得数据库连接
     Connection conn = DBUtil.getConnection();
+	Statement statement=conn.createStatement(); 
  
-    String sql = "delete from goddess where id=?";
- 
-    PreparedStatement ptmt = conn.prepareStatement(sql);
- 
-    ptmt.setInt(1, id);
- 
-    ptmt.execute();
+	String sql = "DELETE from Godness where ID="+id+";";
+	statement.executeUpdate(sql);
+	conn.commit();
+	statement.close();
+	conn.close();
+	System.out.println("delete done successfully");
+
   }
 }
