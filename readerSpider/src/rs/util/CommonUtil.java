@@ -1,5 +1,8 @@
 package rs.util;
 
+import java.awt.TextField;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -96,6 +99,40 @@ public class CommonUtil {
         article.setContent(getContent(doc));
         return article;
     }
-
-	    
+    /**
+     * 小说的存入本地
+     * @param fileNama
+     * @param content
+     * @return
+     */
+    public static void writeToFile(String fileNama,String content) {
+    	File txtFile = new File(fileNama+".txt");
+    	if (!txtFile.exists()) {
+    		//txtFile.delete();
+    		try {
+    			txtFile.createNewFile();
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+		}
+    	
+    	FileWriter writer = null;
+    	try {
+			writer = new FileWriter(txtFile, true);
+			writer.append(content);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if(null!=writer)
+				try {
+					writer.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+    }
+  
 }

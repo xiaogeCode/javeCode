@@ -14,6 +14,7 @@ public class getAticles {
         Article article = CommonUtil.getArticle(firstUrl);
         while(article.getNextUrl() != null && article.getContent() != null && !article.getId().equals("996627")){
             article = CommonUtil.getArticle(article.getNextUrl());
+            CommonUtil.writeToFile("g:/С˵", article.getContent());
             System.out.println(article.getId()+"----"+article.getTitle());
         }
 	}
