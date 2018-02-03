@@ -7,6 +7,8 @@ public class Article {
     private String content;//内容
     private String url;//当前章节url
     private String nextUrl;//下一章url
+    private String menuUrl;//下一章url
+
     
     public void setId(String i) {
 		id = i;
@@ -41,6 +43,12 @@ public class Article {
 	}
     public String  getNextUrl() {
 		return nextUrl;
+	}
+    public void setMenuUrl(String i) {
+    	menuUrl = i;
+	}
+    public String  getMenuUrl() {
+		return menuUrl;
 	}
     
     @Override
