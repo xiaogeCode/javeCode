@@ -1,7 +1,10 @@
 package rs.util;
 
 import java.awt.TextField;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -106,7 +109,7 @@ public class CommonUtil {
      * @return
      */
     public static void writeToFile(String fileNama,String content) {
-    	File txtFile = new File(fileNama+".txt");
+    	File txtFile = new File(fileNama);
     	if (!txtFile.exists()) {
     		//txtFile.delete();
     		try {
@@ -134,5 +137,45 @@ public class CommonUtil {
 				}
 		}
     }
+    /**
+     * 本地读小说
+     * @param fileNama
+     * @param content
+     * @return
+     */
+    public static String readFromFile(String fileName) {
+		String s = "";
+
+        FileReader fr;
+		try {
+			fr = new FileReader (fileName);
+			BufferedReader br = new BufferedReader (fr);
+			String sb;
+	        try {
+				while ((sb = br.readLine() )!=null) {
+					//System.out.println(sb);
+					s+=sb+"\r\n";
+				   //System.out.prinln (s);
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				try {
+					fr.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+	        
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        
+        
+		return s;
+	}
   
 }

@@ -3,6 +3,7 @@ package rs.main;
 import java.util.List;
 
 import rs.model.*;
+import rs.ui.MyTextArea;
 import rs.util.*;
 public class getAticles {
 
@@ -15,7 +16,10 @@ public class getAticles {
 		
 		//getBiquMenu();
 		//getBiquNovel();
-		getBixiaNovel();
+		//getBixiaNovel();
+		MyTextArea myttArea =  new MyTextArea();
+		myttArea.setText(CommonUtil.readFromFile("g:/xtqpd.txt"));
+		
 		
 	}
 
@@ -25,7 +29,7 @@ public class getAticles {
         Article article = CommonUtil.getArticle(firstUrl);
         while(article.getNextUrl() != null && article.getContent() != null && !article.getId().equals("996627")){
             article = CommonUtil.getArticle(article.getNextUrl());
-            CommonUtil.writeToFile("g:/С˵", article.getContent());
+            CommonUtil.writeToFile("g:/С˵.txt", article.getContent());
             System.out.println(article.getId()+"----"+article.getTitle());
         }
 	}
@@ -40,7 +44,7 @@ public class getAticles {
 		for (int i = 0; i < chaptList.size(); i++) {
 			//String str=chaptList.get(i).getTitle()+":"+chaptList.get(i).getUrl();
 			String str=chaptList.get(i).getTitle()+"\r\n";
-			CommonUtil.writeToFile("g:/xtqmenu",str);
+			CommonUtil.writeToFile("g:/xtqmenu.txt",str);
 		}
 		
 		while(menu.getNextUrl() != null ){
@@ -49,7 +53,7 @@ public class getAticles {
 			for (int i = 0; i < chaptList.size(); i++) {
 				//String str=chaptList.get(i).getTitle()+":"+chaptList.get(i).getUrl();
 				String str=chaptList.get(i).getTitle()+"\r\n";
-				CommonUtil.writeToFile("g:/xtqmenu",str);
+				CommonUtil.writeToFile("g:/xtqmenu.txt",str);
 			}
         }
 	}
@@ -59,10 +63,10 @@ public class getAticles {
         Article article = BiquGetNovel.getArticle(firstUrl);
         while(article.getNextUrl() != null && article.getContent() != null && !article.getNextUrl().equals(article.getMenuUrl())){
             article = BiquGetNovel.getArticle("https://"+article.getNextUrl());
-            System.out.println("title:"+article.getTitle());
-            CommonUtil.writeToFile("g:/xtqpd", article.getTitle());
-            //CommonUtil.writeToFile("g:/xtqpd", article.getContent());
-            System.out.println(article.getId()+"----"+article.getTitle());
+            //System.out.println("title:"+article.getTitle());
+            CommonUtil.writeToFile("g:/xtqpd.txt", article.getTitle()+"\r\n");
+            CommonUtil.writeToFile("g:/xtqpd.txt", article.getContent());
+            //System.out.println(article.getId()+"----"+article.getTitle());
         }
 	}
 }
