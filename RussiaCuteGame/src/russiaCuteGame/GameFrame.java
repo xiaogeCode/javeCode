@@ -84,6 +84,17 @@ public class GameFrame extends JFrame implements KeyListener{
         BufferedImage bi =(BufferedImage)this.createImage(this.getSize().width,this.getSize().height);  
         Graphics big =bi.getGraphics();  
         //big.drawImage(bg.img, bg.x, bg.y, null);  
+        /*
+        for (int i = 1; i < map_width; i++) {//设置网格
+        	//Graphics2D g2 = (Graphics2D)big;  //g是Graphics对象
+        	//g2.setStroke(new BasicStroke(10f));
+        	Color c =big.getColor();  
+            //big.setColor(Color.yellow);
+            //big.setStroke(new BasicStroke(3.0f)); 
+			//g2.drawLine(i*(cute_len+1), 0, i*(cute_len+1), map_height*(cute_len+1));
+			big.setColor(c); 
+		}
+        */
         for(int i=0;i<map_width;i++){
 			for(int j=0;j<map_height;j++){
 				if(map_array[i][j]==1){//已经堆积的方块
