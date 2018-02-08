@@ -118,7 +118,7 @@ public class GameFrame extends JFrame implements KeyListener{
 					//container.add(cute);
 					Color c =big.getColor();  
 		            big.setColor(Color.blue);  
-		            big.fillRect((i+map_width+1)*(cute_len+1), (j+1)*(cute_len+1), cute_len, cute_len);  
+		            big.fillRect((i+map_width+1)*(cute_len+1), (j+1)*(cute_len+1)+10, cute_len, cute_len);  
 		            big.setColor(c); 
 				}
 				
@@ -145,7 +145,7 @@ public class GameFrame extends JFrame implements KeyListener{
     }  
 	public void setFrame(){
 		this.setTitle("¶íÂÞË¹·½¿é_xiaoge");
-		this.setSize((cute_len+1)*(this.map_width+5) , (cute_len+1)*(this.map_height));
+		this.setSize((cute_len+1)*(this.map_width+6) , (cute_len+1)*(this.map_height));
 		this.setLocation(400, 50);
 		this.setResizable(false);
 		

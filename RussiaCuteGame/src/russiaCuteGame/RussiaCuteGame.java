@@ -8,7 +8,6 @@ public class RussiaCuteGame {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 		
 		new GameFrame(10,20);
 	}
