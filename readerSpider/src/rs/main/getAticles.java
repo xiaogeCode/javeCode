@@ -17,8 +17,10 @@ public class getAticles {
 		//getBiquMenu();
 		//getBiquNovel();
 		//getBixiaNovel();
+		//getMiaobigeNovel();
+		//getBalingtxtNovel();
 		MyTextArea myttArea =  new MyTextArea();
-		myttArea.setText(CommonUtil.readFromFile("g:/xtqpd.txt"));
+		//myttArea.setText(CommonUtil.readFromFile("g:/xtqpd.txt"));
 		
 		
 	}
@@ -26,9 +28,9 @@ public class getAticles {
 	//获取笔下网某个小说内容
 	public static void getBixiaNovel() {
 		String firstUrl = "http://www.bxwx.org/b/5/5131/832882.html";
-        Article article = CommonUtil.getArticle(firstUrl);
+        Article article = BixiaGetNovel.getArticle(firstUrl);
         while(article.getNextUrl() != null && article.getContent() != null && !article.getId().equals("996627")){
-            article = CommonUtil.getArticle(article.getNextUrl());
+            article = BixiaGetNovel.getArticle(article.getNextUrl());
             CommonUtil.writeToFile("g:/小说.txt", article.getContent());
             System.out.println(article.getId()+"----"+article.getTitle());
         }
@@ -68,5 +70,26 @@ public class getAticles {
             CommonUtil.writeToFile("g:/xtqpd.txt", article.getContent());
             //System.out.println(article.getId()+"----"+article.getTitle());
         }
+	}
+	//获取妙趣阁某个小说内容
+	public static void getMiaobigeNovel() {
+		//String firstUrl = "https://www.miaobige.com/read/20145/";
+		//MenuModel menu = MiaobigeNovel.getMenu(firstUrl);
+		String firstUrl = "https://www.miaobige.com/read/20145/11136767.html";
+        Article article = MiaobigeNovel.getArticle(firstUrl);
+        //System.out.println("content： "+article.getContent());
+        System.out.println("title： "+article.getTitle());
+        System.out.println("nextUrl"+article.getNextUrl());
+		
+	}
+	//获取80txt某个小说内容 //只写了内容和标题的提取目录列表的提取
+	public static void getBalingtxtNovel() {
+		//String firstUrl = "http://www.80txt.com/txtml_75764.html";
+		//MenuModel menu = BalingtxtNovel.getMenu(firstUrl);
+		String firstUrl = "http://www.qiushu.cc/t/75764/23408137.html";
+        Article article = BalingtxtNovel.getArticle(firstUrl);
+        //只写了内容和标题的提取
+        //System.out.println(article.getContent());
+        //System.out.println("title"+article.getTitle());
 	}
 }

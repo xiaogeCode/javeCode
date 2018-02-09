@@ -23,8 +23,7 @@ import rs.model.ChapterModel;
 
 public class MyMenu extends JFrame {
 
-	JFrame frame = new JFrame();
-	public Container container  = frame.getContentPane();
+	public Container container  = this.getContentPane();
     
     JTable jt=null;
 	int rowMoused=-1;
@@ -40,16 +39,16 @@ public class MyMenu extends JFrame {
 	public void setFrame(){
 
 		container.setLayout(null);
-		frame.setTitle("Ŀ¼");
+		this.setTitle("Ŀ¼");
 		//container.setBackground(Color.orange);
-		frame.setSize(200, 350);
-		frame.setLocation(350, 300);
-		frame.setResizable(false);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
-		frame.addWindowListener(new WindowAdapter() {
+		this.setSize(200, 350);
+		this.setLocation(350, 300);
+		this.setResizable(false);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
+		this.addWindowListener(new WindowAdapter() {
         	public void windowClosing(WindowEvent e) {
-        		frame.dispose();
+        		dispose();
 			}
 		});
 	}
