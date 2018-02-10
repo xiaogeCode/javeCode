@@ -1,8 +1,12 @@
 package rs.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -60,6 +64,39 @@ public class MyTextArea extends JFrame implements ActionListener,TableOperationI
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        this.addComponentListener(new ComponentListener() {
+			
+			@Override
+			public void componentShown(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void componentResized(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				 Component c = (Component)arg0.getSource();
+				 
+				int width = c.getSize().width;
+				int height = c.getSize().height;
+				jta.setSize(width, height/29*29);
+				System.out.println("resize");
+				
+			}
+			
+			@Override
+			public void componentMoved(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void componentHidden(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
     
     public void setText(String tx) {
@@ -83,8 +120,11 @@ public class MyTextArea extends JFrame implements ActionListener,TableOperationI
         else if(e.getSource()==jb3)
         {
         	System.out.println("menu");
-        	menuUI= new MyMenu();
-        	menuUI.myTextArea = this;
+        	if (menuUI == null) {
+        		menuUI= new MyMenu();
+            	menuUI.myTextArea = this;
+			}
+        	
         	menuUI.setTableUI(getChaptList());
         }
         else if(e.getSource()==jb4)
