@@ -51,6 +51,8 @@ public class MyMenu extends JFrame {
 		this.addWindowListener(new WindowAdapter() {
         	public void windowClosing(WindowEvent e) {
         		dispose();
+        		myTextArea.menuViewDispose();
+        		
 			}
 		});
 	}
@@ -109,7 +111,9 @@ public class MyMenu extends JFrame {
 				}
 			     
 			  });
-		
+		//设置默认选择表格第一行，刷新textarea数据
+		 jt.setRowSelectionInterval( 0,  0);
+		 myTextArea.tableDidSelect((Vector)((MyTableModel)jt.getModel()).getValueAt(0, 0));
 		//为表头设置一个 CellRenderer, 这个 CellRenderer 的预选高度为 0. 把JTable的表头也就是标题行给隐藏掉
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();  
         renderer.setPreferredSize(new Dimension(0, 0));  

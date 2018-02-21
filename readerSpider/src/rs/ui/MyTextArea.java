@@ -23,7 +23,7 @@ import rs.util.BiquGetNovel;
 import rs.util.CommonUtil;
 import rs.util.NovelManage;
 
-public class MyTextArea extends JFrame implements ActionListener,TableOperationInterface{
+public class MyTextArea extends JFrame implements ActionListener,TableOperationInterface,MenuViewDisposeInterface{
 	public static int jspValue;
     JScrollPane jsp=null;
     JTextArea jta=null;
@@ -218,5 +218,11 @@ public class MyTextArea extends JFrame implements ActionListener,TableOperationI
 		// TODO Auto-generated method stub
 		currentSourceIndex = index;
 		
+	}
+
+	@Override
+	public void menuViewDispose() {
+		// TODO Auto-generated method stub
+		menuUI =null;
 	}
 }
