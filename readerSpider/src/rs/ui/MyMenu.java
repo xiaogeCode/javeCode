@@ -8,6 +8,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -63,6 +65,7 @@ public class MyMenu extends JFrame {
 				list.add(model);
 			}
 		}
+		Collections.reverse(list);// 将ArrayLista中的元素进行倒序
 		MyTableModel model = new MyTableModel(list);
 		jt=new JTable(model);
 		jt.addMouseListener(new java.awt.event.MouseAdapter(){
