@@ -31,7 +31,7 @@ public class MyMenu extends JFrame {
 	int rowMoused=-1;
 	int columnMoused= -1;
 	
-	MyTextArea myTextArea = null;//ÓÃÓÚ´«µİ²ÎÊı
+	MyTextArea myTextArea = null;//ï¿½ï¿½ï¿½Ú´ï¿½ï¿½İ²ï¿½ï¿½ï¿½
 	
 	//List<ChapterModel> list= null;
 	
@@ -41,7 +41,7 @@ public class MyMenu extends JFrame {
 	public void setFrame(){
 
 		container.setLayout(null);
-		this.setTitle("Ä¿Â¼");
+		this.setTitle("ç›®å½•");
 		//container.setBackground(Color.orange);
 		this.setSize(200, 350);
 		this.setLocation(350, 300);
@@ -57,7 +57,7 @@ public class MyMenu extends JFrame {
 		});
 	}
 	public void setTableUI(List<ChapterModel> list){
-		//´Ë´¦µÄJTableÏÔÊ¾µÄÎªÊı¾İ¿âÄ£ĞÍ£¬Í¬Ê±¶ÔJTableÊµÏÖÁËÊó±êÊÂ¼Ù¼àÌı
+		//ï¿½Ë´ï¿½ï¿½ï¿½JTableï¿½ï¿½Ê¾ï¿½ï¿½Îªï¿½ï¿½ï¿½İ¿ï¿½Ä£ï¿½Í£ï¿½Í¬Ê±ï¿½ï¿½JTableÊµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼Ù¼ï¿½ï¿½ï¿½
 		if (list.size()<1) {
 			list=new ArrayList<ChapterModel>();
 			for (int i = 0; i < 2; i++) {
@@ -67,7 +67,7 @@ public class MyMenu extends JFrame {
 				list.add(model);
 			}
 		}
-		Collections.reverse(list);// ½«ArrayListaÖĞµÄÔªËØ½øĞĞµ¹Ğò
+		Collections.reverse(list);// ï¿½ï¿½ArrayListaï¿½Ğµï¿½Ôªï¿½Ø½ï¿½ï¿½Ğµï¿½ï¿½ï¿½
 		MyTableModel model = new MyTableModel(list);
 		jt=new JTable(model);
 		jt.addMouseListener(new java.awt.event.MouseAdapter(){
@@ -80,10 +80,10 @@ public class MyMenu extends JFrame {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					// TODO Auto-generated method stub
-					int rowI  = jt.rowAtPoint(arg0.getPoint());// µÃµ½tableµÄĞĞºÅ
+					int rowI  = jt.rowAtPoint(arg0.getPoint());// ï¿½Ãµï¿½tableï¿½ï¿½ï¿½Ğºï¿½
 					if (rowI > -1)
 						myTextArea.tableDidSelect((Vector)((MyTableModel)jt.getModel()).getValueAt(rowI, 0));
-				        //System.out.println("Ë«»÷Êó±ê "+((MyTableModel)jt.getModel()).getValueAt(rowI, 0));
+				        //System.out.println("Ë«ï¿½ï¿½ï¿½ï¿½ï¿½ "+((MyTableModel)jt.getModel()).getValueAt(rowI, 0));
 				     }
 
 				@Override
@@ -111,10 +111,10 @@ public class MyMenu extends JFrame {
 				}
 			     
 			  });
-		//ÉèÖÃÄ¬ÈÏÑ¡Ôñ±í¸ñµÚÒ»ĞĞ£¬Ë¢ĞÂtextareaÊı¾İ
+		//ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ğ£ï¿½Ë¢ï¿½ï¿½textareaï¿½ï¿½ï¿½ï¿½
 		 jt.setRowSelectionInterval( 0,  0);
 		 myTextArea.tableDidSelect((Vector)((MyTableModel)jt.getModel()).getValueAt(0, 0));
-		//Îª±íÍ·ÉèÖÃÒ»¸ö CellRenderer, Õâ¸ö CellRenderer µÄÔ¤Ñ¡¸ß¶ÈÎª 0. °ÑJTableµÄ±íÍ·Ò²¾ÍÊÇ±êÌâĞĞ¸øÒş²Øµô
+		//Îªï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ CellRenderer, ï¿½ï¿½ï¿½ CellRenderer ï¿½ï¿½Ô¤Ñ¡ï¿½ß¶ï¿½Îª 0. ï¿½ï¿½JTableï¿½Ä±ï¿½Í·Ò²ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½Ğ¸ï¿½ï¿½ï¿½ï¿½Øµï¿½
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();  
         renderer.setPreferredSize(new Dimension(0, 0));  
         jt.getTableHeader().setDefaultRenderer(renderer);
@@ -128,14 +128,14 @@ public class MyMenu extends JFrame {
 		/*
 		
         
-        //Îª±íÍ·ÉèÖÃÒ»¸ö CellRenderer, Õâ¸ö CellRenderer µÄÔ¤Ñ¡¸ß¶ÈÎª 0. °ÑJTableµÄ±íÍ·Ò²¾ÍÊÇ±êÌâĞĞ¸øÒş²Øµô
+        //Îªï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ CellRenderer, ï¿½ï¿½ï¿½ CellRenderer ï¿½ï¿½Ô¤Ñ¡ï¿½ß¶ï¿½Îª 0. ï¿½ï¿½JTableï¿½Ä±ï¿½Í·Ò²ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½Ğ¸ï¿½ï¿½ï¿½ï¿½Øµï¿½
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();  
         renderer.setPreferredSize(new Dimension(0, 0));  
         table.getTableHeader().setDefaultRenderer(renderer);  
         
-      //ÉèÖÃÄ³¸öµ¥Ôª¸ñµÄÖµ,Õâ¸öÖµÊÇÒ»¸ö¶ÔÏó
-        table.setValueAt ("µÚÒ»ÕÂ", 0, 0);
-        table.setValueAt ("µÚ¶şÕÂ", 1, 0);
+      //ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½Öµ,ï¿½ï¿½ï¿½Öµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        table.setValueAt ("ï¿½ï¿½Ò»ï¿½ï¿½", 0, 0);
+        table.setValueAt ("ï¿½Ú¶ï¿½ï¿½ï¿½", 1, 0);
         
 		* 
 		 */

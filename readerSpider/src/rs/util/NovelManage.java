@@ -2,12 +2,19 @@ package rs.util;
 
 import java.util.List;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import rs.model.Article;
 import rs.model.ChapterModel;
 import rs.model.MenuModel;
 
 public class NovelManage {
 
+	//回调接口
+		public interface CallBack{
+			void menuResponse(MenuModel res);
+		}
+	
 		//获取笔下网某个小说内容
 		public static void getBixiaNovelMenu() {
 			
@@ -17,6 +24,7 @@ public class NovelManage {
 			//String firstUrl = "http://www.bxwx.org/b/5/5131/832882.html";
 	        Article article = BixiaGetNovel.getArticle(url);
 	        return article;
+	        
 	        
 		}
 		

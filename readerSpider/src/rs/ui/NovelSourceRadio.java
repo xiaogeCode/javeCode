@@ -10,7 +10,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-//–°Àµ¿¥‘¥Õ¯’æ¡–±Ì
+//–°ÀµÔøΩÔøΩ‘¥ÔøΩÔøΩ’æÔøΩ–±ÔøΩ
 public class NovelSourceRadio extends JFrame implements ItemListener{
 
 	JRadioButton jr1 = null;
@@ -20,7 +20,7 @@ public class NovelSourceRadio extends JFrame implements ItemListener{
 	MyTextArea txarea = null;
 	
 	public  NovelSourceRadio() {
-		this.setTitle("µ•—°∞¥≈•");  
+		this.setTitle("Â∞èËØ¥Ê∫ê");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         this.setBounds(100, 100, 250, 100);  
         JPanel jp=new JPanel();  
@@ -29,9 +29,9 @@ public class NovelSourceRadio extends JFrame implements ItemListener{
         jp.setLayout(new GridLayout(1,3));
         //jp.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));  
         
-        jr1 = new JRadioButton("∞À¡„txt");
-		jr2 = new JRadioButton("± »§∏Û");
-		jr3 = new JRadioButton("√Ó»§∏Û");
+        jr1 = new JRadioButton("80stxt");
+		jr2 = new JRadioButton("Á¨îË∂£");
+		jr3 = new JRadioButton("Â¶ôÁ¨î");
 		jp.add(jr1);
 		jp.add(jr2);
 		jp.add(jr3);

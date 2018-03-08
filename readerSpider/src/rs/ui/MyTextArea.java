@@ -35,7 +35,7 @@ public class MyTextArea extends JFrame implements ActionListener,TableOperationI
     JButton jb4=null;
 			
     String text  = "";
-    int currentSourceIndex = 0;				//µ±Ç°Ñ¡ÔñµÄÐ¡ËµÀ´Ô´
+    int currentSourceIndex = 0;				//ï¿½ï¿½Ç°Ñ¡ï¿½ï¿½ï¿½Ð¡Ëµï¿½ï¿½Ô´
     public  MyTextArea() {
     	jta=new JTextArea();
         jta.setLineWrap(true);
@@ -43,13 +43,14 @@ public class MyTextArea extends JFrame implements ActionListener,TableOperationI
         jta.setEditable(false);
         jsp=new JScrollPane(jta);
         jp=new JPanel();
-        jb1=new JButton("ÉÏ");
-        jb2=new JButton("ÏÂ");
-        jb3=new JButton("Ä¿Â¼");
-        jb4=new JButton("Ð¡ËµÔ´");
+        jb1=new JButton("pre");
+        jb2=new JButton("next");
+        jb3=new JButton("menu");
+        jb4=new JButton("sorce");
         
         jp.add(jb3);
         jp.add(jb1);
+
         jp.add(jb2);
         jp.add(jb4);
         
@@ -124,8 +125,9 @@ public class MyTextArea extends JFrame implements ActionListener,TableOperationI
         		menuUI= new MyMenu();
             	menuUI.myTextArea = this;
 			}
-        	
-        	menuUI.setTableUI(getChaptList());
+        	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
+        	getChaptList();
+        	//menuUI.setTableUI(getChaptList());
         }
         else if(e.getSource()==jb4)
         {
@@ -140,8 +142,8 @@ public class MyTextArea extends JFrame implements ActionListener,TableOperationI
             
         }
     }
-    //»ñÈ¡Ð¡ËµÄ¿Â¼
-    public List<ChapterModel> getChaptList() {
+    //ï¿½ï¿½È¡Ð¡ËµÄ¿Â¼
+    public void getChaptList() {
     	MenuModel menu = null;
     	switch (currentSourceIndex) {
     	case 0://80s
@@ -174,18 +176,19 @@ public class MyTextArea extends JFrame implements ActionListener,TableOperationI
 			chaptList = menu.getBookList();
 			copyArry1ToArray2(chaptList, totalChaptList);
         }
-		return totalChaptList;
+		menuUI.setTableUI(totalChaptList);
+		//return totalChaptList;
 	}
-    //½«µÚÒ»¸öÊý×éµÄÔªËØÈ«²¿¼ÓÈëµ½µÚ¶þ¸öÊý×é
+    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ëµ½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void copyArry1ToArray2(List<ChapterModel>arry1,List<ChapterModel>array2) {
 		for (int i = 0; i < arry1.size(); i++) {
 			array2.add(arry1.get(i));
 		}
 	}
 
-    //»ñÈ¡µ¥¸öÕÂ½Ú
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½
 	@Override
-	public void tableDidSelect(Vector v) {//±í¸ñ±»µã»÷
+	public void tableDidSelect(Vector v) {//ï¿½ï¿½ñ±»µï¿½ï¿½
 		// TODO Auto-generated method stub
 		System.out.println("get data"+v.get(0)+v.get(1)); 
 		String url = (String) v.get(1);
@@ -211,7 +214,7 @@ public class MyTextArea extends JFrame implements ActionListener,TableOperationI
 			break;
 		}
 		setText(article.getContent());
-		jta.setCaretPosition(0);//¹ö¶¯ÌõÖÃ¶¥ 
+		jta.setCaretPosition(0);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ 
 		this.setTitle(article.getTitle());
 	}
 	public void itemChanged(int index) {
