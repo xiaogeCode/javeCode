@@ -18,7 +18,7 @@ import Yj.model.LiuSiGuaModel;
 import Yj.action.*;
 public class LiuSiGuaView extends JFrame implements ActionListener {
 
-	// ¶¨Òå×é¼ş  
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
     JLabel jl2,jl1,jl3,jl4,jl5,jl6,jl7,jl8 = null;  
     JTextField jtf,jtf2 = null;  
     JButton jb,jb2 = null;  
@@ -29,20 +29,7 @@ public class LiuSiGuaView extends JFrame implements ActionListener {
     JScrollPane jsp,jsp2 = null;
     		
 	public LiuSiGuaView () throws Exception {
-		// ´´½¨×é¼ş       
-		/*
-        jl1 = new JLabel("Ç¬");  
-        jl2	= new JLabel("¶Ò");    
-        jl3 = new JLabel("Àë");  
-        jl4 = new JLabel("Õğ");  
-        jl5 = new JLabel("Ùã");  
-        jl6	= new JLabel("¿²");    
-        jl7 = new JLabel("ôŞ");  
-        jl8 = new JLabel("À¤"); 
-        */
-        
-     // ÉèÖÃ±í¸ñ1  
-        String[] colnames = {"", "Ç¬", "¶Ò", "Àë", "Õğ", "Ùã", "¿²" ,"ôŞ","À¤"};  
+        String[] colnames = {"", "ä¹¾", "å…‘", "ç¦»", "éœ‡", "å·½", "å" ,"è‰®","å¤"};
         model = new DefaultTableModel(colnames, 8);  
         table = new JTable(model);  
         table.setRowHeight(40);
@@ -58,33 +45,12 @@ public class LiuSiGuaView extends JFrame implements ActionListener {
 		jp1 = new JPanel();  
         jp2 = new JPanel();  
         jp3 = new JPanel(); 
-        /*
-        jp1.add(jl1);
-        jp1.add(jl2);
-        jp1.add(jl3);
-        jp1.add(jl4);
-        jp1.add(jl5);
-        jp1.add(jl6);
-        jp1.add(jl7);
-        jp1.add(jl8);
-         */
-        
-        jp3.add(jsp);  
 
+        jp3.add(jsp);
+        this.add(jp3);
 
-
-        //jp1.setLayout(new GridLayout(6,1));
-		
-        
-        //this.add(jp1);  
-        //this.add(jp5);  
-        //this.add(jp2);  
-        this.add(jp3);  
-        //this.add(jp6);  
-        //this.add(jp4);  
-          
         this.setLayout(new GridLayout(1, 1));  
-        this.setTitle("ÁùÊ®ËÄØÔ²éÑ¯");  
+        this.setTitle("å¦è±¡");
         this.setSize(500, 500);  
         this.setLocation(150, 150);  
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -105,16 +71,16 @@ public class LiuSiGuaView extends JFrame implements ActionListener {
 		
 	}
 	public void readGuaInfo() throws Exception {
-		//ÉèÖÃÄ³¸öµ¥Ôª¸ñµÄÖµ,Õâ¸öÖµÊÇÒ»¸ö¶ÔÏó
-        table.setValueAt ("Ç¬", 0, 0);
-        table.setValueAt ("¶Ò", 1, 0);
-        table.setValueAt ("Àë", 2, 0);
-        table.setValueAt ("Õğ", 3, 0);
-        table.setValueAt ("Ùã", 4, 0);
-        table.setValueAt ("¿²", 5, 0);
-        table.setValueAt ("ôŞ", 6, 0);
-        table.setValueAt ("À¤", 7, 0);
-      //¶ÔÆä·½Ê½ÉèÖÃ  
+		//
+        table.setValueAt ("ä¹¾", 0, 0);
+        table.setValueAt ("å…‘", 1, 0);
+        table.setValueAt ("ç¦»", 2, 0);
+        table.setValueAt ("éœ‡", 3, 0);
+        table.setValueAt ("å·½", 4, 0);
+        table.setValueAt ("å", 5, 0);
+        table.setValueAt ("è‰®", 6, 0);
+        table.setValueAt ("å¤", 7, 0);
+      //
         DefaultTableCellRenderer d = new DefaultTableCellRenderer();  
         
         BaguaAction action = new BaguaAction();
@@ -127,7 +93,7 @@ public class LiuSiGuaView extends JFrame implements ActionListener {
 			System.out.println("name"+gua.getName());
 		}
         
-        //ÉèÖÃ±í¸ñµ¥Ôª¸ñµÄ¶ÔÆë·½Ê½Îª¾ÓÖĞ¶ÔÆë·½Ê½  
+        //
         d.setHorizontalAlignment(JLabel.CENTER);  
         for(int i = 0; i< table.getColumnCount();i++)  
         {  
