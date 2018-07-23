@@ -1,19 +1,19 @@
 package Yj.util;
 
 public enum BaGuaNames {
-    Ç¬("Ç¬", 0), ¶Ò("¶Ò", 1), Àë("Àë", 2), Õğ("Õğ", 3)
-    ,Ùã("Ùã", 4), ¿²("¿²", 5), ôŞ("ôŞ", 6), À¤("À¤", 7);
-    // ³ÉÔ±±äÁ¿
+    ä¹¾("ä¹¾", 0), å…‘("å…‘", 1), ç¦»("ç¦»", 2), éœ‡("éœ‡", 3)
+    ,å·½("å·½", 4), å("å", 5), è‰®("è‰®", 6), å¤("å¤", 7);
+    // ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
 	private String name;
     private int index;
 
-    // ¹¹Ôì·½·¨
+    // ï¿½ï¿½ï¿½ì·½ï¿½ï¿½
     private BaGuaNames(String name, int index) {
         this.name = name;
         this.index = index;
     }
 
-    // ÆÕÍ¨·½·¨
+    // ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½
     public static String getName(int index) {
         for (BaGuaNames c : BaGuaNames.values()) {
             if (c.getIndex() == index) {
@@ -23,7 +23,7 @@ public enum BaGuaNames {
         return null;
     }
 
- // ÆÕÍ¨·½·¨
+ // ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½
     public static int getIndex(String names) {
         for (BaGuaNames c : BaGuaNames.values()) {
             if (c.getName().equals(names)) {
@@ -34,7 +34,7 @@ public enum BaGuaNames {
     }
     
     
-    // get set ·½·¨
+    // get set ï¿½ï¿½ï¿½ï¿½
     public String getName() {
         return name;
     }
