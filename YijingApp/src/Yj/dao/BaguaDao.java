@@ -11,7 +11,7 @@ import Yj.util.*;
 import Yj.model.*;
  
 /**
- * Êı¾İ²ã´¦ÀíÀà
+ *
  * 
  * @author XIAOGE
  * 
@@ -19,84 +19,87 @@ import Yj.model.*;
 
 public class BaguaDao
 {
-	/**
-	 * Ìí¼Ó°ËØÔĞÅÏ¢Êı¾İ¿â±í¸ñ
-	 * 
-	 * @throws SQLException
-	 */
-	public void createBaguaTable() throws SQLException
-	{
-	  // »ñµÃÊı¾İ¿âÁ¬½Ó
-	  Connection conn = DBUtil.getConnection();
-	  Statement statement = conn.createStatement();
-	  statement.setQueryTimeout(30); 
-	  
-	  //²»´æÔÚ±í¾Í´´½¨±í
-	  
-	  String sql = "CREATE TABLE IF NOT EXISTS BaGuaInfo" + 
- 			 "(ID INTEGER PRIMARY KEY  AUTOINCREMENT,"+ 
- 			 "NAME   TEXT  NOT NULL,"+
- 			 "ABOVEGUA   TEXT  NOT NULL,"+
- 			 "BELLOWGUA   TEXT  NOT NULL,"+
- 			 "DESCRIBLE   TEXT  NOT NULL,"+
- 			 "VALUE 	 INT   NOT NULL)";
-	  
-	 
-	  statement.executeUpdate(sql);
-	  
-	  conn.commit();
-	  statement.close();
-	  conn.close();
-	}
-  /**
-   * ²éÑ¯È«²¿64ØÔ
-   * 
-   * @return
-   * @throws SQLException
-   */
-  public List<LiuSiGuaModel> query() throws SQLException
-  {
-    List<LiuSiGuaModel> guaList = new ArrayList<LiuSiGuaModel>();
- 
- // »ñµÃÊı¾İ¿âÁ¬½Ó
-    Connection conn = DBUtil.getConnection();
-    Statement statement=conn.createStatement(); 
- 
-    String sql = "SELECT * FROM BaGuaInfo;";
-    ResultSet rs = statement.executeQuery(sql);
-    
-    LiuSiGuaModel gua = null;
- 
-    while (rs.next())
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * ã€ˆã€‰
+       å‚æ•°         []
+     * è¿”å› @return:void
+     * ä½œè€… @Author:xiaoge
+     * æ—¶é—´ @Date: 2018/7/23 20:21
+     */
+    public void createBaguaTable() throws SQLException
     {
-      gua= new LiuSiGuaModel();
-      gua.setId(rs.getInt("ID"));
-      gua.setValue(rs.getInt("VALUE"));
-      gua.setName(rs.getString("name"));
-      gua.setDescrible(rs.getString("DESCRIBLE"));
-      gua.setShangGuaName(rs.getString("ABOVEGUA"));
-      gua.setXiaGuaName(rs.getString("BELLOWGUA"));
- 
-      guaList.add(gua);
+      Connection conn = DBUtil.getConnection();
+      Statement statement = conn.createStatement();
+      statement.setQueryTimeout(30);
+
+
+      String sql = "CREATE TABLE IF NOT EXISTS BaGuaInfo" +
+              "(ID INTEGER PRIMARY KEY  AUTOINCREMENT,"+
+              "NAME   TEXT  NOT NULL,"+
+              "ABOVEGUA   TEXT  NOT NULL,"+
+              "BELLOWGUA   TEXT  NOT NULL,"+
+              "DESCRIBLE   TEXT  NOT NULL,"+
+              "VALUE 	 INT   NOT NULL)";
+
+
+      statement.executeUpdate(sql);
+
+      conn.commit();
+      statement.close();
+      conn.close();
     }
-    rs.close();
-    statement.close();
-    conn.close();
-    System.out.println("find all done successfully");
-    return guaList;
-  }
- 
-  /**
-   * ²éÑ¯µ¥¸öØÔÏó
-   * 
-   * @return
-   * @throws SQLException
-   */
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * ã€ˆã€‰
+       å‚æ•°         []
+     * è¿”å› @return:java.util.List<Yj.model.LiuSiGuaModel>
+     * ä½œè€… @Author:xiaoge
+     * æ—¶é—´ @Date: 2018/7/23 20:20
+     */
+    public List<LiuSiGuaModel> query() throws SQLException
+    {
+      List<LiuSiGuaModel> guaList = new ArrayList<LiuSiGuaModel>();
+
+      Connection conn = DBUtil.getConnection();
+      Statement statement=conn.createStatement();
+
+      String sql = "SELECT * FROM BaGuaInfo;";
+      ResultSet rs = statement.executeQuery(sql);
+
+      LiuSiGuaModel gua = null;
+
+      while (rs.next())
+      {
+        gua= new LiuSiGuaModel();
+        gua.setId(rs.getInt("ID"));
+        gua.setValue(rs.getInt("VALUE"));
+        gua.setName(rs.getString("name"));
+        gua.setDescrible(rs.getString("DESCRIBLE"));
+        gua.setShangGuaName(rs.getString("ABOVEGUA"));
+        gua.setXiaGuaName(rs.getString("BELLOWGUA"));
+
+        guaList.add(gua);
+      }
+      rs.close();
+      statement.close();
+      conn.close();
+      System.out.println("find all done successfully");
+      return guaList;
+    }
+
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * ã€ˆã€‰
+       å‚æ•°         [id]
+     * è¿”å› @return:Yj.model.LiuSiGuaModel
+     * ä½œè€… @Author:xiaoge
+     * æ—¶é—´ @Date: 2018/7/23 20:21
+     */
   public LiuSiGuaModel queryById(Integer id) throws SQLException
   {
 	  LiuSiGuaModel g = null;
- 
-    // »ñµÃÊı¾İ¿âÁ¬½Ó
+
     Connection conn = DBUtil.getConnection();
     Statement statement=conn.createStatement(); 
     String sql = "SELECT * FROM BaGuaInfo where ID="+id+";";
@@ -120,52 +123,52 @@ public class BaguaDao
     System.out.println("find done successfully");
     return g;
   }
-  /**
-   * ²éÑ¯µ¥¸öØÔÏó
-   * 
-   * @return
-   * @throws SQLException
-   */
-  public LiuSiGuaModel queryByGuaXiang(LiuSiGuaModel gua) throws SQLException
-  {
-	  LiuSiGuaModel g = null;
- 
-    // »ñµÃÊı¾İ¿âÁ¬½Ó
-    Connection conn = DBUtil.getConnection();
-    Statement statement=conn.createStatement(); 
-    String sql = "SELECT * FROM BaGuaInfo where ABOVEGUA='"+gua.getShangGuaName()+"'"+"and BELLOWGUA='"+gua.getXiaGuaName()+"';";
-    //if (gua.getXiaGuaName().equals("¿²") && gua.getShangGuaName().equals("Õğ")){
-    //     sql = "SELECT * FROM BaGuaInfo where ABOVEGUA='Õğ"+"'"+"and BELLOWGUA='¿²"+"';";
-
-	//}
-    ResultSet rs = statement.executeQuery(sql);
-    
-    while (rs.next())
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * ã€ˆã€‰
+       å‚æ•°         [gua]
+     * è¿”å› @return:Yj.model.LiuSiGuaModel
+     * ä½œè€… @Author:xiaoge
+     * æ—¶é—´ @Date: 2018/7/23 20:22
+     */
+    public LiuSiGuaModel queryByGuaXiang(LiuSiGuaModel gua) throws SQLException
     {
-      g = new LiuSiGuaModel();
-      g.setId(rs.getInt("ID"));
-      g.setValue(rs.getInt("VALUE"));
-      g.setName(rs.getString("name"));
-      g.setDescrible(rs.getString("DESCRIBLE"));
-      g.setShangGuaName(rs.getString("ABOVEGUA"));
-      g.setXiaGuaName(rs.getString("BELLOWGUA"));
+        LiuSiGuaModel g = null;
+
+      Connection conn = DBUtil.getConnection();
+      Statement statement=conn.createStatement();
+      String sql = "SELECT * FROM BaGuaInfo where ABOVEGUA='"+gua.getShangGuaName()+"'"+"and BELLOWGUA='"+gua.getXiaGuaName()+"';";
+
+      ResultSet rs = statement.executeQuery(sql);
+
+      while (rs.next())
+      {
+        g = new LiuSiGuaModel();
+        g.setId(rs.getInt("ID"));
+        g.setValue(rs.getInt("VALUE"));
+        g.setName(rs.getString("name"));
+        g.setDescrible(rs.getString("DESCRIBLE"));
+        g.setShangGuaName(rs.getString("ABOVEGUA"));
+        g.setXiaGuaName(rs.getString("BELLOWGUA"));
+      }
+
+      rs.close();
+      statement.close();
+      conn.close();
+      System.out.println("find done successfully");
+      return g;
     }
- 
-    rs.close();
-    statement.close();
-    conn.close();
-    System.out.println("find done successfully");
-    return g;
-  }
- 
-  /**
-   * Ìí¼ÓØÔÏó
-   * 
-   * @throws SQLException
-   */
+
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * ã€ˆã€‰
+       å‚æ•°         [gua]
+     * è¿”å› @return:void
+     * ä½œè€… @Author:xiaoge
+     * æ—¶é—´ @Date: 2018/7/23 20:22
+     */
   public void addGua(LiuSiGuaModel gua) throws SQLException
   {
-    // »ñµÃÊı¾İ¿âÁ¬½Ó
     Connection conn = DBUtil.getConnection();
     Statement statement=conn.createStatement(); 
     
@@ -176,34 +179,39 @@ public class BaguaDao
     conn.close();
     
   }
- 
-  /**
-   * ĞŞ¸ÄØÔ×ÊÁÏ
-   * 
-   * @throws SQLException
-   */
-  public void updateGua(LiuSiGuaModel gua) throws SQLException
-  {
-	// »ñµÃÊı¾İ¿âÁ¬½Ó
-    Connection conn = DBUtil.getConnection();
-	Statement statement=conn.createStatement(); 
-	int id = gua.getId();
-	String sql = "UPDATE BaGuaInfo set VALUE = "+"'"+gua.getValue()+"'"+" where ID="+id+";";
-    statement.executeUpdate(sql);
-    conn.commit();
-    statement.close();
-    conn.close();
- 
-  }
- 
-  /**
-   * É¾³ıØÔ
-   * 
-   * @throws SQLException
-   */
+
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * ã€ˆã€‰
+       å‚æ•°         [gua]
+     * è¿”å› @return:void
+     * ä½œè€… @Author:xiaoge
+     * æ—¶é—´ @Date: 2018/7/23 20:22
+     */
+    public void updateGua(LiuSiGuaModel gua) throws SQLException
+    {
+
+      Connection conn = DBUtil.getConnection();
+      Statement statement=conn.createStatement();
+      int id = gua.getId();
+      String sql = "UPDATE BaGuaInfo set VALUE = "+"'"+gua.getValue()+"'"+" where ID="+id+";";
+      statement.executeUpdate(sql);
+      conn.commit();
+      statement.close();
+      conn.close();
+
+    }
+
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * ã€ˆã€‰
+       å‚æ•°         [id]
+     * è¿”å› @return:void
+     * ä½œè€… @Author:xiaoge
+     * æ—¶é—´ @Date: 2018/7/23 20:22
+     */
   public void deleteGua(Integer id) throws SQLException
   {
-    // »ñµÃÊı¾İ¿âÁ¬½Ó
     Connection conn = DBUtil.getConnection();
 	Statement statement=conn.createStatement(); 
  
