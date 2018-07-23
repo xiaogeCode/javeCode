@@ -7,18 +7,14 @@ public class YaoImagePanel extends JPanel {
 
 	 
 	/***
-	* 背景图片
+	* 锟斤拷锟斤拷图片
 	*/
 	private Image image= null; 
 	
 	 
-	/* * 
-	是否自适应 
-	 */
+
 	private boolean	autoResize	 = 	false; 	  
-	/** * 构造方法 
-	 */  
-	 
+
 	public	 YaoImagePanel() { 
 		super(null,false);
 	}

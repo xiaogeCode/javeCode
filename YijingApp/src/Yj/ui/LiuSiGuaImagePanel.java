@@ -78,14 +78,14 @@ public class LiuSiGuaImagePanel extends JPanel{
 		this.add(nameLabel);
 		
 		for (int i = 0; i < 6; i++) {
-			if (yao[i] == 0) {//��
+			if (yao[i] == 0) {
 				try {
 					yaoPanel[i].setImage(ImageIO.read(new File("src/image/0.jpg")));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}else {//��
+			}else {
 				try {
 					yaoPanel[i].setImage(ImageIO.read(new File("src/image/1.jpg")));
 				} catch (IOException e) {

@@ -18,15 +18,11 @@ import Yj.model.LiuSiGuaModel;
 import Yj.action.*;
 public class LiuSiGuaView extends JFrame implements ActionListener {
 
-	// �������  
-    JLabel jl2,jl1,jl3,jl4,jl5,jl6,jl7,jl8 = null;  
-    JTextField jtf,jtf2 = null;  
-    JButton jb,jb2 = null;  
-    JPanel jp1, jp2,jp3,jp4,jp5,jp6 = null;  
+    private JPanel jp3;
   
-    DefaultTableModel model,model2 = null;  
-    JTable table,table2 = null;  
-    JScrollPane jsp,jsp2 = null;
+    private DefaultTableModel model;
+    private JTable table ;
+    private JScrollPane jsp ;
     		
 	public LiuSiGuaView () throws Exception {
         String[] colnames = {"", "乾", "兑", "离", "震", "巽", "坎" ,"艮","坤"};
@@ -42,9 +38,7 @@ public class LiuSiGuaView extends JFrame implements ActionListener {
         jsp = new JScrollPane(table);
         
         
-		jp1 = new JPanel();  
-        jp2 = new JPanel();  
-        jp3 = new JPanel(); 
+        jp3 = new JPanel();
 
         jp3.add(jsp);
         this.add(jp3);
@@ -55,6 +49,7 @@ public class LiuSiGuaView extends JFrame implements ActionListener {
         this.setLocation(150, 150);  
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
+            @Override
         	public void windowClosing(WindowEvent e) {
 				dispose();
 			}
@@ -70,8 +65,7 @@ public class LiuSiGuaView extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
-	public void readGuaInfo() throws Exception {
-		//
+	private void readGuaInfo() throws Exception {
         table.setValueAt ("乾", 0, 0);
         table.setValueAt ("兑", 1, 0);
         table.setValueAt ("离", 2, 0);
@@ -80,14 +74,13 @@ public class LiuSiGuaView extends JFrame implements ActionListener {
         table.setValueAt ("坎", 5, 0);
         table.setValueAt ("艮", 6, 0);
         table.setValueAt ("坤", 7, 0);
-      //
-        DefaultTableCellRenderer d = new DefaultTableCellRenderer();  
+        DefaultTableCellRenderer d = new DefaultTableCellRenderer();
         
         BaguaAction action = new BaguaAction();
-        List<LiuSiGuaModel> godList = null;
+        List<LiuSiGuaModel> godList;
 		godList = action.query();
 		System.out.println("count :"+godList.size());
-		LiuSiGuaModel gua = null;
+		LiuSiGuaModel gua;
 		for(int i=0;i<godList.size();i++){
 			gua = godList.get(i);
 			System.out.println("name"+gua.getName());
