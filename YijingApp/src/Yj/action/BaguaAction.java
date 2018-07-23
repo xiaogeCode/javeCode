@@ -5,47 +5,54 @@ import java.util.List;
  
 import Yj.dao.BaguaDao;
 import Yj.model.*;
-import Yj.util.*;
- 
-/**
- * ¿ØÖÆ²ã£¬Ö±½ÓÔÚÕâÀï¹¹½¨Êı¾İ£¬½çÃæµÄÊı¾İÔòÍ¨¹ıÇëÇó´«µİ½ÓÊÕ¼´¿É£¬ÒàÊÇÍ¬Àí
- * 
- * @author AlanLee
- * 
- */
+
+
 public class BaguaAction
 {
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * ã€ˆæ·»åŠ è¡¨ã€‰
+       å‚æ•°         []
+     * è¿”å› @return:void
+     * ä½œè€… @Author:xiaoge
+     * æ—¶é—´ @Date: 2018/7/23 20:05
+     */
 	public void addTable() throws Exception
 	  {
 	    BaguaDao dao = new BaguaDao();
 	    dao.createBaguaTable();
 	    System.out.print("create table");
 
-	    
-	  }
+
+	 }
+
+  
   /**
-   * ĞÂÔöØÔ
-   * 
-   * @param goddess
-   * @throws Exception
+   * åŠŸèƒ½æè¿°: <br>
+   * ã€ˆã€‰
+     å‚æ•°         [gua]
+   * è¿”å› @return:void
+   * ä½œè€… @Author:xiaoge
+   * æ—¶é—´ @Date: 2018/7/23 20:04
    */
   public void add(LiuSiGuaModel gua) throws Exception
   {
     BaguaDao dao = new BaguaDao();
-    gua.setName("Ç¬");
+    gua.setName("ä¹¾");
     gua.setDescrible("52220000");
     gua.setValue(0);
-    gua.setShangGuaName("Ç¬");
-    gua.setXiaGuaName("Ç¬");
+    gua.setShangGuaName("ä¹¾");
+    gua.setXiaGuaName("ä¹¾");
     dao.addGua(gua);
   }
- 
+
   /**
-   * ²éÑ¯µ¥¸öØÔÏó
-   * 
-   * @param id
-   * @return
-   * @throws SQLException
+   * åŠŸèƒ½æè¿°: <br>
+   * ã€ˆã€‰
+     å‚æ•°         [id]
+   * è¿”å› @return:Yj.model.LiuSiGuaModel
+   * ä½œè€… @Author:xiaoge
+   * æ—¶é—´ @Date: 2018/7/23 20:06
    */
   public LiuSiGuaModel get(Integer id) throws SQLException
   {
@@ -53,35 +60,40 @@ public class BaguaAction
     return dao.queryById(id);
   }
   /**
-   * ²éÑ¯µ¥¸öØÔÏó
-   * 
-   * @param id
-   * @return
-   * @throws SQLException
+   * åŠŸèƒ½æè¿°: <br>
+   * ã€ˆã€‰
+     å‚æ•°         [gua]
+   * è¿”å› @return:Yj.model.LiuSiGuaModel
+   * ä½œè€… @Author:xiaoge
+   * æ—¶é—´ @Date: 2018/7/23 20:06
    */
   public LiuSiGuaModel getByGuaXiang(LiuSiGuaModel gua) throws SQLException
   {
     BaguaDao dao = new BaguaDao();
     return dao.queryByGuaXiang(gua);
   }
- 
+
   /**
-   * ĞŞ¸ÄÌØ¶¨ØÔ
-   * 
-   * @param goddess
-   * @throws Exception
+   * åŠŸèƒ½æè¿°: <br>
+   * ã€ˆã€‰
+     å‚æ•°         [gua]
+   * è¿”å› @return:void
+   * ä½œè€… @Author:xiaoge
+   * æ—¶é—´ @Date: 2018/7/23 20:17
    */
   public void edit(LiuSiGuaModel gua) throws Exception
   {
     BaguaDao dao = new BaguaDao();
     dao.updateGua(gua);
   }
- 
+
   /**
-   * É¾³ıØÔÏó
-   * 
-   * @param id
-   * @throws SQLException
+   * åŠŸèƒ½æè¿°: <br>
+   * ã€ˆã€‰
+     å‚æ•°         [id]
+   * è¿”å› @return:void
+   * ä½œè€… @Author:xiaoge
+   * æ—¶é—´ @Date: 2018/7/23 20:06
    */
   public void del(Integer id) throws SQLException
   {
@@ -90,10 +102,12 @@ public class BaguaAction
   }
  
   /**
-   * ²éÑ¯È«²¿ØÔÏó
-   * 
-   * @return
-   * @throws Exception
+   * åŠŸèƒ½æè¿°: <br>
+   * ã€ˆã€‰
+     å‚æ•°         []
+   * è¿”å› @return:java.util.List<Yj.model.LiuSiGuaModel>
+   * ä½œè€… @Author:xiaoge
+   * æ—¶é—´ @Date: 2018/7/23 20:17
    */
   public List<LiuSiGuaModel> query() throws Exception
   {
