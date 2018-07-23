@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class LiuSiGuaImagePanel extends JPanel{
 	private int[] yao={0,0,0,0,0,0};
 	private YaoImagePanel[] yaoPanel = new YaoImagePanel[6];
-	private String[] guaTypes = {"±¾ØÔ","´íØÔ","×ÙØÔ","»¥ØÔ","±äØÔ"};
+	private String[] guaTypes = {"æœ¬å¦","é”™æŒ‚","ç»¼å¦","äº’å¦","å˜å¦"};
 	private int guaType=0;
 	private String guaName="";
 	private JLabel nameLabel=new JLabel();
@@ -78,14 +78,14 @@ public class LiuSiGuaImagePanel extends JPanel{
 		this.add(nameLabel);
 		
 		for (int i = 0; i < 6; i++) {
-			if (yao[i] == 0) {//Ñô
+			if (yao[i] == 0) {//ï¿½ï¿½
 				try {
 					yaoPanel[i].setImage(ImageIO.read(new File("src/image/0.jpg")));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}else {//Òõ
+			}else {//ï¿½ï¿½
 				try {
 					yaoPanel[i].setImage(ImageIO.read(new File("src/image/1.jpg")));
 				} catch (IOException e) {
