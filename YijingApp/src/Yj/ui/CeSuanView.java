@@ -33,9 +33,9 @@ public class CeSuanView extends JFrame implements ActionListener {
 	JFrame frame = new JFrame();
 	public Container container  = frame.getContentPane();
 	List<JTextField> textFieldsList  = new ArrayList<JTextField>();
-	YaoModel curYao = new YaoModel();			//
-	LiuSiGuaModel curGua = new LiuSiGuaModel();	//
-	int curCount=0;								//
+	YaoModel curYao = new YaoModel();
+	LiuSiGuaModel curGua = new LiuSiGuaModel();
+	int curCount=0;
 	JTextField textSg;
 	JTextField textXg;
 	JTextField textBenGua;
@@ -56,7 +56,6 @@ public class CeSuanView extends JFrame implements ActionListener {
 		System.out.println("setFrame");
 		container.setLayout(null);
 		frame.setTitle("八卦测算");
-		//container.setBackground(Color.orange);
 		frame.setSize(500, 500);
 		frame.setLocation(400, 50);
 		frame.setResizable(false);
@@ -68,11 +67,9 @@ public class CeSuanView extends JFrame implements ActionListener {
 				frame.dispose();
 			}
 		});
-		//frame.addKeyListener(this);
 	}
 
 	public void setUI(){
-		//�������  
 		jb1=new JButton("测算");
 		jb1.setSize(100, 50);
 		jb1.setLocation(200, 400);
@@ -167,16 +164,15 @@ public class CeSuanView extends JFrame implements ActionListener {
 
 				}
         		if (curCount == 6) {
-        			//
+
         			String name = CommonUtil.getCommonUtil().getBagua(yaoList.get(3), yaoList.get(4), yaoList.get(5)).getName();
             		textSg.setText(name);
-            		//
+
             		LiuSiGuaModel lsgua = CommonUtil.getCommonUtil().getLiuSigua(CommonUtil.getCommonUtil().getBagua(yaoList.get(0), yaoList.get(1), yaoList.get(2)), 
             				CommonUtil.getCommonUtil().getBagua(yaoList.get(3), yaoList.get(4), yaoList.get(5)));
             		
             		BaguaAction action = new BaguaAction();
             		curGua = action.getByGuaXiang(lsgua);
-            		//System.out.println(yaoList.get(0).getType()+);
             		System.out.println("bengunname "+curGua.getName());
             		textBenGua.setText(curGua.getName());
             		//设置"本卦","错挂","综卦","互卦","变卦"
@@ -203,49 +199,42 @@ public class CeSuanView extends JFrame implements ActionListener {
         } 
 	}
 
-	//
 		public  void newYang(int number,int seq){
 			Random random = new Random();
 			//x Χ: 1 -(number-1)
 			int x =random.nextInt(number-1)+1;
 			
-			//
 			int tempA = x;
 			int tempB = number - x;
 			
-			//System.out.println("tempA  "+tempA);
-			//System.out.println("tempB  "+tempB);
-			
-			//
+
 			int x1 =(tempA-1)/4;
 			int x2 =(tempA-1)%4;
 			if (x2 ==0){
 				x1 = (x1>0?x1-1:0);
-				//x1= x1-1;
 			}
 			int y1 = tempB/4;
 			int y2 = tempB%4;
 			if (y2 ==0){
 				y1 = (y1>0?y1-1:0);
-				//y1= y1-1;
 			}
-			if(seq<3){//
+			if(seq<3){
 				
 				newYang((x1+y1)*4,seq+1);
 				
 			}else{
-				//
+
 				curYao = CommonUtil.getCommonUtil().getYaoByValue(x1+y1);
 				yaoList.add(curYao);
 				
 			}
 			
 		}	
-		//
+
 		public void setBenGua() {
 			setGuaxiangPanelWithGuatype(yaoList, 0);
 		}
-		//
+
 		public void setZongGua() {
 			List<YaoModel> yaoArray  = new ArrayList<YaoModel>();
 			for (int i = 0; i < 6; i++) {
@@ -261,7 +250,7 @@ public class CeSuanView extends JFrame implements ActionListener {
 			setGuaxiangPanelWithGuatype(yaoArray, 2);
 			
 		}
-		//
+
 		public void setCuoGua() {
 			List<YaoModel> yaoArray  = new ArrayList<YaoModel>();
 			for (int i = 0; i < 6; i++) {
@@ -270,18 +259,11 @@ public class CeSuanView extends JFrame implements ActionListener {
 				tmpYao.setType((yaoList.get(i).getType()+1)%2);
 				yaoArray.add(tmpYao);
 			}
-			/*
-			yaoArray.set(0, yaoList.get(5));
-			yaoArray.set(1, yaoList.get(4));
-			yaoArray.set(2, yaoList.get(3));
-			yaoArray.set(3, yaoList.get(2));
-			yaoArray.set(4, yaoList.get(1));
-			yaoArray.set(5, yaoList.get(0));
-			*/
+
 			setGuaxiangPanelWithGuatype(yaoArray, 1);
 			
 		}
-		//
+
 		public void setHuGua() {
 			List<YaoModel> yaoArray  = new ArrayList<YaoModel>();
 			for (int i = 0; i < 6; i++) {
@@ -297,36 +279,29 @@ public class CeSuanView extends JFrame implements ActionListener {
 			setGuaxiangPanelWithGuatype(yaoArray, 3);
 			
 		}
-		//
-		public void setBianGua() {//
+
+		public void setBianGua() {
 			List<YaoModel> yaoArray  = new ArrayList<YaoModel>();
 			for (int i = 0; i < 6; i++) {
 				YaoModel tmpYao= new YaoModel();
 				tmpYao.setType(yaoList.get(i).getType());
-				if (yaoList.get(i).getValue() == 9) {//
+				if (yaoList.get(i).getValue() == 9) {
 					tmpYao.setType(1);
 				}
-				if (yaoList.get(i).getValue() == 6) {//
+				if (yaoList.get(i).getValue() == 6) {
 					tmpYao.setType(0);
 				}
 				yaoArray.add(tmpYao);
 			}
-			/*
-			yaoArray.set(0, yaoList.get(0));
-			yaoArray.set(1, yaoList.get(1));
-			yaoArray.set(2, yaoList.get(2));
-			yaoArray.set(3, yaoList.get(2));
-			yaoArray.set(4, yaoList.get(3));
-			yaoArray.set(5, yaoList.get(4));
-			*/
+
 			setGuaxiangPanelWithGuatype(yaoArray, 4);
 			
 		}
 				
 				
-		//
+
 		public void setGuaxiangPanelWithGuatype (List<YaoModel> yaoArray,int type) {
-			//
+
     		LiuSiGuaModel lsgua = CommonUtil.getCommonUtil().getLiuSigua(CommonUtil.getCommonUtil().getBagua(yaoArray.get(0), yaoArray.get(1), yaoArray.get(2)), 
     				CommonUtil.getCommonUtil().getBagua(yaoArray.get(3), yaoArray.get(4), yaoArray.get(5)));
     		
@@ -337,7 +312,6 @@ public class CeSuanView extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
-    		//System.out.println("setguaxi"+lsgua.getName());;
     		guaPl.get(type).setGuaName(lsgua.getName());
 			guaPl.get(type).setYao(yaoArray.get(0).getType(), yaoArray.get(1).getType(), yaoArray.get(2).getType(), yaoArray.get(3).getType(), yaoArray.get(4).getType(), yaoArray.get(5).getType());
 		
