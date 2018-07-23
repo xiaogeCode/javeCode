@@ -1,8 +1,8 @@
 package Yj.model;
 
 public class BaGuaModel {
-	private String name;			//ØÔÃû
-	private int value;				//ØÔÖµ
+	private String name;
+	private int value;
 	
 	public String getName() {
 		return this.name;

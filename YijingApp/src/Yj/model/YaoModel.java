@@ -1,9 +1,13 @@
 package Yj.model;
 
 public class YaoModel {
-	private int type=0;						//0Ñô ÆæÊıÎªÑô:Ò»    			1Òõ Å¼ÊıÎªÒõ£º--
-	private String name;					//Ø³Ãû     0 Ñô 			1Òõ 
-	private int value;						//Ø³Öµ		6,7,8,9
+	private int type=0;
+	private String name;
+
+	/*
+		value å–å€¼ 6,7,8,9
+	* */
+	private int value;
 	
 	public String getName() {
 		return this.name;

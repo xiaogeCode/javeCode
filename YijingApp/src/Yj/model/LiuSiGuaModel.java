@@ -2,15 +2,13 @@ package Yj.model;
 
 
 public class LiuSiGuaModel {
-	private int id;							//卦在数据库中的id
-	private String name;					//卦名
-	private int value;						//卦值
-	private String describle;				//卦的描述
-	private String xiaGuaName;				//下卦 /内卦
-	private String shangGuaName;			//上卦  /外卦
-	private BaGuaModel xiaGua;				//
-	private BaGuaModel shangGua;			//
-	
+	private int id;
+	private String name;
+	private int value;
+	private String describle;
+	private String xiaGuaName;
+	private String shangGuaName;
+
 	public int getId() {
 		return this.id;
 	}
