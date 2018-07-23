@@ -1,12 +1,10 @@
 package Yj.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
  
-public class DBUtil
+public class DbUtil
 {
-  private static final String Class_Name = "org.sqlite.JDBC";
-  //private static final String DB_URL = "jdbc:sqlite:F:\\yj.db";\src\db
+  private static final String CLASS_NAME = "org.sqlite.JDBC";
   private static final String DB_URL = "jdbc:sqlite:src\\db\\yj.db";
   private static final String UNAME = "root";
   private static final String PWD = "root";
@@ -17,9 +15,7 @@ public class DBUtil
   {
 	  try
 	    {
-	      // 1.加载驱动程序
-	      Class.forName(Class_Name);
-	      // 2.获得数据库的连接
+	      Class.forName(CLASS_NAME);
 	      conn = DriverManager.getConnection(DB_URL);
 	      conn.setAutoCommit(false);
 	    }

@@ -4,15 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image; 
 import javax.swing.JPanel; 
 public class YaoImagePanel extends JPanel {
-
-	 
-	/***
-	* ����ͼƬ
-	*/
-	private Image image= null; 
-	
-	 
-
+	private Image image= null;
 	private boolean	autoResize	 = 	false; 	  
 
 	public	 YaoImagePanel() { 

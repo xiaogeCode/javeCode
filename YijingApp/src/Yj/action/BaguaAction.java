@@ -107,7 +107,7 @@ public class BaguaAction
      参数         []
    * 返回 @return:java.util.List<Yj.model.LiuSiGuaModel>
    * 作者 @Author:xiaoge
-   * 时间 @Date: 2018/7/23 20:17
+   * 时间 @Date: 2018/7/23 20:37
    */
   public List<LiuSiGuaModel> query() throws Exception
   {

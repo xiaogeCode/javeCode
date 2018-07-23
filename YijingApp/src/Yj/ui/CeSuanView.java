@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -44,7 +45,7 @@ public class CeSuanView extends JFrame implements ActionListener {
 		setFrame();
 		setUI();
 	}
-	public void setFrame(){
+	private void setFrame(){
 
 		System.out.println("setFrame");
 		container.setLayout(null);
@@ -53,8 +54,9 @@ public class CeSuanView extends JFrame implements ActionListener {
 		frame.setLocation(400, 50);
 		frame.setResizable(false);
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {
+			@Override
         	public void windowClosing(WindowEvent e) {
         		curCount = 0;
 				frame.dispose();
@@ -62,7 +64,7 @@ public class CeSuanView extends JFrame implements ActionListener {
 		});
 	}
 
-	public void setUI(){
+	private void setUI(){
 		jb1=new JButton("测算");
 		jb1.setSize(100, 50);
 		jb1.setLocation(200, 400);
@@ -81,15 +83,14 @@ public class CeSuanView extends JFrame implements ActionListener {
             jl.setSize(60, 50);
             jp1.add(jl);
 		}
-        for (int k = 0; k < 6; k++) {
+		IntStream.range(0, 6).forEach(k -> {
 			JTextField text = new JTextField();
-			text.setLocation(120, 310-k*50);
-            text.setSize(120, 30);
-            text.setEditable(false);
-            textFieldsList.add(text);
-
-            jp1.add(text);
-		} 
+			text.setLocation(120, 310 - k * 50);
+			text.setSize(120, 30);
+			text.setEditable(false);
+			textFieldsList.add(text);
+			jp1.add(text);
+		});
         
         textSg = new JTextField();
         textSg.setLocation(260, 310-2*50);
@@ -108,19 +109,17 @@ public class CeSuanView extends JFrame implements ActionListener {
         textBenGua.setSize(100, 30);
         textBenGua.setEditable(false);
         jp1.add(textBenGua);
-     
-        
-        for (int kk = 0; kk < 5; kk++) {
-        	LiuSiGuaImagePanel guaImg = new LiuSiGuaImagePanel();
-            guaImg.setLocation(280+(kk%3)*70,20+(kk/3)*105);
-            guaImg.setGuaName("乾");
-            guaImg.setGuaType(kk);
-            guaImg.setSize(60,100);
-       
-            guaPl.add(guaImg);
-            container.add(guaImg);
 
-		}
+
+		IntStream.range(0, 5).forEach(kk -> {
+			LiuSiGuaImagePanel guaImg = new LiuSiGuaImagePanel();
+			guaImg.setLocation(280 + (kk % 3) * 70, 20 + (kk / 3) * 105);
+			guaImg.setGuaName("乾");
+			guaImg.setGuaType(kk);
+			guaImg.setSize(60, 100);
+			guaPl.add(guaImg);
+			container.add(guaImg);
+		});
         container.add(jb1);
         container.add(jp1);
         container.repaint();
@@ -151,7 +150,6 @@ public class CeSuanView extends JFrame implements ActionListener {
         		textField.setText(curYao.getValue()+"  -->"+curYao.getType());	
 				
         		if (curCount == 3) {
-        			//
         			String name = CommonUtil.getCommonUtil().getBagua(yaoList.get(0), yaoList.get(1), yaoList.get(2)).getName();
             		textXg.setText(name);
 
@@ -177,7 +175,6 @@ public class CeSuanView extends JFrame implements ActionListener {
             		
 					curCount = 0;
 					
-					//textFieldsList.clear();
 					yaoList.clear();
 					
 				}
@@ -193,7 +190,7 @@ public class CeSuanView extends JFrame implements ActionListener {
 //        }
 	}
 
-		public  void newYang(int number,int seq){
+		private   void newYang(int number,int seq){
 			Random random = new Random();
 			//x Χ: 1 -(number-1)
 			int x =random.nextInt(number-1)+1;
@@ -225,11 +222,11 @@ public class CeSuanView extends JFrame implements ActionListener {
 			
 		}	
 
-		public void setBenGua() {
+		private void setBenGua() {
 			setGuaxiangPanelWithGuatype(yaoList, 0);
 		}
 
-		public void setZongGua() {
+		private void setZongGua() {
 			List<YaoModel> yaoArray  = new ArrayList<YaoModel>();
 			for (int i = 0; i < 6; i++) {
 				YaoModel tmpYao= new YaoModel();
@@ -245,11 +242,10 @@ public class CeSuanView extends JFrame implements ActionListener {
 			
 		}
 
-		public void setCuoGua() {
+		private void setCuoGua() {
 			List<YaoModel> yaoArray  = new ArrayList<YaoModel>();
 			for (int i = 0; i < 6; i++) {
 				YaoModel tmpYao= new YaoModel();
-				//ȡ��
 				tmpYao.setType((yaoList.get(i).getType()+1)%2);
 				yaoArray.add(tmpYao);
 			}
@@ -258,7 +254,7 @@ public class CeSuanView extends JFrame implements ActionListener {
 			
 		}
 
-		public void setHuGua() {
+		private void setHuGua() {
 			List<YaoModel> yaoArray  = new ArrayList<YaoModel>();
 			for (int i = 0; i < 6; i++) {
 				YaoModel tmpYao= new YaoModel();
@@ -274,10 +270,10 @@ public class CeSuanView extends JFrame implements ActionListener {
 			
 		}
 
-		public void setBianGua() {
+		private void setBianGua() {
 			List<YaoModel> yaoArray  = new ArrayList<YaoModel>();
-			for (int i = 0; i < 6; i++) {
-				YaoModel tmpYao= new YaoModel();
+			IntStream.range(0, 6).forEach(i -> {
+				YaoModel tmpYao = new YaoModel();
 				tmpYao.setType(yaoList.get(i).getType());
 				if (yaoList.get(i).getValue() == 9) {
 					tmpYao.setType(1);
@@ -286,7 +282,7 @@ public class CeSuanView extends JFrame implements ActionListener {
 					tmpYao.setType(0);
 				}
 				yaoArray.add(tmpYao);
-			}
+			});
 
 			setGuaxiangPanelWithGuatype(yaoArray, 4);
 			
@@ -294,7 +290,7 @@ public class CeSuanView extends JFrame implements ActionListener {
 				
 				
 
-		public void setGuaxiangPanelWithGuatype (List<YaoModel> yaoArray,int type) {
+		private void setGuaxiangPanelWithGuatype (List<YaoModel> yaoArray,int type) {
 
     		LiuSiGuaModel lsgua = CommonUtil.getCommonUtil().getLiuSigua(CommonUtil.getCommonUtil().getBagua(yaoArray.get(0), yaoArray.get(1), yaoArray.get(2)), 
     				CommonUtil.getCommonUtil().getBagua(yaoArray.get(3), yaoArray.get(4), yaoArray.get(5)));

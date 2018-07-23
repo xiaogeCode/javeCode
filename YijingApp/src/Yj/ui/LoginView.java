@@ -30,16 +30,12 @@ public class LoginView extends JFrame implements ActionListener {
         jb2=new JButton("重置");
         jb1.addActionListener(this);
         jb2.addActionListener(this);
-        //
-        jtf=new JTextField(10);  
-        //
-        jpf=new JPasswordField(10);  
+        jtf=new JTextField(10);
+        jpf=new JPasswordField(10);
           
-        //
-        this.setLayout(new GridLayout(3, 1));//
+        this.setLayout(new GridLayout(3, 1));
           
-        //
-        jp1.add(jlb1);  
+        jp1.add(jlb1);
         jp1.add(jtf);  
           
         jp2.add(jlb2);  
@@ -48,40 +44,39 @@ public class LoginView extends JFrame implements ActionListener {
         jp3.add(jb1);  
         jp3.add(jb2);  
           
-        //���뵽JFrame  
-        this.add(jp1);  
+        this.add(jp1);
         this.add(jp2);  
         this.add(jp3);  
           
-        //
-        this.setTitle("登陆");//
-        this.setSize(300, 150);//
-        this.setLocationRelativeTo(null);//
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//
-        this.setVisible(true);//
+
+        this.setTitle("登陆");
+        this.setSize(300, 150);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
           
-        //
+
         this.setResizable(false);  
     }  
     @Override
     public void actionPerformed(ActionEvent e) {  
-        
-        if(e.getActionCommand()=="登陆")
+        String loginstr = "登陆";
+        String resetstr = "重置";
+        if(e.getActionCommand().equals(loginstr))
         {  
               login();
-        }else if(e.getActionCommand()=="重置")
-        {  
-               
-        }      reset();       
+        }else if(e.getActionCommand().equals(resetstr))
+        {
+            reset();
+        }
           
     }  
-    public void login() {
+    private void login() {
     	new ManageView();
     	dispose();
 	}
-    public void reset() {
+    private void reset() {
     	jtf.setText("");
     	jpf.setText("");
-		
 	}
 }  

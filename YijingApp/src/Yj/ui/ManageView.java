@@ -9,10 +9,9 @@ import java.awt.*;
 public class ManageView extends JFrame implements ActionListener{
 
 	//
-    JButton jb1,jb2=null;  
-    JPanel jp1,jp2,jp3=null;  
-    JLabel jlb1,jlb2,jlb3,jlb4=null;  
-    
+    JButton jb1,jb2;
+    JPanel jp2,jp3;
+
 	public ManageView () {
 		//
         jb1=new JButton("卦象信息");
@@ -44,7 +43,9 @@ public class ManageView extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
-        if(e.getActionCommand()=="卦象信息")
+        String infoStr = "卦象信息";
+        String calStr = "测算";
+        if(e.getActionCommand().equals(infoStr))
         {  
         	try {
 				new LiuSiGuaView();
@@ -52,7 +53,7 @@ public class ManageView extends JFrame implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-        }else if(e.getActionCommand()=="测算")
+        }else if(e.getActionCommand().equals(calStr))
         {  
                new CeSuanView();
         } 

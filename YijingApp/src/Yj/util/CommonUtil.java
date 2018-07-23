@@ -14,10 +14,8 @@ public class CommonUtil {
 	    return comUtil;
 	  }
 	  
-	  //
+
 	  public YaoModel getYaoByValue(int value) {
-		//
-		//
 		  YaoModel yao= new YaoModel();
 		  yao.setValue(value);
 		  int va = yao.getValue()%2;
@@ -40,28 +38,23 @@ public class CommonUtil {
 		  
 		return yao;
 	}
-	  //
+
 	  public int getLiuSiGuaValue(LiuSiGuaModel lsgua) {
 		  int sgValue = BaGuaNames.getIndex(lsgua.getShangGuaName());
 		  int xgValue = BaGuaNames.getIndex(lsgua.getXiaGuaName());
 		  return sgValue+xgValue*8;
 	  }
-	  //
+
 	  public BaGuaModel getBagua(YaoModel yan1,YaoModel yan2,YaoModel yan3) {
 		BaGuaModel bg = new BaGuaModel();
 		System.out.println("value:"+yan1.getType()+yan2.getType()+yan3.getType());
 		//yan1,yan2,yan3
 		bg.setValue(yan3.getType()*1+yan2.getType()*2+yan1.getType()*4);
 		bg.setName(BaGuaNames.getName(bg.getValue()));
-//		if (bg.getName().equals("��")) {
-//			bg.setName("��");
-//		}
-//		if (bg.getName().equals("��")) {
-//			bg.setName("��");
-//		}
+
 		return bg;
 	}
-	  //�������Ժϳ�һ��64��
+
 	  public LiuSiGuaModel getLiuSigua(BaGuaModel xiagua,BaGuaModel shanggua) {
 		LiuSiGuaModel ls = new 	LiuSiGuaModel();
 		ls.setValue(xiagua.getValue()*8 + shanggua.getValue());

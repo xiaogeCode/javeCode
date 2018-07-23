@@ -78,9 +78,9 @@ public class LiuSiGuaView extends JFrame implements ActionListener {
         godList = action.query();
         System.out.println("count :"+godList.size());
         LiuSiGuaModel gua;
-        for(int i=0;i<godList.size();i++){
-            gua = godList.get(i);
-            System.out.println("name"+gua.getName());
+        for (LiuSiGuaModel aGodList : godList) {
+            gua = aGodList;
+            System.out.println("name" + gua.getName());
         }
 
         d.setHorizontalAlignment(JLabel.CENTER);
