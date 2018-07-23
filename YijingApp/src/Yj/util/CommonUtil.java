@@ -24,13 +24,13 @@ public class CommonUtil {
 			switch(va){
 			case 1:
 			{
-				yao.setName("阳");
+				yao.setName("阴");
 				yao.setType(0);
 			}
 				break;
 			case 0:
 			{
-				yao.setName("阴");
+				yao.setName("阳");
 				yao.setType(1);
 			}
 			break;

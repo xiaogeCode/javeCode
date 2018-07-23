@@ -123,7 +123,7 @@ public class CeSuanView extends JFrame implements ActionListener {
         for (int kk = 0; kk < 5; kk++) {
         	LiuSiGuaImagePanel guaImg = new LiuSiGuaImagePanel();
             guaImg.setLocation(280+(kk%3)*70,20+(kk/3)*105);
-            guaImg.setGuaName("Ǭ");
+            guaImg.setGuaName("乾");
             guaImg.setGuaType(kk);
             guaImg.setSize(60,100);
        
