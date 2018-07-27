@@ -20,7 +20,7 @@ public enum BaGuaNames {
 	private String name;
     private int index;
 
-    private BaGuaNames(String name, int index) {
+    BaGuaNames(String name, int index) {
         this.name = name;
         this.index = index;
     }
