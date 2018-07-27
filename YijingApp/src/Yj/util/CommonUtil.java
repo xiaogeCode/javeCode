@@ -13,9 +13,9 @@ public class CommonUtil {
 		    }
 	    return comUtil;
 	  }
-	  
 
-	  public YaoModel getYaoByValue(int value) {
+
+	public YaoModel getYaoByValue(int value) {
 		  YaoModel yao= new YaoModel();
 		  yao.setValue(value);
 		  int va = yao.getValue()%2;
