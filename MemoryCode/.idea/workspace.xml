@@ -1,7 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="bd47652f-5dba-499a-ab38-7c983e00de74" name="Default" comment="" />
+    <list default="true" readonly="true" id="bd47652f-5dba-499a-ab38-7c983e00de74" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/action" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/action/CodedInfoDbAction.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/cmd" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/cmd/MainFunc.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/dao" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/dao/CodedInfoDbDao.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/dao/DbDao.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/db" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/db/mc.db" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/lib" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/manage" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/manage/CodingManager.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/model" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/CodedModel.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image0.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image00.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image01.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image02.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image03.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image04.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image05.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image06.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image07.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image08.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image09.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image1.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image10.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image11.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image12.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image13.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image14.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image15.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image16.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image17.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image18.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image19.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image2.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image20.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image21.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image22.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image23.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image24.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image25.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image26.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image27.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image28.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image29.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image3.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image30.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image31.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image32.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image33.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image34.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image35.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image36.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image37.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image38.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image39.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image4.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image40.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image41.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image42.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image43.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image44.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image45.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image46.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image47.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image48.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image49.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image5.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image50.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image51.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image52.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image53.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image54.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image55.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image56.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image57.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image58.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image59.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image6.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image60.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image61.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image62.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image63.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image64.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image65.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image66.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image67.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image68.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image69.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image7.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image70.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image71.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image72.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image73.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image74.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image75.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image76.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image77.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image78.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image79.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image8.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image80.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image81.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image82.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image83.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image84.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image85.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image86.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image87.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image88.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image89.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image9.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image90.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image91.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image92.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image93.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image94.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image95.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image96.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image97.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image98.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image99.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/MainFrame.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/util" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/util/CommUtil.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -10,9 +140,72 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ui/MainFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-369">
+              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1180#1339#0" expanded="true" />
+                <element signature="e#1338#1339#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainFunc.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cmd/MainFunc.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/CommUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="413">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/dao/DbDao.java" />
+        <option value="$PROJECT_DIR$/src/model/CodedModel.java" />
+        <option value="$PROJECT_DIR$/src/dao/CodedInfoDbDao.java" />
+        <option value="$PROJECT_DIR$/src/action/CodedInfoDbAction.java" />
+        <option value="$PROJECT_DIR$/src/manage/CodingManager.java" />
+        <option value="$PROJECT_DIR$/src/ui/MainFrame.java" />
+        <option value="$PROJECT_DIR$/src/util/CommUtil.java" />
+        <option value="$PROJECT_DIR$/src/cmd/MainFunc.java" />
+      </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -21,11 +214,139 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="33" />
-    <option name="y" value="48" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-50" />
+    <option name="y" value="78" />
     <option name="width" value="1400" />
     <option name="height" value="714" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>AOP</id>
+          </State>
+          <State>
+            <id>Ali-Check</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Internationalization</id>
+          </State>
+          <State>
+            <id>Assignment issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Bitwise operation issuesJava</id>
+          </State>
+          <State>
+            <id>Bitwise operation issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Class structureJava</id>
+          </State>
+          <State>
+            <id>Cloning issuesJava</id>
+          </State>
+          <State>
+            <id>Code style issuesJava</id>
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>CoffeeScript</id>
+          </State>
+          <State>
+            <id>Control flow issuesJava</id>
+          </State>
+          <State>
+            <id>Data flow issuesJava</id>
+          </State>
+          <State>
+            <id>Data flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Encapsulation issuesJava</id>
+          </State>
+          <State>
+            <id>Error handlingGroovy</id>
+          </State>
+          <State>
+            <id>Error handlingJava</id>
+          </State>
+          <State>
+            <id>Error handlingJavaScript</id>
+          </State>
+          <State>
+            <id>Finalization issuesJava</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>HTML</id>
+          </State>
+          <State>
+            <id>ImportsJava</id>
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>JavaBeans issuesJava</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript function metricsJavaScript</id>
+          </State>
+          <State>
+            <id>Memory issuesJava</id>
+          </State>
+          <State>
+            <id>Numeric issuesJava</id>
+          </State>
+          <State>
+            <id>Performance issuesJava</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsGroovy</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsCoffeeScript</id>
+          </State>
+          <State>
+            <id>Probable bugsGroovy</id>
+          </State>
+          <State>
+            <id>Probable bugsJavaScript</id>
+          </State>
+          <State>
+            <id>RegExp</id>
+          </State>
+          <State>
+            <id>Security issuesJava</id>
+          </State>
+          <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -42,15 +363,32 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="MemoryCode" type="b2602c69:ProjectViewProjectNode" />
               <item name="MemoryCode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MemoryCode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MemoryCode" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MemoryCode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MemoryCode" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="cmd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MemoryCode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MemoryCode" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -61,9 +399,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RussiaCuteGame" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GO_FMT" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -84,6 +427,25 @@
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
+    </configuration>
+    <configuration name="MainFunc" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cmd.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="cmd.MainFunc" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="MemoryCode" />
+      <envs />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -159,6 +521,11 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.MainFunc" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -166,6 +533,24 @@
   <component name="SvnConfiguration" cleanupOnStartRun="true">
     <configuration>C:\Users\xiaoge\AppData\Roaming\Subversion</configuration>
     <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\workspace\java\MemoryCode" />
+          <option name="myCopyRoot" value="D:\workspace\java\MemoryCode" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\workspace\java\MemoryCode" />
+          <option name="myCopyRoot" value="D:\workspace\java\MemoryCode" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -175,41 +560,44 @@
       <option name="presentableId" value="Default" />
       <updated>1532836906026</updated>
       <workItem from="1532836909871" duration="646000" />
+      <workItem from="1532842082489" duration="27729000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="646000" />
+    <option name="totallyTimeSpent" value="28375000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="33" y="48" width="1400" height="714" extended-state="0" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2594524" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24027778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,8 +606,219 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/a.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/DbDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/CodedInfoDbDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="175" column="26" lean-forward="true" selection-start-line="175" selection-start-column="26" selection-end-line="175" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#817#829#0" expanded="false" />
+            <marker date="1532852257781" expanded="true" signature="970:993" ph="SELECT * FRO... BaGuaInfo" />
+            <marker date="1532852257781" expanded="true" signature="1914:1950" ph="SELECT * FRO... CodedInfo" />
+            <marker date="1532852257781" expanded="true" signature="1914:1959" ph="SELECT * FRO... CodedInfo" />
+            <marker date="1532852257781" expanded="true" signature="1914:1961" ph="SELECT * FRO... CodedInfo" />
+            <marker date="1532852257781" expanded="true" signature="2866:2921" ph="SELECT * FRO... CodedInfo" />
+            <marker date="1532852257781" expanded="true" signature="3801:3883" ph="insert into CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="3801:3903" ph="insert into CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="3801:3933" ph="insert into CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="4590:4650" ph="UPDATE CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="4590:4651" ph="UPDATE CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="4590:4678" ph="UPDATE CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="4590:4681" ph="UPDATE CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="4590:4788" ph="UPDATE CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="4590:4795" ph="UPDATE CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="5313:5344" ph="DELETE from CodedInfo... " />
+            <marker date="1532852257781" expanded="true" signature="5857:5878" ph="DELETE from CodedInfo... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CodedModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="685">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="e#549#550#0" expanded="false" />
+            <element signature="e#574#575#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#635#636#0" expanded="false" />
+            <element signature="e#665#666#0" expanded="false" />
+            <element signature="e#692#693#0" expanded="false" />
+            <element signature="e#732#733#0" expanded="false" />
+            <element signature="e#764#765#0" expanded="false" />
+            <element signature="e#799#800#0" expanded="false" />
+            <element signature="e#830#831#0" expanded="false" />
+            <element signature="e#878#879#0" expanded="false" />
+            <element signature="e#918#919#0" expanded="false" />
+            <element signature="e#950#951#0" expanded="false" />
+            <element signature="e#979#980#0" expanded="false" />
+            <element signature="e#1023#1024#0" expanded="false" />
+            <element signature="e#1059#1060#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/CodedInfoDbAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/manage/CodingManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="33" column="18" lean-forward="false" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/java/jdk/src.zip!/javax/swing/ImageIcon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="216" column="0" lean-forward="false" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+          <folding>
+            <element signature="e#6758#6759#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/CommUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-369">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1180#1339#0" expanded="true" />
+            <element signature="e#1338#1339#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmd/MainFunc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>MemoryCode</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
