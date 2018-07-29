@@ -33,18 +33,20 @@ public class MainFunc {
                 "巴黎，白蚁，叭儿狗，爬山，巴士，白虎，八路，白旗，拜拜，芭蕉，" +
                 "精灵，旧衣，揪耳朵，救生圈，救世主，酒壶，酒楼，香港，酒吧，救护车";
         String astr2 = "鸡蛋，铅笔，鸭子，耳朵，旗子，钩子，哨子，镰刀，麻花，蝌蚪" ;
-        String astr3 = "火箭，屁股，小锅，弓，梳子，扳手，镰刀，梯子，骨头，鱼钩，机枪，锄头，山峰，门，" +
-                "球，旗帜，气球，鸟，蛇，手杖，被子，领子，灯丝，剪刀，叉子，楼梯";
-        String[] sArray=astr2.split("，");
+        String astr3 = "火箭，屁股，小锅，弓，梳子，扳手，大镰刀，梯子，骨头，鱼钩，机枪，锄头，山峰，门，" +
+                "球，旗帜，牵气球，鸟，蛇，手杖，杯子，领子，灯丝，剪刀，叉子，楼梯";
+        char as = 'a';
+        String[] sArray=astr3.split("，");
         int index = 0;
         for (String aSArray : sArray) {
             CodedModel model = new CodedModel();
-            model.setName(Integer.toString(index));
+//            model.setName(Integer.toString(index));
+            model.setName(String.valueOf(as));
             model.setCodeName(aSArray);
             model.setPicUrl("www.baidu.com");
-            System.out.println("codeName: "+model.getCodeName());
+            System.out.println("name: "+model.getName()+" codeName: "+model.getCodeName());
 //            CodedInfoDbAction.addCodeInfo(model);
-            index++;
+            as++;
         }
     }
 

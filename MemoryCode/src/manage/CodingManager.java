@@ -28,9 +28,9 @@ public class CodingManager {
         String string;
         Random random = new Random();
 /*
-        0-109
+        0-135
 */
-        int i =random.nextInt(110);
+        int i =random.nextInt(136);
         if (i<10){
 /*
             00-09
@@ -41,11 +41,21 @@ public class CodingManager {
             10-99
 */
             string = Integer.toString(i);
-        }else {
+        }else if(i<110){
 /*
             0-9
 */
             string = Integer.toString(i-100);
+        }else if (i<136){
+            char ch='a';
+            int count = i-110;
+            for (int k=0;k<count;k++){
+                ch++;
+            }
+            string =String.valueOf(ch);
+
+        }else{
+            string = Integer.toString(i);
         }
 
         return string;
