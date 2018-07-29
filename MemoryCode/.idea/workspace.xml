@@ -1,137 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="bd47652f-5dba-499a-ab38-7c983e00de74" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/action" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/action/CodedInfoDbAction.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/cmd" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/cmd/MainFunc.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/dao" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/dao/CodedInfoDbDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/dao/DbDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/db" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/db/mc.db" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/lib" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/manage" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/manage/CodingManager.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/CodedModel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image0.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image00.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image01.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image02.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image03.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image04.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image05.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image06.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image07.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image08.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image09.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image1.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image10.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image11.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image12.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image13.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image14.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image15.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image16.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image17.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image18.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image19.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image2.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image20.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image21.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image22.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image23.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image24.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image25.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image26.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image27.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image28.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image29.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image3.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image30.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image31.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image32.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image33.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image34.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image35.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image36.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image37.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image38.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image39.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image4.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image40.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image41.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image42.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image43.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image44.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image45.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image46.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image47.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image48.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image49.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image5.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image50.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image51.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image52.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image53.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image54.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image55.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image56.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image57.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image58.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image59.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image6.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image60.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image61.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image62.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image63.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image64.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image65.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image66.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image67.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image68.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image69.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image7.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image70.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image71.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image72.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image73.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image74.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image75.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image76.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image77.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image78.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image79.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image8.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image80.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image81.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image82.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image83.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image84.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image85.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image86.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image87.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image88.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image89.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image9.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image90.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image91.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image92.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image93.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image94.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image95.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image96.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image97.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image98.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/pic/image99.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/MainFrame.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/util" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/util/CommUtil.java" />
-    </list>
+    <list default="true" readonly="true" id="bd47652f-5dba-499a-ab38-7c983e00de74" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -145,8 +15,8 @@
       <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-369">
-              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="447">
+              <caret line="135" column="22" lean-forward="true" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1180#1339#0" expanded="true" />
@@ -156,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainFunc.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainFunc.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cmd/MainFunc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="73">
+              <caret line="26" column="41" lean-forward="false" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,11 +38,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="CodingManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/manage/CodingManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CommUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/util/CommUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="430">
+              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -201,10 +81,10 @@
         <option value="$PROJECT_DIR$/src/model/CodedModel.java" />
         <option value="$PROJECT_DIR$/src/dao/CodedInfoDbDao.java" />
         <option value="$PROJECT_DIR$/src/action/CodedInfoDbAction.java" />
-        <option value="$PROJECT_DIR$/src/manage/CodingManager.java" />
         <option value="$PROJECT_DIR$/src/ui/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/util/CommUtil.java" />
         <option value="$PROJECT_DIR$/src/cmd/MainFunc.java" />
+        <option value="$PROJECT_DIR$/src/manage/CodingManager.java" />
       </list>
     </option>
   </component>
@@ -214,9 +94,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-50" />
-    <option name="y" value="78" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="13" />
+    <option name="y" value="57" />
     <option name="width" value="1400" />
     <option name="height" value="714" />
   </component>
@@ -382,7 +262,13 @@
               <item name="MemoryCode" type="b2602c69:ProjectViewProjectNode" />
               <item name="MemoryCode" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="cmd" type="462c0819:PsiDirectoryNode" />
+              <item name="manage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MemoryCode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MemoryCode" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MemoryCode" type="b2602c69:ProjectViewProjectNode" />
@@ -560,16 +446,23 @@
       <option name="presentableId" value="Default" />
       <updated>1532836906026</updated>
       <workItem from="1532836909871" duration="646000" />
-      <workItem from="1532842082489" duration="27729000" />
+      <workItem from="1532842082489" duration="30216000" />
     </task>
+    <task id="LOCAL-00001">
+      <created>1532885538611</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1532885538611</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28375000" />
+    <option name="totallyTimeSpent" value="30862000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="13" y="57" width="1400" height="714" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -580,11 +473,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2594524" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24027778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -694,16 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/manage/CodingManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="33" column="18" lean-forward="false" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/java/jdk/src.zip!/javax/swing/ImageIcon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -716,8 +599,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/util/CommUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="430">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -726,8 +609,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-369">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="447">
+          <caret line="135" column="22" lean-forward="true" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1180#1339#0" expanded="true" />
@@ -738,11 +621,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cmd/MainFunc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="73">
+          <caret line="26" column="41" lean-forward="false" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/manage/CodingManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
