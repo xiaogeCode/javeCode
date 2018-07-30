@@ -28,4 +28,10 @@ public class CommUtil {
         }
         return url;
     }
+    public static String getDbUrl(String str){
+        String userDir = System.getProperty("user.dir");// 获得真实路径
+        String se = System.getProperty("file.separator"); // 获得文件分隔符（在 UNIX 系统中是"/"）
+        String url = userDir+se+"src"+se+"db"+se+str;
+        return url;
+    }
 }

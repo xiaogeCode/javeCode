@@ -1,5 +1,7 @@
 package dao;
 
+import util.CommUtil;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -18,7 +20,7 @@ public class DbDao {
     private static final String DB_URL = "jdbc:sqlite:src\\db\\yj.db";
     private static final String UNAME = "root";
     private static final String PWD = "root";
-    private final String url ="src/db/mc.db"; //this.getClass().getResource("/db/yj.db").getPath();
+    private final String url = CommUtil.getDbUrl("mc.db");//"src/db/mc.db"; //this.getClass().getResource("/db/yj.db").getPath();
 
     private static Connection conn = null;
     private static DbDao dbDao = new DbDao();
