@@ -232,35 +232,38 @@ public class PukeManager {
             sigalArr[k] = 0;
         }
         for (int i=0;i<num.length;i++){
+            int index = num[i];
             switch (num[i]){
                 //A
                 case 1:{
-                    sigalArr[14]+=1;
+                    index = 14;
                     break;
                 }
                 //2
                 case 2:{
-                    sigalArr[15]+=1;
+                    index = 15;
                     break;
                 }
                 //小王
                 case 53:{
-                    sigalArr[16]+=1;
+                    index = 16;
                     break;
                 }
                 //大王
                 case 54:{
-                    sigalArr[17]+=1;
+                    index = 17;
                     break;
                 }
                 //3-k
                 default:{
-                    sigalArr[num[i]]+=1;
                     break;
                 }
             }
+
+            sigalArr[index]+=1;
+
             //有俩个相同的
-            if (sigalArr[num[i]]>1){
+            if (sigalArr[index]>1){
                 return false;
             }
         }
