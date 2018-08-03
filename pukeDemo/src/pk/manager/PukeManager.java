@@ -1,6 +1,8 @@
 package pk.manager;
 
 import java.awt.*;
+import java.text.BreakIterator;
+import java.text.spi.NumberFormatProvider;
 import java.util.List;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Random;
 
+import com.sun.xml.internal.ws.api.message.MessageWritable;
 import pk.model.PukeListModel;
 import pk.model.PukeListTypeEnum;
 import pk.model.PukeModel;
@@ -93,6 +96,13 @@ public class PukeManager {
 	public PukeListModel getCardListInfo(List<PukeModel> list) {
 		PukeListModel tmp = new PukeListModel();
 		tmp.type = PukeListTypeEnum.mix;
+
+		int size = list.size();
+        int[] num = new int[size];
+        for (int i=0;i<list.size();i++){
+            num[i] = list.get(i).number;
+        }
+
 		switch (list.size()) {
 		case 0:{
 			
@@ -138,18 +148,29 @@ public class PukeManager {
 		}
 			break;
 		case 5:{//顺子,三带一对
-			tmp.type = PukeListTypeEnum.single;
-			tmp.type = PukeListTypeEnum.threePair;
+
+            if (isDragon(num)){
+                tmp.type = PukeListTypeEnum.dragon;
+            }else{
+                //tmp.type = PukeListTypeEnum.threePair;
+            }
 		}
 			break;
 		case 6:{//顺子 连对
-			tmp.type = PukeListTypeEnum.dragon;
+            if (isDragon(num)){
+                tmp.type = PukeListTypeEnum.dragon;
+            }
+			//tmp.type = PukeListTypeEnum.dragon;
 		}
 			break;
 
 		default:
 		{
-			
+			if (list.size()>4){
+                if (isDragon(num)){
+                    tmp.type = PukeListTypeEnum.dragon;
+                }
+            }
 		}
 			break;
 		}
@@ -197,4 +218,66 @@ public class PukeManager {
         }
 	    return false;
     }
+    /**
+     * 功能描述: <br>
+     * 〈是否连续数字〉
+       参数         [num]
+     * 返回 @return:boolean
+     * 作者 @Author:xiaoge
+     * 时间 @Date: 2018/8/3 20:47
+     */
+    private boolean isDragon(int[] num){
+        int[] sigalArr= new int[18];
+        for (int k=0;k<18;k++){
+            sigalArr[k] = 0;
+        }
+        for (int i=0;i<num.length;i++){
+            switch (num[i]){
+                //A
+                case 1:{
+                    sigalArr[14]+=1;
+                    break;
+                }
+                //2
+                case 2:{
+                    sigalArr[15]+=1;
+                    break;
+                }
+                //小王
+                case 53:{
+                    sigalArr[16]+=1;
+                    break;
+                }
+                //大王
+                case 54:{
+                    sigalArr[17]+=1;
+                    break;
+                }
+                //3-k
+                default:{
+                    sigalArr[num[i]]+=1;
+                    break;
+                }
+            }
+            //有俩个相同的
+            if (sigalArr[num[i]]>1){
+                return false;
+            }
+        }
+        int cout = 0;
+        //统计3-A
+        for (int index=3;index<15;index++){
+            if (cout>0 && (sigalArr[index]==0)){
+                break;
+            }
+            if (sigalArr[index]>0){
+                cout++;
+            }
+        }
+        if (cout<num.length){
+            return false;
+        }else {
+            return true;
+        }
+	}
 }
