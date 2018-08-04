@@ -191,6 +191,9 @@ public class GameFrame extends JFrame implements ActionListener{
         { 
 			reDealCard();
 			getUser1CardInfo();
+            if (playCardList.size()>0){
+                playCardList.clear();
+            }
             resetview();
         }
         if(e.getActionCommand()=="出牌")
