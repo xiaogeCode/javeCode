@@ -44,9 +44,7 @@ public class PuzzleSolveManager implements CommonStringInterface{
         int k = 0;
         while (locationQue.size()>0){
             //从队列中取出一个节点
-            System.out.println("size before:"+locationQue.size());
             PointNode curPtNode = locationQue.poll();
-            System.out.println("size after :"+locationQue.size());
             //对队列进行四种方向操作 生成的新状态保存到队列中
             for (int i=0;i<4;i++){
                 k++;
@@ -71,7 +69,7 @@ public class PuzzleSolveManager implements CommonStringInterface{
                         //System.out.println("goal"+goalPoint.x+"  "+goalPoint.y);
                         //找到解决方案，倒序输出
                         //判断目标点值是否相等
-                        System.out.println("add a new: "+tmpNode.item.x+"  "+tmpNode.item.y);
+                        //System.out.println("add a new: "+tmpNode.item.x+"  "+tmpNode.item.y);
                         if ((tmpPoint.x == goalPoint.x) && (tmpPoint.y == goalPoint.y)){
                             restNode = tmpNode;
                             System.out.println("solve: ");
@@ -90,7 +88,7 @@ public class PuzzleSolveManager implements CommonStringInterface{
         List<Point> list = new ArrayList<Point>();
         PointNode tmp = node;
         while (tmp!=null){
-            System.out.println("tmp: "+tmp.item.x+"  "+ tmp.item.y);
+            //System.out.println("tmp: "+tmp.item.x+"  "+ tmp.item.y);
             list.add(tmp.item);
             tmp = tmp.getParrent();
         }

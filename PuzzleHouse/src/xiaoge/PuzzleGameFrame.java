@@ -38,7 +38,7 @@ public class PuzzleGameFrame extends JFrame implements KeyListener,MouseListener
 	
 	public PuzzleGameFrame(){
 		super();
-		cute_width = 20;
+		cute_width = 5;
 		map = new int[Map_Width][Map_Height];
 		resetMap();
 		setForm();

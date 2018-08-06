@@ -11,6 +11,6 @@ package xiaoge;
  * 作者姓名           修改时间           版本号              描述
  */
 public interface CommonStringInterface {
-    public  final int Map_Width = 31;
-    public  final int Map_Height = 31;
+    public  final int Map_Width = 61;
+    public  final int Map_Height = 61;
 }
