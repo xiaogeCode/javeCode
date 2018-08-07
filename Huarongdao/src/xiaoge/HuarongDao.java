@@ -44,7 +44,7 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 				tmp_array[i][j] = 0;
 			}
 		}
-		placePersonOnMap("²Ü²Ù",tmp_array,0);
+		placePersonOnMap("ï¿½Ü²ï¿½",tmp_array,0);
 		*/
 		//setFrame();
 		//init();
@@ -56,9 +56,10 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 		//this.setBackground(new Color(0,0,0,0));
 		setVisible(true);
 		validate();
-		setTitle("»ªÈİµÀ");
+		setTitle("åå®¹é“");
 		addWindowListener( new WindowAdapter()
         {
+            @Override
             public void windowClosing(WindowEvent e)
             {
                 System.exit(0);
@@ -91,7 +92,7 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 	public void init(){
 		setLayout(null);
 		setMapData();
-		String name[] = {"²Ü²Ù","¹ØÓğ","ÕÅ·É","Áõ±¸","ÕÔÔÆ","»ÆÖÒ","±ø","±ø","±ø","±ø"};
+		String name[] = {"æ›¹æ“","å…³ç¾½","èµµäº‘","å¼ é£","é©¬è¶…","é»„å¿ ","å…µ","å…µ","å…µ","å…µ"};
 		int a[][]= new int[][]{{1,0},{1,2},{0,0},{0,2},{3,0},{3,2},{1,3},{2,3},{0,4},{3,4},};
 		for(int i=0;i<10;i++){
 			person[i]= new Person(name[i]);
@@ -100,22 +101,9 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 			person[i].setPersonLocation(map_data[i][0], map_data[i][1]);
 			add(person[i]);
 		}
-		/*
-		person[0].setPersonLocation(1, 0);
-		person[1].setPersonLocation(1, 2);
-		person[2].setPersonLocation(0, 0);
-		person[3].setPersonLocation(0, 2);
-		person[4].setPersonLocation(3, 0);
-		person[5].setPersonLocation(3, 2);
-		person[6].setPersonLocation(1, 3);
-		person[7].setPersonLocation(2, 3);
-		person[8].setPersonLocation(0, 4);
-		person[9].setPersonLocation(3, 4);
-		*/
 		validate();
 	}
 	public void setMapData(){
-		//String name[] = {"²Ü²Ù","¹ØÓğ","ÕÅ·É","Áõ±¸","ÕÔÔÆ","»ÆÖÒ","±ø","±ø","±ø","±ø"};
 		int i=1;
 		map_data = null;
 		switch(i){
@@ -134,7 +122,7 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 		}
 	}
 	public void movePerson(Person man,int direction){
-		//direction 0 ×ó,1ÓÒ,2ÉÏ,3ÏÂ
+		//direction 0 ï¿½ï¿½,1ï¿½ï¿½,2ï¿½ï¿½,3ï¿½ï¿½
 		int a[]=new int[]{-1,1,0,0};
 		int b[]=new int[]{0,0,-1,1};
 		int current_x = man.location_x;
@@ -142,13 +130,12 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 		int tmp_x= man.location_x+a[direction];
 		int tmp_y= man.location_y+b[direction];
 		if(direction==3 || direction == 1){
-			//ÏÂÒÆ¶¯ºÍÓÒÒÆ¶¯Òª¿¼ÂÇµ½±ß³¤
+			//
 			tmp_x= man.location_x+a[direction]*man.person_width;
 			tmp_y= man.location_y+b[direction]*man.person_height;
 		}
 		if(tmp_x<0 || tmp_x>3 || tmp_y<0 || tmp_y>4){
-			//Ô½½ç
-			System.out.println("Ô½½ç");
+			//
 			return;
 		}
 		tmp_x= man.location_x+a[direction];
@@ -159,8 +146,7 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 			Rectangle personRect = person[i].getBounds();
 			if(!(current_x == person[i].location_x && current_y==person[i].location_y)){
 				if(manRect.intersects(personRect)){
-					//Åö×²
-					System.out.println("Åö×²");
+					//
 					return;
 				}
 				
@@ -173,9 +159,12 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 	}
 		
 
-	public void keyTyped(KeyEvent e){}
-	 public void keyReleased(KeyEvent e){}
-	 public void keyPressed(KeyEvent e)
+	@Override
+    public void keyTyped(KeyEvent e){}
+	 @Override
+     public void keyReleased(KeyEvent e){}
+	 @Override
+     public void keyPressed(KeyEvent e)
 	 {
 		 Person man = (Person)e.getSource();
 		 if(e.getKeyCode()==KeyEvent.VK_A){ 
@@ -193,7 +182,8 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 		  
 		 
 	 }
-	 public void mousePressed(MouseEvent e)
+	 @Override
+     public void mousePressed(MouseEvent e)
 	 {
 		 Person man = (Person)e.getSource();
 		  int x = -1,y = -1;
@@ -223,12 +213,17 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 		  }
 		 
 	 }
-	 public void mouseReleased(MouseEvent e){}
-	 public void mouseEntered(MouseEvent e){}
-	 public void mouseExited(MouseEvent e){}
-	 public void mouseClicked(MouseEvent e){}
+	 @Override
+     public void mouseReleased(MouseEvent e){}
+	 @Override
+     public void mouseEntered(MouseEvent e){}
+	 @Override
+     public void mouseExited(MouseEvent e){}
+	 @Override
+     public void mouseClicked(MouseEvent e){}
 	 
-	 public void actionPerformed(ActionEvent e)
+	 @Override
+     public void actionPerformed(ActionEvent e)
 	 {
 		 String title = e.getActionCommand();
 		 switch (title){
@@ -259,7 +254,7 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 		
 	}
 	void placePersonOnMap(String typeString,int arr[][],int index){
-		String name[] = {"²Ü²Ù","¹ØÓğ","ÕÅ·É","Áõ±¸","ÕÔÔÆ","»ÆÖÒ","±ø","±ø","±ø","±ø"};
+		String name[] = {"æ›¹æ“","å…³ç¾½","èµµäº‘","å¼ é£","é©¬è¶…","é»„å¿ ","å…µ","å…µ","å…µ","å…µ"};
 		Stack<Point> placeStack = new Stack<Point>();
 		
 		
@@ -267,28 +262,28 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 		int height = 0;
 		
 		switch(typeString){
-		case "²Ü²Ù":
+		case "æ›¹æ“":
 		{
 			width = 2;
 			height = 2;
 		}
 			break;
-		case "¹ØÓğ":
+		case "å…³ç¾½":
 		{
 			width = 2;
 			height = 1;
 		}
 			break;
-		case "ÕÅ·É":
-		case "Áõ±¸":
-		case "ÕÔÔÆ":
-		case "»ÆÖÒ":
+		case "èµµäº‘":
+		case "å¼ é£":
+		case "é©¬è¶…":
+		case "é»„å¿ ":
 		{
 			width = 1;
 			height = 2;
 		}
 			break;
-		case "±ø":
+		case "å…µ":
 		{
 			width = 1;
 			height = 1;
@@ -300,7 +295,7 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 		}
 		for(int i=0;i<4;i++){
 			for(int j=0;j<5;j++){
-				//¼ì²éÊÇ·ñÄÜ¹»°²·Å Èç¹ûÄÜ µİ¹é°²·ÅÏÂÒ»¸öÈËÎï
+				//ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½İ¹é°²ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				if(checkCanPlace(i,j,width,height,arr)){
 					//placeArr.
 					Point tmp_point = new Point(i,j);
@@ -310,7 +305,7 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 					placeArray[index]=tmp_point;
 					int[][] tmp_map= updateMapData(arr,i,j,width,height);
 					if(index ==9){
-						//½«Éú³ÉµÄÄ³ÖÖÂú×ãÌõ¼şµÄµØÍ¼¼ÓÈëµ½½á¹û¶ÓÁĞÖĞ
+						//ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Í¼ï¿½ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						resultStack.push(placeArray);
 						String result = "";
 						for(int k=0;k<10;k++){
@@ -378,7 +373,7 @@ public class HuarongDao extends JFrame implements MouseListener,KeyListener,Acti
 	public  void readByBufferedReader() {  
 		try {  
             File file = new File("/D:/workplace/Huarongdao/map.txt");  
-            // ¶ÁÈ¡ÎÄ¼ş£¬²¢ÇÒÒÔutf-8µÄĞÎÊ½Ğ´³öÈ¥  
+            // ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½utf-8ï¿½ï¿½ï¿½ï¿½Ê½Ğ´ï¿½ï¿½È¥  
             BufferedReader bufread;  
             String read;  
             bufread = new BufferedReader(new FileReader(file));  

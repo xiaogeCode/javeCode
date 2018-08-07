@@ -9,7 +9,7 @@ import javax.swing.JButton;
 public class Person extends JButton implements FocusListener{
 
 	Color c = new Color(255,245,170);
-	String names[] = {"²Ü²Ù","¹ØÓğ","ÕÅ·É","Áõ±¸","ÕÔÔÆ","»ÆÖÒ","±ø","±ø","±ø","±ø"};
+	String names[] = {"æ›¹æ“","å…³ç¾½","èµµäº‘","å¼ é£","é©¬è¶…","é»„å¿ ","å…µ","å…µ","å…µ","å…µ"};
 	int location_x;
 	int location_y;
 	int lenth = 80;
