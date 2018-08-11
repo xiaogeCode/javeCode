@@ -1,13 +1,11 @@
 package Manager;
 
-import com.sun.corba.se.impl.orbutil.HexOutputStream;
 import model.*;
 import util.CommStringInterface;
 
-import javax.security.auth.callback.Callback;
-import javax.swing.text.StyledEditorKit;
+import java.awt.*;
 import java.util.*;
-import java.util.concurrent.Delayed;
+import java.util.List;
 
 /**
  * Copyright (C), 2018-2018, XXX有限公司
@@ -26,12 +24,16 @@ public class HrdGmaeMgr implements CommStringInterface{
     HashMap readyToHandleHashMap;
     //已经搜索过状态转成的hash表，防止重复搜索,可快速判断
     HashMap alreadySearchHashMap;
-
+    //ZobristHasn初始编码
     ZobristHasn zbHash;
-
+    //找到后返回接口，用来展示搜索到的结果
     FindCallBack findCallBack = null;
-
+    //解决方案
     List<GameState>resultList = null;
+    //用来计数生成的地图数目
+    private  static int mapCreateCount=0;
+    List<Point> heroPointList;
+    List<List<Point>> mapList;
 
     public HrdGmaeMgr(FindCallBack callBack) {
         stateExistList = new LinkedList<GameState>();
@@ -40,6 +42,13 @@ public class HrdGmaeMgr implements CommStringInterface{
         zbHash = ZobristHashMgr.MakebaseZobHash();
         findCallBack = callBack;
         resultList = new ArrayList<GameState>();
+        heroPointList = new ArrayList<Point>();
+        mapList =new ArrayList<List<Point>>();
+        for (int i=0;i<10;i++){
+            Point pt= new Point(0,0);
+            heroPointList.add(pt);
+
+        }
 //        for (int i=0;i<HRD_WIDTH-2;i++) {
 //            for (int j = 0; j < HRD_HEIGHT - 2; j++) {
 //                CellState cellState = zbHash.getKey()[i][j];
@@ -123,6 +132,52 @@ public class HrdGmaeMgr implements CommStringInterface{
         }
         return tmp;
 
+    }
+    public List<Warrior> getHeroListFromMap(int[][] map){
+        int type[] = new int[]{HERO_TYPE_CAOCAO,HERO_TYPE_GUANYU,
+                HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI, HERO_TYPE_ZHANGFEI,
+                HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING};
+
+        List<Warrior> list=new ArrayList<Warrior>();
+        for (int i=0;i<2;i++) {
+            for (int a1=1;a1<HRD_WIDTH;a1++) {
+                for (int a2=1;a2<HRD_HEIGHT;a2++) {
+                    if (map[a1][a2] == type[i]){
+                        Warrior hero = new Warrior();
+                        hero.setType(type[i]);
+                        hero.setLeft(a1);
+                        hero.setTop(a2);
+                        list.add(hero);
+                        //跳出二重循环
+                        a1 =HRD_WIDTH;
+                        a2 =HRD_HEIGHT;
+                        break;
+                    }
+                }
+            }
+        }
+        return list;
+    }
+    public GameState getGamestateFromHeroPointList(List<Point>list){
+        int type[] = new int[]{HERO_TYPE_CAOCAO,HERO_TYPE_GUANYU,
+                HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI, HERO_TYPE_ZHANGFEI,
+                HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING};
+        GameState state = new GameState();
+        int k=0;
+        for (Point pt:list) {
+            Warrior hero = new Warrior();
+            hero.setLeft(pt.x);
+            hero.setTop(pt.y);
+            hero.setType(type[k]);
+
+            System.out.println("x-y: "+pt.x+" "+pt.y);
+
+            state.getHeros().add(hero);
+            k++;
+        }
+
+        state.setMap(getMapFromHeroList(state.getHeros()));
+        return state;
     }
     public void search(GameState state){
         if (readyToHandleHashMap.size()>0){
@@ -325,7 +380,7 @@ public class HrdGmaeMgr implements CommStringInterface{
             hero.setLeft(state.getHeros().get(i).getLeft());
             hero.setTop(state.getHeros().get(i).getTop());
             hero.setType(state.getHeros().get(i).getType());
-                    ;
+
             if (i==heroIdx){
                 hero.setLeft(hero.getLeft()+DIRECTIONS[dirIdx].getHd());
                 hero.setTop(hero.getTop()+  DIRECTIONS[dirIdx].getVd());
@@ -405,5 +460,177 @@ public class HrdGmaeMgr implements CommStringInterface{
             }
             System.out.println();
         }
+    }
+    public GameState makeNewMapByRobot(){
+        int[][] tmp = new int[HRD_WIDTH][HRD_HEIGHT];
+        for (int i=0;i<HRD_WIDTH;i++){
+            for (int j=0;j<HRD_HEIGHT;j++){
+                //地图周围围一圈 方便以后做移动操作 不用考虑边界
+                if ((i==0) ||(i==HRD_WIDTH-1) ||(j==0)||(j==HRD_HEIGHT-1)){
+                    tmp[i][j] = -1;
+                }else{
+                    //位置没有人物用0表示
+                    tmp[i][j] = 0;
+                }
+
+            }
+        }
+        placeHero(0,tmp);
+        System.out.println("to state");
+        GameState state = getGamestateFromHeroPointList(mapList.get(1));
+        return state;
+    }
+    public void placeHero(int index,int[][] map){
+        int type[] = new int[]{HERO_TYPE_CAOCAO,HERO_TYPE_GUANYU,
+                HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI, HERO_TYPE_ZHANGFEI,
+                HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING};
+
+        if ((index>9) || (mapCreateCount>9)){
+            return;
+        }
+        for (int i=0;i<HRD_WIDTH-2;i++) {
+            for (int j=0;j<HRD_HEIGHT-2;j++) {
+                if (canPlace(index,map,i,j)){
+                    int[][] newMap = placeHeroToMap(index,map,i,j);
+                    heroPointList.get(index).x=i;
+                    heroPointList.get(index).y=j;
+                    if (index ==9){
+                        mapCreateCount++;
+                        List<Point> tmpList = new ArrayList<Point>();
+                        for (Point pt:heroPointList) {
+                            Point newPt= new Point(pt.x,pt.y);
+                            tmpList.add(newPt);
+                        }
+                        mapList.add(tmpList);
+                        System.out.println("count: "+mapCreateCount);
+                        printHeroListByPointList(heroPointList);
+
+                        //printMapWithMap(newMap);
+                    }else {
+                        placeHero(index+1,newMap);
+                    }
+                }
+            }
+        }
+
+    }
+    public void printHeroListByPointList(List<Point>list){
+        for (Point pt:list) {
+            System.out.println(pt.x+" "+pt.y);
+        }
+    }
+    public void printMapWithMap(int[][] map){
+        for (int i=0;i<HRD_HEIGHT;i++) {
+            for (int j=0;j<HRD_WIDTH;j++) {
+                System.out.print(map[j][i]+"  ");
+            }
+            System.out.println();
+        }
+    }
+    private int[][] placeHeroToMap(int index,int[][] map,int locX,int locY){
+        int[][] tmpMap = new int[HRD_WIDTH][HRD_HEIGHT];
+        for (int i=0;i<HRD_WIDTH;i++){
+            for (int j=0;j<HRD_HEIGHT;j++){
+                tmpMap[i][j]=map[i][j];
+            }
+        }
+        int type[] = new int[]{HERO_TYPE_CAOCAO,HERO_TYPE_GUANYU,
+                HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI, HERO_TYPE_ZHANGFEI,
+                HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING};
+
+        int curType = type[index];
+        switch (curType){
+            case HERO_TYPE_ZHANGFEI:{
+                tmpMap[locX+1][locY+1]=HERO_TYPE_ZHANGFEI;
+                tmpMap[locX+1][locY+2]=HERO_TYPE_ZHANGFEI;
+
+//                tmp[x][y] = HERO_TYPE_ZHANGFEI;
+//                tmp[x][y+1] =HERO_TYPE_ZHANGFEI;
+
+                break;
+            }
+            case HERO_TYPE_CAOCAO:{
+                tmpMap[locX+1][locY+1]=HERO_TYPE_CAOCAO;
+                tmpMap[locX+1][locY+2]=HERO_TYPE_CAOCAO;
+                tmpMap[locX+2][locY+1]=HERO_TYPE_CAOCAO;
+                tmpMap[locX+2][locY+2]=HERO_TYPE_CAOCAO;
+
+
+//                tmp[x][y] = HERO_TYPE_CAOCAO;
+//                tmp[x][y+1] =HERO_TYPE_CAOCAO;
+//                tmp[x+1][y] =HERO_TYPE_CAOCAO;
+//                tmp[x+1][y+1] =HERO_TYPE_CAOCAO;
+
+                break;
+            }
+            case HERO_TYPE_GUANYU:{
+                tmpMap[locX+1][locY+1]=HERO_TYPE_GUANYU;
+                tmpMap[locX+2][locY+1]=HERO_TYPE_GUANYU;
+//                tmp[x][y] = HERO_TYPE_GUANYU;
+//                tmp[x+1][y] = HERO_TYPE_GUANYU;
+                break;
+            }
+            case HERO_TYPE_XIAOBING:{
+                tmpMap[locX+1][locY+1]=HERO_TYPE_XIAOBING;
+                break;
+            }
+            default:{
+                break;
+            }
+        }
+        return tmpMap;
+    }
+    private boolean canPlace(int index,int[][] map,int locX,int locY) {
+        int type[] = new int[]{HERO_TYPE_CAOCAO,HERO_TYPE_GUANYU,
+                HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI, HERO_TYPE_ZHANGFEI,
+                HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING};
+        int curType = type[index];
+        int cv1,cv2,cv3,cv4;
+        boolean canMove = false;
+        switch (curType){
+            case HERO_TYPE_ZHANGFEI:{
+                cv1 = map[locX+1][locY+1];
+                cv2 = map[locX+1][locY+2];
+
+                canMove= ((cv1 == 0) && (cv2 == 0));
+
+//                tmp[x][y] = HERO_TYPE_ZHANGFEI;
+//                tmp[x][y+1] =HERO_TYPE_ZHANGFEI;
+
+                break;
+            }
+            case HERO_TYPE_CAOCAO:{
+                cv1 = map[locX+1][locY+1];
+                cv2 = map[locX+1][locY+2];
+                cv3 = map[locX+2][locY+1];
+                cv4 = map[locX+2][locY+2];
+
+                canMove= ((cv1 == 0) && (cv2 == 0) && (cv3 == 0)&& (cv4 == 0));
+
+//                tmp[x][y] = HERO_TYPE_CAOCAO;
+//                tmp[x][y+1] =HERO_TYPE_CAOCAO;
+//                tmp[x+1][y] =HERO_TYPE_CAOCAO;
+//                tmp[x+1][y+1] =HERO_TYPE_CAOCAO;
+
+                break;
+            }
+            case HERO_TYPE_GUANYU:{
+                cv1 = map[locX+1][locY+1];
+                cv2 = map[locX+2][locY+1];
+                canMove= ((cv1 == 0) && (cv2 == 0));
+//                tmp[x][y] = HERO_TYPE_GUANYU;
+//                tmp[x+1][y] = HERO_TYPE_GUANYU;
+                break;
+            }
+            case HERO_TYPE_XIAOBING:{
+                cv1 = map[locX+1][locY+1];
+                canMove= (cv1 == 0);
+                break;
+            }
+            default:{
+                break;
+            }
+        }
+        return canMove;
     }
 }

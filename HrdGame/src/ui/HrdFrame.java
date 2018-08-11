@@ -60,9 +60,11 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
             }
         });
         state = hrdGmaeMgr.makeNewMap();
+        //state =hrdGmaeMgr.makeNewMapByRobot();
 
         setFrame();
         setView();
+
 
     }
 
@@ -94,13 +96,20 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
         gamePane.repaint();
 
         JButton solveBtn = new JButton();
-        solveBtn.setText("solve");
+        solveBtn.setText("Solve");
         solveBtn.setSize(100, 50);
         solveBtn.setLocation(0, frame_cute_size*(HRD_HEIGHT-2));
         solveBtn.addActionListener(this);
 
+        JButton mapMakeBtn = new JButton();
+        mapMakeBtn.setText("MakeMap");
+        mapMakeBtn.setSize(100, 50);
+        mapMakeBtn.setLocation(120, frame_cute_size*(HRD_HEIGHT-2));
+        mapMakeBtn.addActionListener(this);
+
         this.getContentPane().add(gamePane);
         this.getContentPane().add(solveBtn);
+        this.getContentPane().add(mapMakeBtn);
         this.getContentPane().repaint();
 //        this.pack();
     }
@@ -254,9 +263,15 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("solve"))
+        if(e.getActionCommand().equals("Solve"))
         {
             hrdGmaeMgr.search(state);
+        }
+        if(e.getActionCommand().equals("MakeMap"))
+        {
+            state =hrdGmaeMgr.makeNewMapByRobot();
+            this.getContentPane().removeAll();
+            setView();
         }
     }
 }

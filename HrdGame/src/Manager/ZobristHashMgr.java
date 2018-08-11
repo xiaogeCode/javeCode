@@ -40,7 +40,6 @@ public class ZobristHashMgr implements CommStringInterface{
 //                    for (int index = 0; index < 9; index++) {
 //                        result = result * 10 + para[index];
 //                    }
-                    System.out.println(result);
 
                     tmp.getValue()[k]=result;
                 }
