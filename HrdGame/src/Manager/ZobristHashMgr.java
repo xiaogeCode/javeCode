@@ -30,15 +30,17 @@ public class ZobristHashMgr implements CommStringInterface{
                 CellState tmp = hash.getKey()[i][j];
                 for (int k = 0;k<5;k++){
                     Random rand = new Random();
-                    int[] para =new int[9];
-                    for (int p=0;p<9;p++){
-                        int randNum = rand.nextInt(9)+1;
-                        para[p]=randNum;
-                    }
-                    int result = 0;
-                    for (int index = 0; index < 9; index++) {
-                        result = result * 10 + para[index];
-                    }
+                    long result = rand.nextLong();
+
+//                    int[] para =new int[9];
+//                    for (int p=0;p<9;p++){
+//                        int randNum = rand.nextInt(9)+1;
+//                        para[p]=randNum;
+//                    }
+//                    for (int index = 0; index < 9; index++) {
+//                        result = result * 10 + para[index];
+//                    }
+                    System.out.println(result);
 
                     tmp.getValue()[k]=result;
                 }

@@ -14,20 +14,20 @@ public class CellState {
     /*
         五种 ： 空 大正方形  横长方形 竖长方形 小方格
     */
-    int value[];
+    long value[];
 
     public CellState() {
-        value= new int[5];
+        value= new long[5];
         for (int i=0;i<5;i++){
             value[i] = 0;
         }
     }
 
-    public int[] getValue() {
+    public long[] getValue() {
         return value;
     }
 
-    public void setValue(int[] value) {
+    public void setValue(long[] value) {
         this.value = value;
     }
 }

@@ -55,6 +55,7 @@ public class HrdGmaeMgr implements CommStringInterface{
 
     public GameState makeNewMap(){
         int a[][]= new int[][]{{1,0},{1,2},{0,0},{0,2},{3,0},{3,2},{1,3},{2,3},{0,4},{3,4}};
+        //int a[][]= new int[][]{{0,0},{0,2},{1,3},{2,0},{3,0},{3,2},{0,4},{2,2},{0,3},{3,4}};
         int type[] = new int[]{HERO_TYPE_CAOCAO,HERO_TYPE_GUANYU,
                 HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI, HERO_TYPE_ZHANGFEI,
                 HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING};

@@ -26,6 +26,7 @@ public class HrdPlane extends JPanel implements CommStringInterface{
 
     public void setState(GameState state) {
         this.state = state;
+        this.setBackground(Color.white);
     }
 
     @Override
@@ -36,14 +37,47 @@ public class HrdPlane extends JPanel implements CommStringInterface{
 
         Color c =big.getColor();
 
+        for (int k=0;k<state.getHeros().size();k++){
+            int x = state.getHeros().get(k).getLeft();
+            int y = state.getHeros().get(k).getTop();
+            int type = state.getHeros().get(k).getType();
+            switch (type){
+                case HERO_TYPE_ZHANGFEI:{
+                    big.setColor(Color.black);
+                    big.fillRect(x*frame_cute_size, y*frame_cute_size, frame_cute_size-1, frame_cute_size*2-1);
+                    break;
+                }
+                case HERO_TYPE_CAOCAO:{
+                    big.setColor(Color.red);
+                    big.fillRect(x*frame_cute_size, y*frame_cute_size, frame_cute_size*2-1, frame_cute_size*2-1);
+                    break;
+                }
+                case HERO_TYPE_GUANYU:{
+                    big.setColor(Color.blue);
+                    big.fillRect(x*frame_cute_size, y*frame_cute_size, frame_cute_size*2-1, frame_cute_size-1);
+                    break;
+                }
+                case HERO_TYPE_XIAOBING:{
+                    big.setColor(Color.green);
+                    big.fillRect(x*frame_cute_size, y*frame_cute_size, frame_cute_size-1, frame_cute_size-1);
+                    break;
+                }
+                default:{
+                    break;
+                }
+            }
+            big.setColor(c);
+        }
+
         /*
         旋转输出
 */
-        for (int i=0;i<HRD_HEIGHT;i++){
+        /*for (int i=0;i<HRD_HEIGHT;i++){
             for (int j=0;j<HRD_WIDTH;j++){
                 switch (state.getMap()[j][i]){
                     case HERO_TYPE_ZHANGFEI:{
                         big.setColor(Color.green);
+                        big.fillRect((j-1)*frame_cute_size, (i-1)*frame_cute_size, frame_cute_size, frame_cute_size);
                         break;
                     }
                     case HERO_TYPE_CAOCAO:{
@@ -66,7 +100,7 @@ public class HrdPlane extends JPanel implements CommStringInterface{
                 big.setColor(c);
 
             }
-        }
+        }*/
 
         g.drawImage(bi,0,0,null);
     }
