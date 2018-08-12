@@ -127,16 +127,26 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
         switch (type){
             case HERO_TYPE_ZHANGFEI:{
                 //up
-/*                int cv1 = state.getMap()[x+1][y];
+                int cv1 = state.getMap()[x+1][y];
                 //down
                 int cv2 = state.getMap()[x+1][y+2];
                 //俩张飞连一起
                 if (cv1==cv2){
+                    int cv3 = state.getMap()[x+1][y-1];
+                    int cv4 = state.getMap()[x+1][y+3];
+                    if (cv3 == HERO_TYPE_ZHANGFEI){
+                       // y=
+                    }
+                    if (cv4 == HERO_TYPE_ZHANGFEI){
+                        y=y-1;
+                    }
 
+                }else{
+                    if(cv1==HERO_TYPE_ZHANGFEI){
+                        y=y-1;
+                    }
                 }
-                if(cv1==HERO_TYPE_ZHANGFEI){
-                    y=y-1;
-                }*/
+
                 break;
             }
             case HERO_TYPE_CAOCAO:{
