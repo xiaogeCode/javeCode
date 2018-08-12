@@ -114,8 +114,53 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
 //        this.pack();
     }
 
-
+/**
+ * 功能描述: <br>
+ * 〈根据位置获取英雄〉
+   参数         [x, y]
+ * 返回 @return:int
+ * 作者 @Author:xiaoge
+ * 时间 @Date: 2018/8/12 9:33
+ */
     public int getHeroIdxbyLocation(int x,int y){
+        int type = state.getMap()[x+1][y+1];
+        switch (type){
+            case HERO_TYPE_ZHANGFEI:{
+                //up
+/*                int cv1 = state.getMap()[x+1][y];
+                //down
+                int cv2 = state.getMap()[x+1][y+2];
+                //俩张飞连一起
+                if (cv1==cv2){
+
+                }
+                if(cv1==HERO_TYPE_ZHANGFEI){
+                    y=y-1;
+                }*/
+                break;
+            }
+            case HERO_TYPE_CAOCAO:{
+                if(state.getMap()[x+1][y]==HERO_TYPE_CAOCAO){
+                    y=y-1;
+                }
+                if(state.getMap()[x][y+1]==HERO_TYPE_CAOCAO){
+                    x=x-1;
+                }
+                break;
+            }
+            case HERO_TYPE_GUANYU:{
+                if(state.getMap()[x][y+1]==HERO_TYPE_GUANYU){
+                    x=x-1;
+                }
+                break;
+            }
+            case HERO_TYPE_XIAOBING:{
+                break;
+            }
+            default:{
+                break;
+            }
+        }
         int index = -1;
         for (int i=0;i<state.getHeros().size();i++){
             Warrior hero = state.getHeros().get(i);

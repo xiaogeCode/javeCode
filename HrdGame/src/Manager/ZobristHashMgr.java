@@ -4,12 +4,8 @@ package Manager;
 import model.*;
 import util.CommStringInterface;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * Copyright (C), 2018-2018, XXX有限公司
@@ -22,7 +18,14 @@ import java.util.concurrent.CountDownLatch;
  * 作者姓名           修改时间           版本号              描述
  */
 public class ZobristHashMgr implements CommStringInterface{
-
+/**
+ * 功能描述: <br>
+ * 〈生成ZobristHasn基本数组〉
+   参数         []
+ * 返回 @return:model.ZobristHasn
+ * 作者 @Author:xiaoge
+ * 时间 @Date: 2018/8/12 9:27
+ */
     public static ZobristHasn MakebaseZobHash(){
         ZobristHasn hash = new ZobristHasn();
         for (int i=0;i<hash.getKey().length;i++){
@@ -49,7 +52,14 @@ public class ZobristHashMgr implements CommStringInterface{
 
         return hash;
     }
-
+/**
+ * 功能描述: <br>
+ * 〈获取指定地图的ZobristHasn编码〉
+   参数         [zobhash, state]
+ * 返回 @return:int
+ * 作者 @Author:xiaoge
+ * 时间 @Date: 2018/8/12 9:27
+ */
     public static int getZobrishHash(ZobristHasn zobhash, GameState state){
         int hash = 0;
          List<Warrior> heros = state.getHeros();
@@ -63,6 +73,14 @@ public class ZobristHashMgr implements CommStringInterface{
          }
          return hash;
      }
+     /**
+      * 功能描述: <br>
+      * 〈获取指定地图的ZobristHasn镜像编码〉
+        参数         [zobhash, state]
+      * 返回 @return:int
+      * 作者 @Author:xiaoge
+      * 时间 @Date: 2018/8/12 9:28
+      */
     int getMirrorZobrishHash(ZobristHasn zobhash, GameState state){
         int hash = 0;
         List<Warrior> heros = state.getHeros();
@@ -76,6 +94,14 @@ public class ZobristHashMgr implements CommStringInterface{
         }
         return hash;
     }
+    /**
+     * 功能描述: <br>
+     * 〈更新ZobristHasn编码〉
+       参数         [zobhash, state, heroIdx, dirIdx]
+     * 返回 @return:int
+     * 作者 @Author:xiaoge
+     * 时间 @Date: 2018/8/12 9:29
+     */
     int getZobrishHashUpdate(ZobristHasn zobhash, GameState state,int heroIdx,int dirIdx){
         int hash = 0;
         Warrior hero = state.getHeros().get(heroIdx);

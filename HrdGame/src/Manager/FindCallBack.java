@@ -15,5 +15,8 @@ import java.util.List;
  * 作者姓名           修改时间           版本号              描述
  */
 public interface FindCallBack {
+/*
+    搜索到解决方案接口
+*/
     public void findPath(List<GameState> list);
 }

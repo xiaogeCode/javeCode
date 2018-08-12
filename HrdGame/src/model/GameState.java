@@ -16,9 +16,21 @@ import java.util.List;
  * 作者姓名           修改时间           版本号              描述
  */
 public class GameState implements CommStringInterface{
+/*
+    地图二维信息
+*/
     int[][] map;
+/*
+    英雄位置列表
+*/
     List<Warrior> heros;
+/*
+    移动信息
+*/
     MoveAction move;
+/*
+    父类节点
+*/
     GameState parrent;
 
     public GameState() {
