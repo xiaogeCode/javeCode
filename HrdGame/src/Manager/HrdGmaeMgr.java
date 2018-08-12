@@ -554,7 +554,7 @@ public class HrdGmaeMgr implements CommStringInterface{
 /*
         超出10个英雄 或 地图生成个数大于9 退出递归
 */
-        if ((index>9) || (mapCreateCount>9)){
+        if ((index>9) || (mapCreateCount>20)){
             return;
         }
 /*

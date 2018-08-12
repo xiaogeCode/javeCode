@@ -29,7 +29,7 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
 /*
     停止展示移动动画
 */
-    boolean stopMoveShow = false;
+    boolean stopMoveShow = true;
 
 
     public HrdFrame() {
@@ -41,7 +41,6 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
                     @Override
                     public void run() {
                         for (int i= list.size()-1;(i>-1)&&(!stopMoveShow);i--){
-                            System.out.println("find repaint");
                             state= list.get(i);
                             getContentPane().removeAll();
                             setView();
@@ -51,6 +50,7 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
                                 e.printStackTrace();
                             }
                         }
+                        stopMoveShow = true;
 
                     }
                 }){
@@ -327,8 +327,10 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("Solve"))
         {
-            stopMoveShow = false;
-            hrdGmaeMgr.search(state);
+            if (stopMoveShow){
+                stopMoveShow = false;
+                hrdGmaeMgr.search(state);
+            }
         }
         if(e.getActionCommand().equals("MakeMap"))
         {
