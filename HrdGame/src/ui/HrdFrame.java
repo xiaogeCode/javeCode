@@ -26,23 +26,23 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
     HrdGmaeMgr hrdGmaeMgr;
     GameState state;
     Point preLocation;
+/*
+    停止展示移动动画
+*/
+    boolean stopMoveShow = false;
 
 
     public HrdFrame() {
         hrdGmaeMgr = new HrdGmaeMgr(new FindCallBack() {
             @Override
             public void findPath(List<GameState> list) {
-                System.out.println("frame update");
-                System.out.println("size: "+list.size());
+                System.out.println("步数: "+list.size());
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        for (int i= list.size()-1;i>-1;i--){
+                        for (int i= list.size()-1;(i>-1)&&(!stopMoveShow);i--){
                             System.out.println("find repaint");
-                            GameState tmpState= list.get(i);
-
-                            state= tmpState;
-
+                            state= list.get(i);
                             getContentPane().removeAll();
                             setView();
                             try {
@@ -107,9 +107,16 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
         mapMakeBtn.setLocation(120, frame_cute_size*(HRD_HEIGHT-2));
         mapMakeBtn.addActionListener(this);
 
+        JButton stopBtn = new JButton();
+        stopBtn.setText("stopMove");
+        stopBtn.setSize(100, 50);
+        stopBtn.setLocation(240, frame_cute_size*(HRD_HEIGHT-2));
+        stopBtn.addActionListener(this);
+
         this.getContentPane().add(gamePane);
         this.getContentPane().add(solveBtn);
         this.getContentPane().add(mapMakeBtn);
+        this.getContentPane().add(stopBtn);
         this.getContentPane().repaint();
 //        this.pack();
     }
@@ -320,6 +327,7 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("Solve"))
         {
+            stopMoveShow = false;
             hrdGmaeMgr.search(state);
         }
         if(e.getActionCommand().equals("MakeMap"))
@@ -327,6 +335,10 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
             state =hrdGmaeMgr.makeNewMapByRobot();
             this.getContentPane().removeAll();
             setView();
+        }
+        if(e.getActionCommand().equals("stopMove"))
+        {
+            stopMoveShow = true;
         }
     }
 }

@@ -501,6 +501,8 @@ public class HrdGmaeMgr implements CommStringInterface{
         if (mapList.size()>0){
             mapList.clear();
         }
+        mapCreateCount = 0;
+
         int[][] tmp = new int[HRD_WIDTH][HRD_HEIGHT];
         for (int i=0;i<HRD_WIDTH;i++){
             for (int j=0;j<HRD_HEIGHT;j++){
@@ -514,16 +516,30 @@ public class HrdGmaeMgr implements CommStringInterface{
 
             }
         }
+/*
+        随机安放第一个英雄曹操
+*/
         Random random = new Random();
         int caoX =random.nextInt(3);
         int caoY =random.nextInt(4);
+/*
+        安放除曹操外的其他英雄，生成地图
+*/
         placeHero(1,placeHeroToMap(0,tmp,caoX,caoY));
-        System.out.println("to state");
-        System.out.println("size:"+mapList.size());
-        //mapList.get(1).get(0)=new Point(2,1);
-        mapList.get(1).get(0).x = caoX;
-        mapList.get(1).get(0).y = caoY;
-        GameState state = getGamestateFromHeroPointList(mapList.get(1));
+/*
+        地图列表中随机取一个地图
+*/
+        int index = random.nextInt(mapList.size());
+/*
+        给地图中的曹操赋值
+*/
+        mapList.get(index).get(0).x = caoX;
+        mapList.get(index).get(0).y = caoY;
+/*
+        生成地图信息 gameState
+*/
+        GameState state = getGamestateFromHeroPointList(mapList.get(index));
+
         return state;
     }
     /**
@@ -564,11 +580,12 @@ public class HrdGmaeMgr implements CommStringInterface{
 /*
                         生成英雄放置表，加入地图列表
 */
-                        List<Point> tmpList = new ArrayList<Point>();
+                        List<Point> tmpList = new ArrayList<>();
                         for (Point pt:heroPointList) {
                             Point newPt= new Point(pt.x,pt.y);
                             tmpList.add(newPt);
                         }
+
                         mapList.add(tmpList);
                         System.out.println("count: "+mapCreateCount);
                         System.out.println("size c:"+mapList.size());
@@ -611,9 +628,6 @@ public class HrdGmaeMgr implements CommStringInterface{
                 tmpMap[i][j]=map[i][j];
             }
         }
-        int type[] = new int[]{HERO_TYPE_CAOCAO,HERO_TYPE_GUANYU,
-                HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI,HERO_TYPE_ZHANGFEI, HERO_TYPE_ZHANGFEI,
-                HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING,HERO_TYPE_XIAOBING};
 
         int curType = type[index];
         switch (curType){
