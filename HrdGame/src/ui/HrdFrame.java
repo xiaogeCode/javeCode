@@ -34,9 +34,13 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
 
     public HrdFrame() {
         hrdGmaeMgr = new HrdGmaeMgr(new FindCallBack() {
+/*
+            处理搜索到结果后的回调
+*/
             @Override
             public void findPath(List<GameState> list) {
                 System.out.println("步数: "+list.size());
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -112,6 +116,7 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
         stopBtn.setSize(100, 50);
         stopBtn.setLocation(240, frame_cute_size*(HRD_HEIGHT-2));
         stopBtn.addActionListener(this);
+
 
         this.getContentPane().add(gamePane);
         this.getContentPane().add(solveBtn);

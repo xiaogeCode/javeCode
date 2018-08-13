@@ -587,8 +587,6 @@ public class HrdGmaeMgr implements CommStringInterface{
                         }
 
                         mapList.add(tmpList);
-                        System.out.println("count: "+mapCreateCount);
-                        System.out.println("size c:"+mapList.size());
                     }else {
 /*
                         递归放入下一个英雄

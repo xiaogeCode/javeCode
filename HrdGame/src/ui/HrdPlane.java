@@ -48,7 +48,7 @@ public class HrdPlane extends JPanel implements CommStringInterface{
                     break;
                 }
                 case HERO_TYPE_CAOCAO:{
-                    big.setColor(Color.red);
+                    big.setColor(Color.green);
                     big.fillRect(x*frame_cute_size, y*frame_cute_size, frame_cute_size*2-1, frame_cute_size*2-1);
                     break;
                 }
@@ -58,7 +58,7 @@ public class HrdPlane extends JPanel implements CommStringInterface{
                     break;
                 }
                 case HERO_TYPE_XIAOBING:{
-                    big.setColor(Color.green);
+                    big.setColor(Color.red);
                     big.fillRect(x*frame_cute_size, y*frame_cute_size, frame_cute_size-1, frame_cute_size-1);
                     break;
                 }
