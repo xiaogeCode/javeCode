@@ -23,11 +23,11 @@ public class AlertDialog{
 		label.setBounds(150,6,200,20);  
 		
 		dialog = new JDialog(father, true);  
-		dialog.setTitle("提示: 本窗口将在"+sec+"秒后自动关闭"); 
+		dialog.setTitle("灏嗗湪"+sec+"绉掑唴娑堝け");
 		dialog.setLayout(null);  
-		dialog.add(label);  
-		
-		ScheduledExecutorService s = Executors.newSingleThreadScheduledExecutor();  
+		dialog.add(label);
+
+		ScheduledExecutorService s = Executors.newSingleThreadScheduledExecutor();
 		 s.scheduleAtFixedRate(new Runnable() {
 			 @Override 
 		      public void run() { 
@@ -36,7 +36,7 @@ public class AlertDialog{
 				 if(AlertDialog.this.secends == 0) {  
 	                	AlertDialog.this.dialog.dispose(); 
 	             }else {  
-	                     dialog.setTitle("提示: 本窗口将在"+secends+"秒后自动关闭");  
+	                     dialog.setTitle("灏嗗湪"+secends+"绉掑唴娑堝け");
 	             }   
 			 }
 		  }, 1, 1, TimeUnit.SECONDS);       
