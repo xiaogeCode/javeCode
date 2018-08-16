@@ -7,10 +7,7 @@ import util.CommStringInterface;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,11 +21,13 @@ import java.util.List;
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-public class GameFrame extends JFrame implements CommStringInterface,MouseListener{
+public class GameFrame extends JFrame implements CommStringInterface,MouseListener,KeyListener{
     int[][] map;
     List<Point> path = new ArrayList<>();
-    Point curPoint  = new Point(1,1);
+    Point curPoint  = new Point(4,5);
     Point goalPoint;
+
+    int titlebarH;
 
     public GameFrame(){
         SearchPathManager searchPathManager = new SearchPathManager();
@@ -47,7 +46,7 @@ public class GameFrame extends JFrame implements CommStringInterface,MouseListen
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //this.addKeyListener(this);
+        this.addKeyListener(this);
         this.addMouseListener(this);
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -57,6 +56,10 @@ public class GameFrame extends JFrame implements CommStringInterface,MouseListen
         });
     }
     public void setMapView(){
+        //frame标题栏高度
+        Insets set=this.getInsets();
+        titlebarH=set.top;
+
         MapPanel gamePane = new MapPanel();
         if (path.size()>0){
             gamePane.setPath(path);
@@ -84,14 +87,16 @@ public class GameFrame extends JFrame implements CommStringInterface,MouseListen
     public void mousePressed(MouseEvent e) {
         //frame标题栏高度
         Insets set=this.getInsets();
-        int titlebarH=set.top;
+        titlebarH=set.top;
 
         Point curLocation = new Point(e.getX(),e.getY()-titlebarH);
         int locaX = curLocation.x/frame_cute_size;
         int locaY = curLocation.y/frame_cute_size;
 
-        System.out.println("x,y: "+locaX+","+locaY);
         goalPoint = new Point(locaX+1,locaY+1);
+
+        //当前位置不是障碍物
+        map[curPoint.x][curPoint.y] = 0;
 
         SearchPathManager searchPathManager = new SearchPathManager();
         CellNode beginNode = new CellNode();
@@ -139,6 +144,46 @@ public class GameFrame extends JFrame implements CommStringInterface,MouseListen
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch(KeyEvent.getKeyText(e.getKeyCode())){
+            case "A":{
+                break;
+            }
+
+            case "D":
+                break;
+            case "S":{
+            }
+
+            break;
+            case " ":
+                break;
+            case "Enter": {
+                System.out.println(KeyEvent.getKeyText(e.getKeyCode()));
+                SearchPathManager searchPathManager = new SearchPathManager();
+                map=searchPathManager.makeMap();
+                this.getContentPane().removeAll();
+                setMapView();
+                break;
+            }
+            default:{
+                break;
+            }
+        }
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }

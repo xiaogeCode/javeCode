@@ -55,11 +55,7 @@ public class SearchPathManager implements CommStringInterface{
 
             }
         }
-        //tmp[2][1]=1;
-        //tmp[2][2]=1;
 
-        //tmp[3][4]=1;
-        //tmp[3][5]=1;
         tmp[1][1]=0;
         return tmp;
     }
@@ -73,10 +69,11 @@ public class SearchPathManager implements CommStringInterface{
         boolean find =false;
         int k = 0;
         while ((openList.getList().size() > 0)&&(!find)) {
-            //System.out.println("第"+k+"次");
+            System.out.println("第"+k+"次");
             k++;
             //每次获取f值最小的节点
             CellNode curNode = openList.getLastItem();
+            //System.out.println("fvalue: "+curNode.getfValue()+"id: "+curNode.getId());
 
             //对节点进行四个方向的尝试
             for (int i=0;i<4;i++) {
@@ -113,15 +110,16 @@ public class SearchPathManager implements CommStringInterface{
                         }
                     }else{
                         //更新 f g h 的值
-//                        CellNode openNode = openList.getItemById(newNode.getId());
-//                        if (newNode.getgValue()<openNode.getgValue()){
-//                            openNode.setgValue(newNode.getgValue());
-//                            openNode.setfValue(openNode.gethValur()+openNode.getgValue());
-//                            //更新在openlist中的位置
-//                            openList.deleteItemById(openNode.getId());
-//                            openList.addItem(openNode);
-//                            System.out.println("update");
-//                        }
+                        CellNode openNode = openList.getItemById(newNode.getId());
+                        if (newNode.getgValue()<openNode.getgValue()){
+                            openNode.setgValue(newNode.getgValue());
+                            openNode.setfValue(openNode.gethValur()+openNode.getgValue());
+                            openNode.setParrent(curNode);
+                            //更新在openlist中的位置
+                            openList.deleteItemById(newNode.getId());
+                            openList.addItem(openNode);
+                            System.out.println("update");
+                        }
                     }
                 }
             }
@@ -135,8 +133,8 @@ public class SearchPathManager implements CommStringInterface{
     }
 
     private int getHvalue(CellNode curNode,CellNode goalNode) {
-        return Math.abs(goalNode.getLocation().x-curNode.getLocation().x)+
-                Math.abs(goalNode.getLocation().y-curNode.getLocation().y);
+        return (Math.abs(goalNode.getLocation().x-curNode.getLocation().x)+
+                Math.abs(goalNode.getLocation().y-curNode.getLocation().y));
     }
 
     private boolean canMove(int[][]map, CellNode node,int dirIdx) {
