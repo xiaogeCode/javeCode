@@ -1,0 +1,375 @@
+archlinux 安装教程
+
+参考：1 Archlinux 2015.07.01 和 Windows7 双系统 安装程:
+	https://www.cnblogs.com/fangying7/p/3803290.html
+         2 UEFI安装Arch's KDE桌面全过程:
+	https://blog.csdn.net/aemonair/article/details/60360526
+         3 ArchLinux安装图文教程:
+	https://blog.csdn.net/r8l8q8/article/details/76516523
+         4 Linux系统增加虚拟磁盘，命令fdisk磁盘分区及划分分区详解
+	https://blog.csdn.net/MrDing991124/article/details/78429668?locationNum=9&fps=1
+         5 Win10 上 安装 ArchLinux（BIOS 引导）
+	https://blog.csdn.net/CristianoJason/article/details/80033330
+
+提前在windows7下给Archlinux预留一个分区，大小最好在20G以上(根据自己硬盘情况分配)。
+
+第一步，安装前的准备
+
+　　从arch官网下载最新的ISO文件archlinux-2015.07.01-dual.iso（包含X86和X64双版本），地址 https://www.archlinux.org/download/
+
+　　使用rufus 将镜像文件写入U盘（注意U盘文件会被全部删除），用U盘作为启动盘。
+
+第二部，开始安装工作
+
+1，硬盘分区
+
+      根据自己喜欢的方案进行分区，建议分四个区
+
+　　/dev/sda1 用作boot分区（容量分配：1024M=1G）
+
+　　/dev/sda2 用作交换分区（容量分配：2048M=2G）
+
+　　/dev/sda3 用作root分区（容量分配：10G）
+
+　　/dev/sda4 用作home分区（容量分配：10G）
+       具体操作如下：
+
+　　（1）：使用 fdisk -l 查看分区
+
+　　（2）：找到你分配的20G分区的符号，例如 /dev/sda7
+
+　　（3）：fdisk /dev/sd7 进入分区进行操作
+	n 新建
+	选p，建立主分区
+	分区号
+	开始位置，默认
+	结束位置，+5G
+	
+	分完区后，按w保存退出。按q无保存退出，按P可查看分区情况
+2，安装文件系统
+
+　　（1）$ mkfs.ext4  /dev/sda1
+
+　　（2）$ mkfs.ext4  /dev/sda3
+
+　　（3）$ mkfs.ext4  /dev/sda4
+
+　　（4）$ mkswap /dev/sda2
+3，挂载分区
+
+　　（1）mount /dev/sda3 /mnt ：挂载根文件系统
+
+　　（2）mkdir /mnt/boot
+
+　　　　  mount /dev/sda1 /mnt/boot：挂载boot分区
+
+　　（3）swapon /dev/sda2：挂载交换分区
+
+　　（4）mkdir /mnt/home
+
+　　　　 mount /dev/sda4 /mnt/home：挂载home目录
+
+4，配置更新源（可略过）
+
+　　推荐国内的用户选择mirrors.163.com，在校大学生推荐使用校园网的更新源（IPV6超给力！）
+
+　　具体步骤：
+
+　　（1）cd /etc/pacman.d
+
+　　（2）nano mirrorlist
+
+　　（3）将mirrors.ustc.edu.cn和mirrors6.ustc.edu.cn前面的#去掉
+	或者：注释掉第一个镜像站，在前面加2个##,将 第二个镜像站：mirrors.xxxxxx.com/……的	xxxxxx改为163,mirror要改为mirrors
+	也可以手动注释掉或者删除掉非中国的镜像站 
+
+　　（4）pacman -Syy
+
+5，连接网络
+笔记本：
+	执行:
+	# wifi-menu连接wifi
+	或者：
+	# pppoe-setup
+
+	进行配置或者：
+	# systemctl start adsl
+
+	进行 adsl连接
+	连接完后，执行：
+	# ping www.baidu.com  可按ctr+z取消ping
+
+	或其他网址测试网络是否通
+或者：
+　　使用wifi-menu连接无线网络
+
+　　（1）wifi-menu选择对应的无线网络，wifi-menu依赖 wpa_supplicant，diloag等包文件。
+
+    　　  查看网络信息，检查网络有效性。从systemd 197开始，udev不再按照wlanX，ethX的方式分配网络接口的名字。
+
+　　　　若你是从其他发行版转来，请不要认为有线接口名字就是eth0，无线接口是wlan0。
+
+　　　　1）ip link　　　　　　：有线网络一般以[e]开头（例如：ens33），无线网络一般以[w]开头（例如wlps30）
+
+　　　　2）ping -c 3 www.baidu.com
+
+　　如果无法联网，ifconfig查看网卡，然后运行 dhcp #网卡，或者运行dhcpcd（hpcd守护进程）。
+
+　　虚拟机安装，请确保虚拟机服务都正常。例如，vmware NAT service等等
+
+　　（3）systemctl enable dhcpcd.service：开机自动运行 dhcpcd守护进程
+
+　　　　  systemctl start dhcpcd.service：运行dhcp服务
+
+　　使用HTTP代理
+
+　　　　一个命令行命令搞定
+
+　　（1） export http_proxy=http://username@ipaddr/port
+
+　　　　例如：export http_proxy=http://192/168.0.101:808/
+
+　　安装完成后取消代理，同样一个命令搞定
+
+　　（2）unset http_proxy
+6，安装base系统
+
+　　一般人而言只需要安装base 和base-devel
+
+　　具体步骤:
+　　（1）：pacstrap /mnt base base-devel
+
+7，升级软件包到最新状态
+
+　　（1）pacman -Syu
+
+8，生成fstab文件（配置文件系统）
+
+　　（1）genfstab -p /mnt >> /mnt/etc/fstab
+
+9，根目录切换
+
+　　（1）arch-chroot /mnt
+
+11，设定locale本地化
+
+　　（1）nano /etc/locale.gen
+
+　　　　选定你需要的本地化类型(移除前面的＃即可), 中文系统可以使用,（去掉#）:
+
+　　　　en_US.UTF-8 UTF-8
+
+　　　　//zh_CN.GB18030 GB18030
+
+ 　　　  //zh_CN.GBK GBK
+
+　　　　zh_CN.UTF-8 UTF-8
+
+　　　　//zh_CN GB2312
+
+　　（2）locale-gen 运行
+
+　　（3）创建locale.conf文件
+
+　　　　不建议使用中文，这里会导致tty乱码，见https://wiki.archlinux.org/index.php/Archlinux%E4%B8%AD%E6%96%87%E5%8C%96#.E5.AE.89.E8.A3.85.E4.B8.AD.E6.96.87.E5.AD.97.E4.BD.93
+
+　　　 #nano /etc/locale.conf
+
+　　　　LANG=en_US.UTF-8:　
+
+　　（4）创建/etc/timezone
+
+　　　　    Asia/Shanghai
+	# ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+	也可以执行：
+	# hwclock --systohc --utc 设置硬件时间
+12，设置root用户密码并创建一个用户
+	（1）设置root密码
+	执行:# passwd 
+	（2）添加用户
+	执行:#useradd -m -g users -G wheel -s /bin/bash arch64 :创建一个普通用户，属于	users用户组，指定shell为bash，用户名为arch64
+	（务必添加一个 用户 ，否则后面sddm显示管理器登录的时候无法登录，sddm不会列出	root用户）
+	执行：# passwd 用户名       为刚才添加的用户设置密码
+	执行：# nano /etc/sudoers
+	在 root ALL=(ALL) ALL 下面添加
+	用户名 ALL=(ALL) ALL
+	为你刚才创建的用户 添加sudo权限
+13，安装和配置grub启动器
+
+　　（1）pacman -S grub-bios
+
+　　（2）grub-install --recheck  /dev/sda
+
+　　（3）pacman -S os-prober ：检测其他操作系统，
+
+　　（4）grub-mkconfig -o /boot/grub/grub.cfg	
+或者：针对 BIOS 引导
+	1 安装 os-prober，用于配合 grub 检测已经存在的系统和自动设置启动选项
+	[root@archiso /]# pacman -S os-prober
+	2 安装 grub
+	[root@archiso /]# pacman -S grub
+	3部署 grub 注意最后一项是磁盘的名字，而不是刚才划出来的分区名
+	[root@archiso /]# grub-install --target=i386-pc /dev/nvme0n1
+	Installing for i386-pc platform.
+	Installation finished. No error reported.
+	报了上述错误，据说重启再输入一遍这条命令即可，对我来说确实是这样，但是重启后一定要把 U 盘拔掉，报的错误是 /dev/sda1 ，这个分区在 U 盘上。
+	4 检测是否安装成功
+	[root@archiso /]# vim /boot/grub/grub.cfg
+	文件尾部能够找到 win10 所在的分区
+ 	退出vim的快捷键，不需要进入命令编辑模式
+	按住shift
+	zz    保存退出
+	zq    不保存退出，q表示放弃
+	之所以按住shift，其实是切换大小写
+ 	在命令编辑模式下：
+	:q 不保存退出
+	:q! 不保存强制退出
+	:wq 保存退出，w表示写入，不论是否修改，都会更改时间戳
+	:x     保存退出，如果内容未改，不会更改时间戳
+
+14，创建初始 ramdisk环境
+
+ 　  （1）mkinitcpio -p linux
+
+15，安装测试声卡环境
+
+　　（1）pacman -S alsa-utils
+
+　　（2）alsamixer :选择非静音模式
+
+　　（3）aplay /usr/share/sounds/alsa/Front_Center.wav：播放并聆听声音
+
+16，开启自动管理网络
+
+　　（1）systemctl enable dhcpcd@.service
+        (2)   安装wifi工具：
+	pacman -S dialog  # 命令行图形框
+	pacman -S wpa_supplicant netctl wireless_tools #无线网络配置和管理网络连接
+         (3)  安装vim   
+	pacman -S vim	
+	安装 sudo
+
+         4 	# pacman -S sudo
+
+17，设置主机名
+
+　　（1）echo ArchLinux > /etc/hostname
+
+18，卸载分区并重启
+
+　　（1）exit
+
+　　（2）exit
+
+　　（3）umount /mnt
+
+　　（4）reboot
+
+　　到这里，结束基本系统的安装
+（笔记本请直接跳到下面网络配置，安装无线网络相关模块）
+(也可以不重启，直接进行下面的网络配置和桌面环境配置）‘
+
+第三步，安装桌面环境
+
+要以新建的用户登陆 每条命令前面要加sudo
+
+1 重启后要重新进行网路配置 ，用ping检测，Ping通、
+
+	（1）有线连接
+
+	#sudo systemctl enable dhcpcd
+	root下执行不了此命令，可以省略，执行完下面的命令一会重启会自动启动dhcpcd服务）
+	启动dhcpcd
+	# systemctl enable dhcpcd	开机自动启动dhcp服务 
+	命令不生效的话，加入下面命令
+	sudo systemctl start deluged
+	sudo dhcpcd
+
+	（2）无线连接：
+
+	# pacman -S iw wpa_supplicant dialog
+
+
+	（3）ADSL 宽带连接：
+
+	# pacman -S rp-pppoe# pppoe-setup # systemctl start adsl
+
+  	（chroot下执行不了此命令）# systemctl enable adsl
+2 安装显卡驱动
+
+	确定显卡型号
+	执行:# lspci | grep VGA
+	执行：# pacman -S 驱动包
+	官方仓库提供的驱动包:
+	通用———————————-xf86-video-vesa
+	intel———————————-xf86-video-intel
+	Geforce7+————————–xf86-video-nouveau
+	Geforce6/7————————-xf86-video-304xx
+3 安装X窗口系统
+（提示没权限的话，命令前面加sudo）
+	安装X系统
+	pacman -S xorg xorg-xinit
+	或者:桌面环境需要图形服务的支持，这里选择开源图形服务 xorg， 安装其所有组件即可
+	sudo pacman -S xorg
+
+	安装触摸板驱动(笔记本)
+	pacman -S xf86-input-synaptics
+	图形化界面基本应用
+	pacman -S xorg-twm  # 图形化窗口管理工具Tab Window Manager
+	pacman -S xterm  # 标准虚拟终端
+	pacman -S ttf-dejavu wqy-microhei # 字体包
+4安装kde-plasma桌面环境
+	直接 pacman -S plasma konsole dolphin
+	老版本是以下：
+	pacman -S kf5 kf5-aids
+	pacman -S plasma kdebase  # KDE Plasma 桌面环境及基础包
+	pacman -S  gwenview # KDE图片浏览工具
+	pacman -S kdegraphics  # 图像处理相关工具的软件包
+	pacman -S plasma-mediacenter # 媒体中心
+	pacman -S sddm sddm-kcm # 用于X11和wayland视窗系统的显示管理器（图形登录界面	）
+	systemctl enable sddm # 开启sddm服务
+
+	vim /etc/sddm.conf # 可以编辑sddm配置文件
+	[Theme]   
+	Current=breeze      
+	CursorTheme=breeze_cursors 
+
+	pacman -S gtk-engines gtk2 gtk3 # 跨平台的图形工具包
+	pacman -S gnome-themes-standard gnome-icon-theme # 显示的主题及图标
+	pacman -S gvfs gamin # GNOME桌面系统的虚拟文件系统+文件和目录监控系统
+
+	解压缩软件
+	pacman -S p7zip
+	pacman -S zip
+	pacman -S unzip
+	pacman -S rar
+	pacman -S unrar
+
+	安装NTFS系统识别
+	pacman -S ntfs-3g
+
+	安装kde中文语言包
+	pacman -S kde-l10n-zh_cn
+
+	安装KDE桌面应用
+	pacman -S kde-applications
+
+	networkmanager网络管理
+	pacman -S networkmanager
+	pacman -S net-tools
+	systemctl enable NetworkManager
+	systemctl enable dhcpcd
+
+	安装fcitx输入法
+	pacman -S fcitx fcitx-rime
+	pacman -S fcitx-im
+	pacman -S kcm-fcitx
+
+	vim /home/air/.xprofile
+	加入以下内容到家目录～/.xprofile :
+
+	export LANG=zh_CN.UTF-8  
+	export LC_ALL=zh_CN.UTF-8  
+	export GTK_IM_MODULE=fcitx  
+	export QT_IM_MODULE=fcitx  
+	export XMODIFIERS="@im=fcitx" 
