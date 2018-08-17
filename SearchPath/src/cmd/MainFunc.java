@@ -16,22 +16,6 @@ import ui.GameFrame;
  */
 public class MainFunc {
     public static void main(String[] args) {
-        System.out.println("text");
-        MinheapList list = new MinheapList();
-        int i=0;
-        while (i <5) {
-            CellNode tmp = new CellNode();
-            tmp.setfValue(i);
-            list.addItem(tmp);
-            i++;
-        }
-        for (CellNode tmp:list.getList()) {
-            System.out.println(tmp.getfValue());
-        }
-        CellNode last = list.getLastItem();
-        list.deleteLastItem();
-        System.out.println(last);
-        System.out.println(last.getfValue());
         new GameFrame();
     }
 }

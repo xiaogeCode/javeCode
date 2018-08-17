@@ -50,6 +50,7 @@ public class MapPanel extends JPanel implements CommStringInterface{
         Graphics big =bi.getGraphics();
 
         Color c =big.getColor();
+        //绘画地图
         for (int i=1;i<MAP_WIDTH-1;i++){
             for (int j=1;j<MAP_HEIGHT-1;j++){
                 switch (map[i][j]){

@@ -99,11 +99,6 @@ public class GameFrame extends JFrame implements CommStringInterface,MouseListen
         map[curPoint.x][curPoint.y] = 0;
 
         SearchPathManager searchPathManager = new SearchPathManager();
-        CellNode beginNode = new CellNode();
-        beginNode.setLocation(curPoint);
-        CellNode goalNode = new CellNode();
-        goalNode.setLocation(new Point(goalPoint));
-
         searchPathManager.setFindCallBack(new FindCallBack() {
             @Override
             public void findPath(List<CellNode> list) {
@@ -128,7 +123,7 @@ public class GameFrame extends JFrame implements CommStringInterface,MouseListen
                 }.start();*/
             }
         });
-        searchPathManager.search(map,beginNode,goalNode);
+        searchPathManager.searchBetweenTwoPoints(map,curPoint,goalPoint);
 
     }
 

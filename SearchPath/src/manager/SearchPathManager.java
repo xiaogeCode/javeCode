@@ -20,7 +20,9 @@ import java.util.Random;
  * 作者姓名           修改时间           版本号              描述
  */
 public class SearchPathManager implements CommStringInterface{
+    //最小堆，存储待处理节点
     MinheapList openList;
+    //存储已经处理过的节点
     List<CellNode> closeList;
 
     //找到后返回接口，用来展示搜索到的结果
@@ -33,9 +35,25 @@ public class SearchPathManager implements CommStringInterface{
         closeList = new ArrayList<>();
         resultList = new ArrayList<>();
     }
+    /**
+     * 功能描述: <br>
+     * 〈寻找到路径后的接口〉
+       参数         [findCallBack]
+     * 返回 @return:void
+     * 作者 @Author:xiaoge
+     * 时间 @Date: 2018/8/17 12:01
+     */
     public void setFindCallBack(FindCallBack findCallBack) {
         this.findCallBack = findCallBack;
     }
+    /**
+     * 功能描述: <br>
+     * 〈随机生成地图〉
+       参数         []
+     * 返回 @return:int[][]
+     * 作者 @Author:xiaoge
+     * 时间 @Date: 2018/8/17 12:01
+     */
     public int[][] makeMap() {
         int[][] tmp = new int[MAP_WIDTH][MAP_HEIGHT];
         for (int i=0;i<MAP_WIDTH;i++){
@@ -59,11 +77,39 @@ public class SearchPathManager implements CommStringInterface{
         tmp[1][1]=0;
         return tmp;
     }
+    /**
+     * 功能描述: <br>
+     * 〈根据俩点寻找路径〉
+       参数         [map, begin, end]
+     * 返回 @return:void
+     * 作者 @Author:xiaoge
+     * 时间 @Date: 2018/8/17 11:56
+     */
+    public void searchBetweenTwoPoints(int[][]map, Point  begin,Point end){
+        //设置开始节点
+        CellNode beginNode = new CellNode();
+        beginNode.setLocation(begin);
+        beginNode.setgValue(0);
+        beginNode.setId(beginNode.getLocation().x+beginNode.getLocation().y*MAP_WIDTH);
 
+        //设置结束节点
+        CellNode goalNode = new CellNode();
+        goalNode.setLocation(new Point(end));
 
-    public void search(int[][]map, CellNode node,CellNode goalNode) {
-        node.setgValue(0);
-        node.setId(node.getLocation().x+node.getLocation().y*MAP_WIDTH);
+        search(map,beginNode,goalNode);
+
+    }
+
+/**
+ * 功能描述: <br>
+ * 〈根据俩节点寻找路径〉
+   参数         [map, node, goalNode]
+ * 返回 @return:void
+ * 作者 @Author:xiaoge
+ * 时间 @Date: 2018/8/17 11:56
+ */
+    private void search(int[][]map, CellNode node,CellNode goalNode) {
+        //将开始节点加入到待处理表--openlist 表中
         openList.addItem(node);
 
         boolean find =false;
@@ -79,19 +125,8 @@ public class SearchPathManager implements CommStringInterface{
             for (int i=0;i<4;i++) {
                 //节点可以向指定方向i 行走
                 if (canMove(map,curNode,i)) {
-                    //CellNode newNode = moveToNewNode(map,curNode,i);
-                    //生成新节点
-                    Direction dir = DIRECTIONS[i] ;
-                    int x = curNode.getLocation().x+dir.getHd();
-                    int y = curNode.getLocation().y+dir.getVd();
-                    CellNode newNode = new CellNode();
-                    newNode.setLocation(new Point(x,y));
-                    newNode.setId(newNode.getLocation().x+newNode.getLocation().y*MAP_WIDTH);
-                    //设置 g,h,f的值
-                    newNode.sethValur(getHvalue(newNode,goalNode));
-                    newNode.setgValue(curNode.getgValue()+1);
-                    newNode.setfValue(newNode.gethValur()+newNode.getgValue());
-
+                    //根据移动方向生成新节点
+                    CellNode newNode = moveToNewNode(map,curNode,goalNode,i);
                     //新节点不在待处理列表中
                     if ((openList.getItemById(newNode.getId()) == null)) {
                         // 也不在已经处理过的列表中
@@ -114,6 +149,7 @@ public class SearchPathManager implements CommStringInterface{
                         if (newNode.getgValue()<openNode.getgValue()){
                             openNode.setgValue(newNode.getgValue());
                             openNode.setfValue(openNode.gethValur()+openNode.getgValue());
+                            //重新设置父类
                             openNode.setParrent(curNode);
                             //更新在openlist中的位置
                             openList.deleteItemById(newNode.getId());
@@ -131,12 +167,26 @@ public class SearchPathManager implements CommStringInterface{
 
 
     }
-
+/**
+ * 功能描述: <br>
+ * 〈获取h值〉
+   参数         [curNode, goalNode]
+ * 返回 @return:int
+ * 作者 @Author:xiaoge
+ * 时间 @Date: 2018/8/17 11:58
+ */
     private int getHvalue(CellNode curNode,CellNode goalNode) {
         return (Math.abs(goalNode.getLocation().x-curNode.getLocation().x)+
                 Math.abs(goalNode.getLocation().y-curNode.getLocation().y));
     }
-
+/**
+ * 功能描述: <br>
+ * 〈判断是否可按指定方向移动〉
+   参数         [map, node, dirIdx]
+ * 返回 @return:boolean
+ * 作者 @Author:xiaoge
+ * 时间 @Date: 2018/8/17 11:58
+ */
     private boolean canMove(int[][]map, CellNode node,int dirIdx) {
         Direction dir = DIRECTIONS[dirIdx] ;
         int x = node.getLocation().x+dir.getHd();
@@ -146,10 +196,36 @@ public class SearchPathManager implements CommStringInterface{
         }
         return false;
     }
-
-    private CellNode moveToNewNode(int[][]map, CellNode node,int dir) {
-        return null;
+/**
+ * 功能描述: <br>
+ * 〈当前节点按指定方向移动生成新节点〉
+   参数         [map, curNode, goalNode, dirIdx]
+ * 返回 @return:model.CellNode
+ * 作者 @Author:xiaoge
+ * 时间 @Date: 2018/8/17 11:58
+ */
+    private CellNode moveToNewNode(int[][]map, CellNode curNode,CellNode goalNode,int dirIdx) {
+        //生成新节点
+        Direction dir = DIRECTIONS[dirIdx] ;
+        int x = curNode.getLocation().x+dir.getHd();
+        int y = curNode.getLocation().y+dir.getVd();
+        CellNode newNode = new CellNode();
+        newNode.setLocation(new Point(x,y));
+        newNode.setId(newNode.getLocation().x+newNode.getLocation().y*MAP_WIDTH);
+        //设置 g,h,f的值
+        newNode.sethValur(getHvalue(newNode,goalNode));
+        newNode.setgValue(curNode.getgValue()+1);
+        newNode.setfValue(newNode.gethValur()+newNode.getgValue());
+        return newNode;
     }
+    /**
+     * 功能描述: <br>
+     * 〈判断是否在已处理表closelist中〉
+       参数         [id]
+     * 返回 @return:boolean
+     * 作者 @Author:xiaoge
+     * 时间 @Date: 2018/8/17 11:59
+     */
     public boolean existInClosedList(int id){
         for (CellNode tmp:closeList) {
             if (tmp.getId() == id) {
@@ -158,6 +234,14 @@ public class SearchPathManager implements CommStringInterface{
         }
         return false;
     }
+    /**
+     * 功能描述: <br>
+     * 〈由一个节点向上倒推其父类〉
+       参数         [newNode]
+     * 返回 @return:void
+     * 作者 @Author:xiaoge
+     * 时间 @Date: 2018/8/17 12:00
+     */
     private void findPath(CellNode newNode) {
         if (resultList.size()>0){
             resultList.clear();
