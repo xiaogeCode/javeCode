@@ -37,7 +37,7 @@ public class GameFrame extends JFrame implements CommStringInterface,MouseListen
     }
 
     public void setFrame(){
-        this.setTitle("go");
+        this.setTitle("A*寻路");
         this.setSize(frame_cute_size*(MAP_WIDTH-2), frame_cute_size*(MAP_HEIGHT-1));
         this.setLocation(400, 50);
         this.setResizable(false);

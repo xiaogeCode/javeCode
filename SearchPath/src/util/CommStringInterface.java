@@ -13,9 +13,9 @@ import model.Direction;
  * 作者姓名           修改时间           版本号              描述
  */
 public interface CommStringInterface {
-    public final int MAP_WIDTH = 20;
-    public final int MAP_HEIGHT = 15;
-    public final int frame_cute_size = 50;
+    public final int MAP_WIDTH = 40;
+    public final int MAP_HEIGHT = 32;
+    public final int frame_cute_size = 20;
 
     /*up ritht down left*/
     public final Direction[] DIRECTIONS = {new Direction(0,-1),new Direction(1,0),new Direction(0,1),new Direction(-1,0)};

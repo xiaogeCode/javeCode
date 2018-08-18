@@ -109,13 +109,19 @@ public class SearchPathManager implements CommStringInterface{
  * 时间 @Date: 2018/8/17 11:56
  */
     private void search(int[][]map, CellNode node,CellNode goalNode) {
+        int goalX = goalNode.getLocation().x;
+        int goalY = goalNode.getLocation().y;
+        //目标点是障碍物 不寻路
+        if (map[goalX][goalY] == 1) {
+            return;
+        }
         //将开始节点加入到待处理表--openlist 表中
         openList.addItem(node);
 
         boolean find =false;
         int k = 0;
         while ((openList.getList().size() > 0)&&(!find)) {
-            System.out.println("第"+k+"次");
+            //System.out.println("第"+k+"次");
             k++;
             //每次获取f值最小的节点
             CellNode curNode = openList.getLastItem();
@@ -140,6 +146,7 @@ public class SearchPathManager implements CommStringInterface{
                                     (newNode.getLocation().y == goalNode.getLocation().y)) {
                                 find = true;
                                 System.out.println("find the path");
+                                System.out.println("寻找次数： "+k);
                                 findPath(newNode);
                             }
                         }
@@ -154,7 +161,7 @@ public class SearchPathManager implements CommStringInterface{
                             //更新在openlist中的位置
                             openList.deleteItemById(newNode.getId());
                             openList.addItem(openNode);
-                            System.out.println("update");
+                            //System.out.println("update");
                         }
                     }
                 }
