@@ -1,4 +1,6 @@
 package russiaCuteGame;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
+
 import java.awt.*;
 
 import javax.swing.*;
@@ -13,38 +15,41 @@ import java.util.Random;
 
 import java.util.TimerTask;
 import java.util.Timer;  
-
-//import java.awt.Dimension;
-//import java.awt.FlowLayout;
 import java.awt.FontMetrics;
-//import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class GameFrame extends JFrame implements KeyListener{
 
-	int map_width,map_height,cute_len; 	//
-	int current_cuteArray[][];
-	int next_cuteArray[][];			 	//
-	int map_array[][];					//
-	int current_x;						//
-	int current_y;
-	int current_cute_type;
-	int next_cute_type;					//
-	boolean	isQuickMove;
-	Timer timer=new Timer();
-	int score=0;						//
-	int time_interver=1000;				//
-	boolean	isPause=false;					//
+	private int mapWidth, mapHeight, cuteLen;
+    private int[][] currentCuteArray;
+    private int[][] nextCuteArray;
+    private int[][] mapArray;
+    private int currentX;
+    private int currentY;
+    private int currentCuteType;
+    private int nextCuteType;
+    private boolean	isQuickMove;
+    private Timer timer=new Timer();
+	/**
+	 *使用ScheduledExecutorService代替Timer
+	 */
+    private ScheduledExecutorService executorService = null;
+    private int score=0;
+    private int timeInterver =1000;
+    private boolean	isPause=false;
 	
 	public GameFrame(int width,int heigh){
-		this.map_width = width;
-		this.map_height = heigh;
-		this.cute_len = 30;
+		this.mapWidth = width;
+		this.mapHeight = heigh;
+		this.cuteLen = 30;
 		
-		current_x=(width-4)/2;
-		current_y=0;
+		currentX =(width-4)/2;
+		currentY =0;
 		
-		current_cuteArray = new int[4][4];
-		next_cuteArray = new int[4][4];
+		currentCuteArray = new int[4][4];
+		nextCuteArray = new int[4][4];
 		setFrame();
 		
 		randomCreatCuteArray();
@@ -53,40 +58,40 @@ public class GameFrame extends JFrame implements KeyListener{
 		
 				
 	}
-	public void reSetView(){
-		this.map_array = new int[this.map_width][this.map_height];
-		for(int i=0;i<map_width;i++){
-			for(int j=0;j<map_height;j++){
-				map_array[i][j]=0;
+	private void reSetView(){
+		this.mapArray = new int[this.mapWidth][this.mapHeight];
+		for(int i = 0; i< mapWidth; i++){
+			for(int j = 0; j< mapHeight; j++){
+				mapArray[i][j]=0;
 			}
 		}
 		creatCuteArray();
 		
 		score=0;
-		time_interver=1000;
-		if(timer!=null){
-			timer.cancel();
-			timer = null;
-		}
-
+		timeInterver =1000;
 		isPause=false;
 		
-      	timer();
+
+		//初始化定时器
+        closeExecutorService();
+      	setExecutorServices();
 	}
-	
+
+
+
 	@Override
     public void paint(Graphics g) {
 
         BufferedImage bi =(BufferedImage)this.createImage(this.getSize().width,this.getSize().height);  
         Graphics big =bi.getGraphics();  
 
-        for(int i=0;i<map_width;i++){
-			for(int j=0;j<map_height;j++){
-				if(map_array[i][j]==1){
+        for(int i = 0; i< mapWidth; i++){
+			for(int j = 0; j< mapHeight; j++){
+				if(mapArray[i][j]==1){
 
 						Color c =big.getColor();  
 			            big.setColor(Color.red);  
-			            big.fillRect(i*(cute_len+1), j*(cute_len+1), cute_len, cute_len);  
+			            big.fillRect(i*(cuteLen +1), j*(cuteLen +1), cuteLen, cuteLen);
 			            big.setColor(c); 
 					}
 					
@@ -94,10 +99,10 @@ public class GameFrame extends JFrame implements KeyListener{
 			}  
         for(int i=0;i<4;i++){
 			for(int j=0;j<4;j++){
-				if(current_cuteArray[i][j]==1){
+				if(currentCuteArray[i][j]==1){
 					Color c =big.getColor();  
 		            big.setColor(Color.red);  
-		            big.fillRect((i+current_x)*(cute_len+1), (j+current_y)*(cute_len+1), cute_len, cute_len);  
+		            big.fillRect((i+ currentX)*(cuteLen +1), (j+ currentY)*(cuteLen +1), cuteLen, cuteLen);
 		            big.setColor(c); 
 				}
 				
@@ -105,11 +110,11 @@ public class GameFrame extends JFrame implements KeyListener{
 		}
         for(int i=0;i<4;i++){
 			for(int j=0;j<4;j++){
-				if(next_cuteArray[i][j]==1){
+				if(nextCuteArray[i][j]==1){
 
 					Color c =big.getColor();  
 		            big.setColor(Color.blue);  
-		            big.fillRect((i+map_width+1)*(cute_len+1), (j+1)*(cute_len+1)+10, cute_len, cute_len);  
+		            big.fillRect((i+ mapWidth +1)*(cuteLen +1), (j+1)*(cuteLen +1)+10, cuteLen, cuteLen);
 		            big.setColor(c); 
 				}
 				
@@ -118,42 +123,43 @@ public class GameFrame extends JFrame implements KeyListener{
 
 		Color c =big.getColor();
         big.setColor(Color.green);  
-        big.fillRect((map_width)*(cute_len+1), 0, 2, (map_height+1)*(cute_len+1));  
+        big.fillRect((mapWidth)*(cuteLen +1), 0, 2, (mapHeight +1)*(cuteLen +1));
         big.setColor(c); 
 		
 
 
-        big.drawString("score:   "+score, (map_width+1)*(cute_len+1), 6*(cute_len+1)+50*0);
-        big.drawString("ENTER：重新开始ʼ" , (map_width+1)*(cute_len+1), 6*(cute_len+1)+50*1);
-        big.drawString("	A：左移 ", (map_width+1)*(cute_len+1), 6*(cute_len+1)+50*2);
-        big.drawString("	D：右移动", (map_width+1)*(cute_len+1), 6*(cute_len+1)+50*3);
-        big.drawString("	S：快速向下", (map_width+1)*(cute_len+1), 6*(cute_len+1)+50*4);
-        big.drawString("SPACE：翻转 ", (map_width+1)*(cute_len+1), 6*(cute_len+1)+50*5);
-        big.drawString("	W：暂停/开始" , (map_width+1)*(cute_len+1), 6*(cute_len+1)+50*6);
+        big.drawString("score:   "+score, (mapWidth +1)*(cuteLen +1), 6*(cuteLen +1)+50*0);
+        big.drawString("ENTER：重新开始ʼ" , (mapWidth +1)*(cuteLen +1), 6*(cuteLen +1)+50*1);
+        big.drawString("	A：左移 ", (mapWidth +1)*(cuteLen +1), 6*(cuteLen +1)+50*2);
+        big.drawString("	D：右移动", (mapWidth +1)*(cuteLen +1), 6*(cuteLen +1)+50*3);
+        big.drawString("	S：快速向下", (mapWidth +1)*(cuteLen +1), 6*(cuteLen +1)+50*4);
+        big.drawString("SPACE：翻转 ", (mapWidth +1)*(cuteLen +1), 6*(cuteLen +1)+50*5);
+        big.drawString("	W：暂停/开始" , (mapWidth +1)*(cuteLen +1), 6*(cuteLen +1)+50*6);
 
         g.drawImage(bi,0,0,null);  
                   
-    }  
-	public void setFrame(){
+    }
+    private void setFrame(){
 		this.setTitle("russia_xiaoge");
-		this.setSize((cute_len+1)*(this.map_width+6) , (cute_len+1)*(this.map_height));
+		this.setSize((cuteLen +1)*(this.mapWidth +6) , (cuteLen +1)*(this.mapHeight));
 		this.setLocation(400, 50);
 		this.setResizable(false);
 		
 		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
 		this.addKeyListener(this);
 		this.addWindowListener(new WindowAdapter() {  
-		public void windowClosing(WindowEvent arg0) {  
-			System.exit(1);//
+		@Override
+        public void windowClosing(WindowEvent arg0) {
+			System.exit(1);
 		}  
 	    }); 
 
 	}
-	
 
-	void JlabelSetText(JLabel jLabel, String longString)  {
+
+    private void jlabelSetText(JLabel jLabel, String longString)  {
         StringBuilder builder = new StringBuilder("<html>");
         char[] chars = longString.toCharArray();
         FontMetrics fontMetrics = jLabel.getFontMetrics(jLabel.getFont());
@@ -162,7 +168,9 @@ public class GameFrame extends JFrame implements KeyListener{
         while (start + len < longString.length()) {
             while (true) {
                 len++;
-                if (start + len > longString.length())break;
+                if (start + len > longString.length()) {
+                    break;
+                }
                 if (fontMetrics.charsWidth(chars, start, len) 
                         > jLabel.getWidth()) {
                     break;
@@ -176,36 +184,36 @@ public class GameFrame extends JFrame implements KeyListener{
         builder.append("</html>");
         jLabel.setText(builder.toString());
     }
-	
 
-	public boolean canCuteRote(){
-		if(current_cute_type==8){
+
+    private boolean canCuteRote(){
+		if(currentCuteType ==8){
 
 			return false;
 		}
 		
 		int switchLen = 3;
-		if(current_cute_type==1 || current_cute_type==2){
+		if(currentCuteType ==1 || currentCuteType ==2){
 
 			switchLen=4;
 		}
-		int[][] rote_array = new int[4][4];
+		int[][] roteArray = new int[4][4];
 
 		for(int i=0;i<switchLen;i++){
 			for(int j=0;j<switchLen;j++){
-				rote_array[i][j]= current_cuteArray[j][switchLen-1-i];
+                roteArray[i][j]= currentCuteArray[j][switchLen-1-i];
 			}
 		}
 		for(int i1=0;i1<4;i1++){
 			for(int j1=0;j1<4;j1++){
-				if(rote_array[i1][j1]==1){
-					int tmp_x = i1+current_x;
-					int tmp_y = j1+current_y;
-					if(tmp_x<0 || tmp_x>map_width-1 ||tmp_y<0 || tmp_y>map_height-1 ){
+				if(roteArray[i1][j1]==1){
+					int tmpX = i1+ currentX;
+					int tmpY = j1+ currentY;
+					if(tmpX<0 || tmpX> mapWidth -1 ||tmpY<0 || tmpY> mapHeight -1 ){
 
 						return false;
 					}
-					if(map_array[tmp_x][tmp_y]==1){
+					if(mapArray[tmpX][tmpY]==1){
 
 						return false;
 					}
@@ -216,8 +224,8 @@ public class GameFrame extends JFrame implements KeyListener{
 		
 	}
 
-	public void roteCuteArray(){
-		if(current_cute_type==8){
+    private void roteCuteArray(){
+		if(currentCuteType ==8){
 
 			return;
 		}
@@ -226,100 +234,96 @@ public class GameFrame extends JFrame implements KeyListener{
 			return;
 		}
 		int switchLen = 3;
-		if(current_cute_type==1 || current_cute_type==2){
+		if(currentCuteType ==1 || currentCuteType ==2){
 
 			switchLen=4;
 		}
-		int[][] rote_array = new int[4][4];
+		int[][] roteArray = new int[4][4];
 
 		for(int i=0;i<switchLen;i++){
 			for(int j=0;j<switchLen;j++){
-				rote_array[i][j]= current_cuteArray[j][switchLen-1-i];
+                roteArray[i][j]= currentCuteArray[j][switchLen-1-i];
 			}
 		}
-		//��ֵ
+		//
 		for(int i1=0;i1<4;i1++){
-			for(int j1=0;j1<4;j1++){
-				 current_cuteArray[i1][j1]=rote_array[i1][j1];
-			}
+            System.arraycopy(roteArray[i1], 0, currentCuteArray[i1], 0, 4);
 		}
 		
 		
 	}
 
-	public void creatCuteArray (){
+	private void creatCuteArray (){
 		isQuickMove=false;
-		current_x=(map_width-4)/2;
-		current_y=0;
-		current_cute_type=next_cute_type;
+		currentX =(mapWidth -4)/2;
+		currentY =0;
+		currentCuteType = nextCuteType;
 		
 		for(int i=0;i<4;i++){
-			for(int j=0;j<4;j++){
-				this.current_cuteArray[i][j]=this.next_cuteArray[i][j];
-			}
+            System.arraycopy(this.nextCuteArray[i], 0, this.currentCuteArray[i], 0, 4);
 		}
 		randomCreatCuteArray();
 	}
 
-	public void randomCreatCuteArray (){
+    private void randomCreatCuteArray (){
 		Random random = new Random();
 		int i =random.nextInt(8)+1;
 
-		next_cute_type = i;
+		nextCuteType = i;
 		switch(i){
 		case 1:
 			//1
-			next_cuteArray = new int[][]{{0, 0, 0, 0},{1, 1, 1, 1},{0, 0, 0, 0},{0, 0, 0, 0}};
+			nextCuteArray = new int[][]{{0, 0, 0, 0},{1, 1, 1, 1},{0, 0, 0, 0},{0, 0, 0, 0}};
 			break;
 		case 2:
 			//
-			next_cuteArray =new int[][] {{0, 1, 0, 0},{0, 1, 0, 0},{0, 1, 0, 0},{0, 1, 0, 0}};
+			nextCuteArray =new int[][] {{0, 1, 0, 0},{0, 1, 0, 0},{0, 1, 0, 0},{0, 1, 0, 0}};
 			break;
 		case 3:
 			//
-			next_cuteArray =new int[][]{ {1, 0, 0, 0}, {1, 0, 0, 0}, {1, 1, 0, 0}, {0, 0, 0, 0 }};
+			nextCuteArray =new int[][]{ {1, 0, 0, 0}, {1, 0, 0, 0}, {1, 1, 0, 0}, {0, 0, 0, 0 }};
 			break;
 		case 4:
 			//
-			next_cuteArray =new int[][]{{ 1, 1, 0, 0}, {1, 0, 0, 0}, {1, 0, 0, 0}, {0, 0, 0, 0} };
+			nextCuteArray =new int[][]{{ 1, 1, 0, 0}, {1, 0, 0, 0}, {1, 0, 0, 0}, {0, 0, 0, 0} };
 			break;
 		case 5:
 			//N
-			next_cuteArray =new int[][]{ {0, 1, 1, 0},{ 1, 1, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0} };
+			nextCuteArray =new int[][]{ {0, 1, 1, 0},{ 1, 1, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0} };
 			break;
 		case 6:
 			//N
-			next_cuteArray =new int[][]{{ 1, 1, 0, 0}, {0, 1, 1, 0}, {0, 0, 0, 0}, {0, 0, 0, 0 }};
+			nextCuteArray =new int[][]{{ 1, 1, 0, 0}, {0, 1, 1, 0}, {0, 0, 0, 0}, {0, 0, 0, 0 }};
 			break;
 		case 7:
 			//T
-			next_cuteArray =new int[][]{{ 1, 0, 0, 0},{ 1, 1, 0, 0}, {1, 0, 0, 0}, {0, 0, 0, 0 }};
+			nextCuteArray =new int[][]{{ 1, 0, 0, 0},{ 1, 1, 0, 0}, {1, 0, 0, 0}, {0, 0, 0, 0 }};
 			break;
 		case 8:
 			//
-			next_cuteArray =new int[][]{ {1, 1, 0, 0}, {1, 1, 0, 0},{ 0, 0, 0, 0}, {0, 0, 0, 0} };
+			nextCuteArray =new int[][]{ {1, 1, 0, 0}, {1, 1, 0, 0},{ 0, 0, 0, 0}, {0, 0, 0, 0} };
 			break;
 		default:
 				break;
 		}
 	}
 
-	public boolean canCuteMove (int direction){
+	private boolean canCuteMove (int direction){
 
-		int a[]=new int[]{-1,1,0};
-		int b[]=new int[]{0,0,1};
+		int[] a=new int[]{-1,1,0};
+		int[] b=new int[]{0,0,1};
 		
 		for(int i=0;i<4;i++){
 			for(int j=0;j<4;j++){
-				if(current_cuteArray[i][j]==1){
-					int new_x =i+a[direction]+this.current_x;
-					int new_y =j+b[direction]+this.current_y;
+				if(currentCuteArray[i][j]==1){
+					int newX =i+a[direction]+this.currentX;
+					int newY =j+b[direction]+this.currentY;
 
-					if(new_x<0 || new_x>this.map_width-1 || new_y<0 || new_y>this.map_height-1){
+					if(newX<0 || newX>this.mapWidth -1 || newY<0 || newY>this.mapHeight -1){
 
 						return false;
 					}
-					if(this.map_array[new_x][new_y]==1){
+					if(this.mapArray[newX][newY]==1){
 
 						return false;
 					}
@@ -329,18 +333,17 @@ public class GameFrame extends JFrame implements KeyListener{
 		return true;
 	}
 
-	public boolean isCuteToBotom (){
-		//
+    private boolean isCuteToBotom (){
+
 		for(int i=0;i<4;i++){
 			for(int j=0;j<4;j++){
-				if(current_cuteArray[i][j]==1){
-					int new_x =i+this.current_x;
-					int new_y =j+1+this.current_y;
-					if(j+this.current_y ==map_height-1){
+				if(currentCuteArray[i][j]==1){
+					int newX =i+this.currentX;
+					int newY =j+1+this.currentY;
+					if(j+this.currentY == mapHeight -1){
 						return true;
 					}
-					if(map_array[new_x][new_y]==1){
-
+					if(mapArray[newX][newY]==1){
 						return true;
 					}
 				}
@@ -349,14 +352,14 @@ public class GameFrame extends JFrame implements KeyListener{
 		return false;
 	}
 
-	public void handleToCuteToBotom (){
+    private void handleToCuteToBotom (){
 
 		if(isCuteToBotom()){
 
 			for(int i=0;i<4;i++){
 				for(int j=0;j<4;j++){
-					if(current_cuteArray[i][j]==1){
-						this.map_array [i+current_x ][j+current_y]=1;
+					if(currentCuteArray[i][j]==1){
+						this.mapArray[i+ currentX][j+ currentY]=1;
 					}
 				}
 			}
@@ -364,20 +367,21 @@ public class GameFrame extends JFrame implements KeyListener{
 			dismissCutes();
 			repaint();
 
-			restTimer();
+			//重置定时器
+			resetExecutorService();
 			
 			creatCuteArray();
 		}
 	}
-	//
-	public void moveCute(int direction){
+
+    private void moveCute(int direction){
 		if(canCuteMove(direction)){
 			
 			//direction 0  1  2
-			int a[]=new int[]{-1,1,0};
-			int b[]=new int[]{0,0,1};
-			this.current_x = this.current_x +a[direction];
-			this.current_y = this.current_y +b[direction];
+			int[] a=new int[]{-1,1,0};
+			int[] b=new int[]{0,0,1};
+			this.currentX = this.currentX +a[direction];
+			this.currentY = this.currentY +b[direction];
 
 			if(isCuteToBotom()){
 				if(!(canCuteMove(0) ||canCuteMove(1))){
@@ -396,33 +400,31 @@ public class GameFrame extends JFrame implements KeyListener{
 			
 		}
 	}
-	
-	public boolean canCuteMiss(int row){
-		if(row<0 || row>map_height-1){
+
+    private boolean canCuteMiss(int row){
+		if(row<0 || row> mapHeight -1){
 			return false;
 		}
-		for(int i=0;i<map_width;i++){
-			if(map_array[i][row]==0){
+		for(int i = 0; i< mapWidth; i++){
+			if(mapArray[i][row]==0){
 				return false;
 			}
 		}
 		return true;
 	}
-	//
-	public void dismissCute(int row){
-		if(row>map_height-1){
+
+    private void dismissCute(int row){
+		if(row> mapHeight -1){
 			return;
 		}
-		for(int i=0;i<map_width;i++){
-			for(int j=row;j>0;j--){
-				map_array[i][j]=map_array[i][j-1];
-			}
+		for(int i = 0; i< mapWidth; i++){
+            System.arraycopy(mapArray[i], 0, mapArray[i], 1, row);
 		}
 	}
 
-	public void dismissCutes(){
+    private void dismissCutes(){
 		int k=0;
-		for(int i=current_y;i<map_height;i++){
+		for(int i = currentY; i< mapHeight; i++){
 			if(canCuteMiss(i)){
 				k=k+1;
 				dismissCute(i);
@@ -446,49 +448,73 @@ public class GameFrame extends JFrame implements KeyListener{
 		}
 			
 	}
-	public void pauseGame(){
-		if(timer !=null){
-			timer.cancel();
-			timer = null;
-		}
-		
-		
+    private void pauseGame(){
+		closeExecutorService();
 	}
-	public void resumeGame(){
-		if(timer !=null){
-			timer.cancel();
-			timer = null;
-		}
-
-     	timer();
+    private void resumeGame(){
+		closeExecutorService();
+		setExecutorServices();
 	}
 
+	private void setExecutorServices() {
+	    long initialDelay = 0;
+        long period = timeInterver;
+        executorService = new ScheduledThreadPoolExecutor(1,
+                new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
+        //首次延迟initialDelay秒 周期time_interver 执行
+        executorService.scheduleAtFixedRate(() -> {
+            //do something
+            moveCute(2);
+            repaint();
 
-	  public  void timer() {
+        },initialDelay,period, TimeUnit.MILLISECONDS);
+	}
+	private void closeExecutorService() {
+        if (executorService != null) {
+            executorService.shutdown();
+            executorService = null;
+        }
+    }
+
+    private  void timer() {
 		  
 		  TimerTask task = new TimerTask() {  
 			             @Override  
 			            public void run() {  
 			                 // task to run goes here  
-			            	 moveCute(2);
+			            	 //moveCute(2);
 
-			            	 repaint();
+			            	 //repaint();
 			              }  
 			         }; 
 			        
 			          timer = new Timer();
 			          long delay = 0;  
-			          long intevalPeriod = time_interver;  
+			          long intevalPeriod = timeInterver;
 			          // schedules the task to be run in an interval  
 			         timer.scheduleAtFixedRate(task, delay, intevalPeriod);  
 		 
 	  }
-	  public void  restTimer() {
+    private void  resetExecutorService() {
+        int k = score/1000;
+        int tmpInterver = timeInterver;
+        timeInterver =(1000-100*k)>0?(1000-100*k):50;
+
+        if(tmpInterver> timeInterver){
+
+            AlertDialog alert = new AlertDialog();
+            alert.showDialog(this, "第"+k+"关", 1);
+
+            closeExecutorService();
+            setExecutorServices();
+        }
+    }
+    private void  restTimer() {
 		  int k = score/1000;
-		  int tmp_interver = time_interver;
-		  time_interver=(1000-100*k)>0?(1000-100*k):50;
-		  if(tmp_interver>time_interver){
-			AlertDialog alert = new AlertDialog();  
+		  int tmp_interver = timeInterver;
+		  timeInterver =(1000-100*k)>0?(1000-100*k):50;
+		  if(tmp_interver> timeInterver){
+			AlertDialog alert = new AlertDialog();
 			alert.showDialog(this, "第"+k+"关", 1);
 
 			timer.cancel();
@@ -499,18 +525,24 @@ public class GameFrame extends JFrame implements KeyListener{
 		
 	}
 
-    public  void cuteBotomtimer() {
-        Timer timer2 = new Timer();
+    private  void cuteBotomtimer() {
+        /*Timer timer2 = new Timer();
         timer2.schedule(new TimerTask() {
             public void run() {
                 handleToCuteToBotom();
                 this.cancel();//ִ
             }
-        }, 250, 500);
+        }, 250, 500);*/
+
+        long initialDelay = 250;
+        ScheduledExecutorService cuteBotomScheexecutorService = new ScheduledThreadPoolExecutor(1,
+                new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
+        //首次延迟initialDelay秒  执行
+        //do something
+        cuteBotomScheexecutorService.schedule(this::handleToCuteToBotom,initialDelay, TimeUnit.MILLISECONDS);
     }
 @Override
 public void keyPressed(KeyEvent e) {
-    System.out.println(KeyEvent.getKeyText(e.getKeyCode()));
     switch(KeyEvent.getKeyText(e.getKeyCode())){
         case "A":{
             this.moveCute(0);
