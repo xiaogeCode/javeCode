@@ -75,11 +75,31 @@ public class GameFrame extends JFrame implements KeyListener{
 		//初始化定时器
         closeExecutorService();
       	setExecutorServices();
+
+      	setGamePanel();
+
+
 	}
+	public void setGamePanel(){
+        getContentPane().removeAll();
+        GamePanel gamePanel = new GamePanel(mapWidth,mapHeight);
+        gamePanel.setCurrentX(currentX);
+        gamePanel.setCurrentY(currentY);
+        gamePanel.setMapArray(mapArray);
+        gamePanel.setCurrentCuteArray(currentCuteArray);
+        gamePanel.setNextCuteArray(nextCuteArray);
+        gamePanel.setScore(score);
+
+        gamePanel.setLocation(0,0);
+        gamePanel.setSize((cuteLen +1)*(this.mapWidth +8) , (cuteLen +1)*(this.mapHeight+3));
+
+        getContentPane().add(gamePanel);
+        getContentPane().repaint();
+    }
 
 
 
-	@Override
+	/*@Override
     public void paint(Graphics g) {
 
         BufferedImage bi =(BufferedImage)this.createImage(this.getSize().width,this.getSize().height);  
@@ -138,10 +158,10 @@ public class GameFrame extends JFrame implements KeyListener{
 
         g.drawImage(bi,0,0,null);  
                   
-    }
+    }*/
     private void setFrame(){
 		this.setTitle("russia_xiaoge");
-		this.setSize((cuteLen +1)*(this.mapWidth +6) , (cuteLen +1)*(this.mapHeight));
+		this.setSize((cuteLen +1)*(this.mapWidth +8) , (cuteLen +1)*(this.mapHeight+3));
 		this.setLocation(400, 50);
 		this.setResizable(false);
 		
@@ -365,12 +385,14 @@ public class GameFrame extends JFrame implements KeyListener{
 			}
 
 			dismissCutes();
-			repaint();
+			//repaint();
+            setGamePanel();
 
 			//重置定时器
 			resetExecutorService();
 			
 			creatCuteArray();
+			setGamePanel();
 		}
 	}
 
@@ -391,10 +413,7 @@ public class GameFrame extends JFrame implements KeyListener{
 
 					cuteBotomtimer();
 				}
-				
-				
-				
-				
+
 			}
 			
 			
@@ -465,7 +484,8 @@ public class GameFrame extends JFrame implements KeyListener{
         executorService.scheduleAtFixedRate(() -> {
             //do something
             moveCute(2);
-            repaint();
+            //repaint();
+            setGamePanel();
 
         },initialDelay,period, TimeUnit.MILLISECONDS);
 	}
@@ -585,7 +605,8 @@ public void keyPressed(KeyEvent e) {
         default:
             break;
     }
-    repaint();
+    //repaint();
+    setGamePanel();
 
 
 }
