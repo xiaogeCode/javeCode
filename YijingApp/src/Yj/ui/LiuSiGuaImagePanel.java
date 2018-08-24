@@ -1,9 +1,12 @@
 package Yj.ui;
 
+import Yj.util.CommonUtil;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
@@ -80,14 +83,29 @@ public class LiuSiGuaImagePanel extends JPanel{
 		for (int i = 0; i < 6; i++) {
 			if (yao[i] == 0) {
 				try {
-					yaoPanel[i].setImage(ImageIO.read(new File("src\\image\\0.jpg")));
+/*
+                    使用class的getRescource时，要注意路径前要加"/"，即根目录，此处的根目录是src
+                    在使用ClassLoader时，路径前面不能加"/",使用相对路径。
+                    eg.  this.getClass().getClassLoader().getResource("logback.xml").getPath();
+				    使用内部资源饮用，打包jar时不会找不到资源
+*/
+                    /*URL url = this.getClass().getResource("/image/0.jpg");
+					yaoPanel[i].setImage(ImageIO.read(new File(url.getPath())));*/
+					String url = CommonUtil.getCommonUtil().getImagUrl("0.jpg");
+					yaoPanel[i].setImage(ImageIO.read(new File(url)));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}else {
 				try {
-					yaoPanel[i].setImage(ImageIO.read(new File("src\\image\\1.jpg")));
+/*
+				    使用内部资源饮用，打包jar时不会找不到资源
+*/
+					/*URL url = this.getClass().getResource("/image/1.jpg");
+					yaoPanel[i].setImage(ImageIO.read(new File(url.getPath())));*/
+					String url = CommonUtil.getCommonUtil().getImagUrl("1.jpg");
+					yaoPanel[i].setImage(ImageIO.read(new File(url)));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

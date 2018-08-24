@@ -5,40 +5,56 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ManageView extends JFrame implements ActionListener{
 
 	//
     JButton jb1,jb2;
-    JPanel jp2,jp3;
 
 	public ManageView () {
-		//
-        jb1=new JButton("卦象信息");
-        jb2=new JButton("测算");
-        jb1.addActionListener(this);
-        jb2.addActionListener(this);
-          
-        jp2=new JPanel();
-        jp3=new JPanel();  
-          
-        jp2.add(jb1);
-        jp3.add(jb2);
+	    setFrame();
+	    setView();
 
-        //this.add(jp1);  
-        this.add(jp2);  
-        this.add(jp3);  
-          
-        //
-        this.setLayout(new GridLayout(2,1,50,50));  
-        this.setTitle("八卦");
-        this.setSize(400,300);  
-        //this.setLocation(200, 200);   
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-        this.setVisible(true);  
 	}
-	
+    private void setFrame(){
+        this.setTitle("八卦");
+        this.setSize(400, 300);
+        this.setLocation(400, 50);
+        this.setResizable(false);
+        this.setLayout(null);
+
+        this.setVisible(true);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent arg0) {
+                System.exit(1);
+            }
+        });
+    }
+    private void setView(){
+        //
+        jb1=new JButton("卦象信息");
+        jb1.addActionListener(this);
+        jb1.setSize(100, 50);
+        jb1.setLocation(20, 20);
+
+
+        jb2=new JButton("测算");
+        jb2.addActionListener(this);
+        jb2.setSize(100, 50);
+        jb2.setLocation(20, 120);
+
+
+        this.getContentPane().add(jb1);
+        this.getContentPane().add(jb2);
+
+        this.getContentPane().repaint();
+
+    }
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

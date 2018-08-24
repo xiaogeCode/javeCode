@@ -29,7 +29,7 @@ public class BaguaDao
      */
     public void createBaguaTable() throws SQLException
     {
-      Connection conn = DbUtil.getConnection();
+      Connection conn = DbUtil.getDbUtil().getConnection();
       Statement statement = conn.createStatement();
       statement.setQueryTimeout(30);
 
@@ -61,7 +61,7 @@ public class BaguaDao
     {
       List<LiuSiGuaModel> guaList = new ArrayList<LiuSiGuaModel>();
 
-      Connection conn = DbUtil.getConnection();
+      Connection conn = DbUtil.getDbUtil().getConnection();
       Statement statement=conn.createStatement();
 
       String sql = "SELECT * FROM BaGuaInfo;";
@@ -100,7 +100,7 @@ public class BaguaDao
   {
 	  LiuSiGuaModel g = null;
 
-    Connection conn = DbUtil.getConnection();
+    Connection conn = DbUtil.getDbUtil().getConnection();
     Statement statement=conn.createStatement(); 
     String sql = "SELECT * FROM BaGuaInfo where ID="+id+";";
     ResultSet rs = statement.executeQuery(sql);
@@ -135,7 +135,7 @@ public class BaguaDao
     {
         LiuSiGuaModel g = null;
 
-      Connection conn = DbUtil.getConnection();
+      Connection conn = DbUtil.getDbUtil().getConnection();
       Statement statement=conn.createStatement();
       String sql = "SELECT * FROM BaGuaInfo where ABOVEGUA='"+gua.getShangGuaName()+"'"+"and BELLOWGUA='"+gua.getXiaGuaName()+"';";
 
@@ -169,7 +169,7 @@ public class BaguaDao
      */
   public void addGua(LiuSiGuaModel gua) throws SQLException
   {
-    Connection conn = DbUtil.getConnection();
+    Connection conn = DbUtil.getDbUtil().getConnection();
     Statement statement=conn.createStatement(); 
     
     String sql = "insert into BaGuaInfo(id,name,DESCRIBLE,ABOVEGUA,BELLOWGUA,VALUE) values(null,'"+gua.getName()+"','"+gua.getDescrible()+"','"+gua.getShangGuaName()+"','"+gua.getXiaGuaName()+"',"+gua.getValue()+")";
@@ -191,7 +191,7 @@ public class BaguaDao
     public void updateGua(LiuSiGuaModel gua) throws SQLException
     {
 
-      Connection conn = DbUtil.getConnection();
+      Connection conn = DbUtil.getDbUtil().getConnection();
       Statement statement=conn.createStatement();
       int id = gua.getId();
       String sql = "UPDATE BaGuaInfo set VALUE = "+"'"+gua.getValue()+"'"+" where ID="+id+";";
@@ -212,7 +212,7 @@ public class BaguaDao
      */
   public void deleteGua(Integer id) throws SQLException
   {
-    Connection conn = DbUtil.getConnection();
+    Connection conn = DbUtil.getDbUtil().getConnection();
 	Statement statement=conn.createStatement(); 
  
 	String sql = "DELETE from BaGuaInfo where ID="+id+";";

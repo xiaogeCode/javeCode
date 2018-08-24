@@ -50,7 +50,7 @@ public class CeSuanView extends JFrame implements ActionListener {
 		System.out.println("setFrame");
 		container.setLayout(null);
 		frame.setTitle("八卦测算");
-		frame.setSize(500, 500);
+		frame.setSize(550, 550);
 		frame.setLocation(400, 50);
 		frame.setResizable(false);
 		frame.setVisible(true);
