@@ -1,16 +1,17 @@
 package ui;
 
-import Manager.FindCallBack;
 import Manager.HrdGmaeMgr;
 import model.GameState;
-import model.MoveAction;
 import model.Warrior;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import util.CommStringInterface;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.List;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Copyright (C), 2018-2018, XXX有限公司
@@ -23,48 +24,42 @@ import java.util.List;
  * 作者姓名           修改时间           版本号              描述
  */
 public class HrdFrame extends JFrame implements KeyListener, CommStringInterface, MouseListener,ActionListener {
-    HrdGmaeMgr hrdGmaeMgr;
-    GameState state;
-    Point preLocation;
+    private HrdGmaeMgr hrdGmaeMgr;
+    private GameState state;
+    private Point preLocation;
 /*
     停止展示移动动画
 */
-    boolean stopMoveShow = true;
+    private boolean stopMoveShow = true;
 
 
     public HrdFrame() {
-        hrdGmaeMgr = new HrdGmaeMgr(new FindCallBack() {
-/*
-            处理搜索到结果后的回调
-*/
-            @Override
-            public void findPath(List<GameState> list) {
-                System.out.println("步数: "+list.size());
+        /*
+                    处理搜索到结果后的回调
+        */
+        hrdGmaeMgr = new HrdGmaeMgr(list -> {
+                        System.out.println("步数: "+list.size());
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (int i= list.size()-1;(i>-1)&&(!stopMoveShow);i--){
-                            state= list.get(i);
-                            getContentPane().removeAll();
-                            setView();
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
+                        long initialDelay = 0;
+                        ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1,
+                                new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
+                        //首次延迟initialDelay秒  执行
+                        //do something
+                        scheduledExecutorService.schedule(() -> {
+                            for (int i= list.size()-1;(i>-1)&&(!stopMoveShow);i--){
+                                state= list.get(i);
+                                getContentPane().removeAll();
+                                setView();
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
                             }
-                        }
-                        stopMoveShow = true;
-
-                    }
-                }){
-                }.start();
-
-
-            }
-        });
+                            stopMoveShow = true;
+                        }, initialDelay,TimeUnit.MILLISECONDS);
+                    });
         state = hrdGmaeMgr.makeNewMap();
-        //state =hrdGmaeMgr.makeNewMapByRobot();
 
         setFrame();
         setView();
@@ -72,7 +67,7 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
 
     }
 
-    public void setFrame(){
+    private void setFrame(){
         this.setTitle("华容道");
         this.setSize(frame_cute_size*(HRD_WIDTH-2), frame_cute_size*(HRD_HEIGHT-1));
         this.setLocation(400, 50);
@@ -80,7 +75,7 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
         this.setLayout(null);
 
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         this.addKeyListener(this);
         this.addMouseListener(this);
@@ -91,7 +86,7 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
             }
         });
     }
-    public void setView(){
+    private void setView(){
         HrdPlane gamePane = new HrdPlane();
         gamePane.setSize(frame_cute_size*(HRD_WIDTH-2), frame_cute_size*(HRD_HEIGHT-2));
         gamePane.setLocation(0,0);
@@ -134,7 +129,7 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
  * 作者 @Author:xiaoge
  * 时间 @Date: 2018/8/12 9:33
  */
-    public int getHeroIdxbyLocation(int x,int y){
+    private int getHeroIdxbyLocation(int x,int y){
         int type = state.getMap()[x+1][y+1];
         switch (type){
             case HERO_TYPE_ZHANGFEI:{
@@ -146,9 +141,10 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
                 if (cv1==cv2){
                     int cv3 = state.getMap()[x+1][y-1];
                     int cv4 = state.getMap()[x+1][y+3];
+                    //当前张飞在下
                     if (cv3 == HERO_TYPE_ZHANGFEI){
-                       // y=
                     }
+                    //当前张飞在上
                     if (cv4 == HERO_TYPE_ZHANGFEI){
                         y=y-1;
                     }
@@ -202,19 +198,10 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
     public void keyPressed(KeyEvent e) {
         switch(KeyEvent.getKeyText(e.getKeyCode())){
             case "A":{
-                GameState tmpState = hrdGmaeMgr.moveToNewStata(state,6,2);
-                tmpState = hrdGmaeMgr.moveToNewStata(tmpState,7,2);
-                tmpState = hrdGmaeMgr.moveToNewStata(tmpState,1,2);
-                state = tmpState;
-                getContentPane().removeAll();
-                setView();
-
-                //System.out.println("a press");
                 break;
             }
 
             case "D":
-                GameState tmpState = hrdGmaeMgr.moveToNewStata(state,7,3);
                 break;
             case "S":{
             }
@@ -330,20 +317,23 @@ public class HrdFrame extends JFrame implements KeyListener, CommStringInterface
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("Solve"))
+        String solve = "Solve";
+        String makeMap = "MakeMap";
+        String stopMove = "stopMove";
+        if(e.getActionCommand().equals(solve))
         {
             if (stopMoveShow){
                 stopMoveShow = false;
                 hrdGmaeMgr.search(state);
             }
         }
-        if(e.getActionCommand().equals("MakeMap"))
+        if(e.getActionCommand().equals(makeMap))
         {
             state =hrdGmaeMgr.makeNewMapByRobot();
             this.getContentPane().removeAll();
             setView();
         }
-        if(e.getActionCommand().equals("stopMove"))
+        if(e.getActionCommand().equals(stopMove))
         {
             stopMoveShow = true;
         }
