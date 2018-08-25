@@ -46,13 +46,14 @@ public class CalManage {
                 if (calString(str)==24){
                     System.out.println(tranLastToMidle(str)+"=: " + calString(str));
                 }
-                //后序排列  ab+c+d* 等价于 (a+b+c)*c+d
+                //后序排列  ab+c+d+ 等价于 (a+b+c)+d
                 String str2 = numArr[tmpNum[0]]+" "+numArr[tmpNum[1]]+" "+operaArr[tmpOpera[0]]+" "
                         +numArr[tmpNum[2]]+" "+operaArr[tmpOpera[1]]+" "+numArr[tmpNum[3]]+" "+operaArr[tmpOpera[2]];
                 //输出等于24情况
                 if (calString(str2)==24){
                     System.out.println(tranLastToMidle(str2)+"=: " + calString(str2));
                 }
+                //后序排列  abc+d++ 等价于 a+(b+c+d) 24游戏不用考虑
             }
         }
 

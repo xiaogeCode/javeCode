@@ -15,6 +15,6 @@ import manager.CalManage;
 public class MainFunc {
     public static void main(String[] args) {
         CalManage calManage = new CalManage();
-        calManage.calFourNum(1,3,1,8);
+        calManage.calFourNum(2,2,3,10);
     }
 }
