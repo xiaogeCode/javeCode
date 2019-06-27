@@ -34,6 +34,9 @@ public class MapPanel extends JPanel implements CommStringInterface{
     public void setPath(List<Point> path) {
         this.path = path;
     }
+
+
+
     public void setCurPoint(Point curPoint) {
         this.curPoint = curPoint;
     }

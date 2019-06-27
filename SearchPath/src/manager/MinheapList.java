@@ -46,6 +46,8 @@ public class MinheapList {
         }
 
     }
+
+
     public void deleteItemById(int id) {
         Iterator<CellNode> it = list.iterator();
         while(it.hasNext()){

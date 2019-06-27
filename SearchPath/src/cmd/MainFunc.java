@@ -16,6 +16,7 @@ import ui.GameFrame;
  */
 public class MainFunc {
     public static void main(String[] args) {
+        System.out.println("hello");
         new GameFrame();
     }
 }
