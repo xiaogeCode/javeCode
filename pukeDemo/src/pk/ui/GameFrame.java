@@ -8,6 +8,7 @@ import pk.manager.PukeManager;
 import pk.model.CardModel;
 import pk.model.PukeListTypeEnum;
 import pk.model.PukeModel;
+import sockets.SocketClient;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -198,7 +199,17 @@ public class GameFrame extends JFrame implements ActionListener{
         }
         if(e.getActionCommand()=="出牌")
         {
-        	ArrayList<PukeModel> tmpSelectPukeModelList = new ArrayList<PukeModel>(); //出牌数组
+            //向服务器发送消息
+            SocketClient client = new SocketClient();
+            try {
+                client.sendMessange("出牌");
+                client.getMessageFromServer();
+                client.closeSocketClient();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            ArrayList<PukeModel> tmpSelectPukeModelList = new ArrayList<PukeModel>(); //出牌数组
         	if (playCardList.size()>0){
         	    playCardList.clear();
             }
